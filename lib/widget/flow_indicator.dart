@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:tribes_crowdfunding_interview_project/widget/indicator.dart';
+
+class FlowIndicator extends StatelessWidget {
+  final int currentPage;
+  final int numberOfPage;
+  const FlowIndicator(
+      {Key? key, required this.currentPage, required this.numberOfPage})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: List<Widget>.generate(
+        numberOfPage,
+        (index) => Indicator(
+          isActive: currentPage == index,
+        ),
+      ),
+    );
+  }
+}
