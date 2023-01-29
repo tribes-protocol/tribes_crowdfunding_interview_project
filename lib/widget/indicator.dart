@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/coloring.dart';
 
 class Indicator extends StatelessWidget {
   final bool isActive;
@@ -6,22 +7,27 @@ class Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 2,
-          width: 20,
-          decoration: const BoxDecoration(
-              shape: BoxShape.rectangle, color: Colors.grey),
-        ),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          height: 2,
-          width: isActive ? 20 : 0,
-          decoration: const BoxDecoration(
-              shape: BoxShape.rectangle, color: Colors.blue),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: Stack(
+        // fit: StackFit.expand,
+        children: [
+          Container(
+            height: 5,
+            width: 40,
+            // margin: const EdgeInsets.symmetric(horizontal: 5),
+            decoration: const BoxDecoration(
+                shape: BoxShape.rectangle, color: Colors.grey),
+          ),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            height: 5,
+            width: isActive ? 40 : 0,
+            decoration: const BoxDecoration(
+                shape: BoxShape.rectangle, color: Coloring.iceColdBlue),
+          )
+        ],
+      ),
     );
   }
 }

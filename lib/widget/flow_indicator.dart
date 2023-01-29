@@ -11,10 +11,11 @@ class FlowIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: List<Widget>.generate(
         numberOfPage,
         (index) => Indicator(
-          isActive: currentPage == index,
+          isActive: index <= currentPage,
         ),
       ),
     );
