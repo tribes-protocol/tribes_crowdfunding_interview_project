@@ -1,21 +1,29 @@
-class ProjectFundingInfo {
+class ProjectFundingData {
   FundingGoal? fundingGoal;
   String? projectName;
   String? tokenName;
   DateTime? deadLine;
+  ProjectFundingRules? projectFundingRules;
   String? description;
-  ProjectVisualInfo? projectVisualInfo;
+  ProjectReserveData? projectReserveData;
+  ProjectFundingManagementData? projectFundingManagementInfo;
+  ProjectVisualData? projectVisualData;
 }
+
+enum OverFundingRules { allowOverfundingUntilDeadline, stopAtTheGoal }
+
+enum UnderFundingRules { returnFunds, holdFunds }
 
 class ProjectFundingRules {
   OverFundingRules? overFundingRules;
+  UnderFundingRules? underFundingRules;
 }
 
-class ReserveInfo {
-  List<UserReserverInfo>? userReserverInfo;
+class ProjectReserveData {
+  List<ReserverData>? userReserverInfo;
 }
 
-class UserReserverInfo {
+class ReserverData {
   User? user;
   double? amount;
 }
@@ -25,10 +33,6 @@ class User {
   String? token;
 }
 
-enum OverFundingRules { allowOverfundingUntilDeadline, stopAtTheGoal }
-
-enum UnderFundingRules { returnFunds, holdFunds }
-
 class FundingGoal {
   double? amountInUSD;
   double? amountInCrypto;
@@ -37,11 +41,11 @@ class FundingGoal {
 
 enum ProjectVisualType { isImage, isEmoji }
 
-class ProjectVisualInfo {
+class ProjectVisualData {
   ProjectVisualType? projectVisualType;
 }
 
-class ProjectFundingManagementInfo {
+class ProjectFundingManagementData {
   int? signatureThreshold;
   List<User>? signers;
 }
