@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
 
-class FundProjectPrtovider extends ChangeNotifier {
+class FundProjectProvider extends ChangeNotifier {
   final PageController pageController = PageController(initialPage: 0);
   int get numberOfPage => 9;
   int currentPage = 0;

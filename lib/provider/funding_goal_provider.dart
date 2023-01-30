@@ -31,7 +31,7 @@ class FundingGoalProvider extends ChangeNotifier {
   }
 
   void submit(BuildContext context) {
-    var provider = context.read<FundProjectPrtovider>();
+    var provider = context.read<FundProjectProvider>();
     provider.setFundingGoal(FundingGoal(
         amountInUSD: _amountInUSD, amountInCrypto: _amountInCrypto));
   }
