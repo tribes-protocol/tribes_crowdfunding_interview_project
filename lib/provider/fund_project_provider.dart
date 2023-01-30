@@ -11,7 +11,7 @@ class FundProjectPrtovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void forwardpage(BuildContext context) {
+  void forwardpage() {
     pageController.nextPage(
       duration: const Duration(milliseconds: 200),
       curve: Curves.easeInOut,
@@ -20,37 +20,46 @@ class FundProjectPrtovider extends ChangeNotifier {
 
   void setProjectName(String? projectName) {
     projectFundingData.projectName = projectName;
+    forwardpage();
   }
 
   void setTokenName(String? tokenName) {
     projectFundingData.tokenName = tokenName;
+    forwardpage();
   }
 
   void setFundingGoal(FundingGoal? fundingGoal) {
     projectFundingData.fundingGoal = fundingGoal;
+    forwardpage();
   }
 
   void setDeadline(DateTime? deadLine) {
     projectFundingData.deadLine = deadLine;
+    forwardpage();
   }
 
   void setProjectReserve(ProjectReserveData? projectReserveData) {
     projectFundingData.projectReserveData = projectReserveData;
+    forwardpage();
   }
 
   void setProjectFundingRules(ProjectFundingRules? projectFundingRules) {
     projectFundingData.projectFundingRules = projectFundingRules;
+    forwardpage();
   }
 
   void setDescription(String? description) {
     projectFundingData.description = description;
+    forwardpage();
   }
 
   void setProjectVisual(ProjectVisualData? projectVisualData) {
     projectFundingData.projectVisualData = projectVisualData;
+    forwardpage();
   }
 
   void setManagement(ProjectFundingManagementData? managementData) {
     projectFundingData.projectFundingManagementInfo = managementData;
+    forwardpage();
   }
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/funding_goal_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/project_name_page.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/fund_project_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/funding_goal_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_name_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/widget/flow_indicator.dart';
 
 class FundingPage extends StatelessWidget {
@@ -10,7 +14,9 @@ class FundingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => FundProjectPrtovider())
+        ChangeNotifierProvider(create: (_) => FundProjectPrtovider()),
+        ChangeNotifierProvider(create: (_) => FundingGoalProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectNameProvider())
       ],
       child: Scaffold(
         body: Padding(
@@ -43,19 +49,12 @@ class FundingPageView extends StatelessWidget {
     var fundingPageProvider = context.watch<FundProjectPrtovider>();
     return Expanded(
       child: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: fundingPageProvider.pageController,
         onPageChanged: fundingPageProvider.pageChanged,
         children: [
-          Container(
-            height: 300,
-            width: 300,
-            color: Colors.blue,
-          ),
-          Container(
-            height: 300,
-            width: 300,
-            color: Colors.red,
-          ),
+          const FundingGoalPage(),
+          const ProjectNamePage(),
           Container(
             height: 300,
             width: 300,
