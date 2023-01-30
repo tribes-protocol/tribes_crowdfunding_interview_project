@@ -25,8 +25,9 @@ class FundingGoalPage extends StatelessWidget {
           ),
           if (fundingGoalProvider.isCompleted)
             TextButton(
-                onPressed: () => fundingGoalProvider.submit(context),
-                child: const Text("Continue"))
+              onPressed: () => fundingGoalProvider.submit(context),
+              child: const Text("Continue"),
+            )
         ],
       ),
     );

@@ -23,6 +23,23 @@ class ProjectReserveData {
   List<ReserverData>? userReserverInfo;
 }
 
+enum Deadlines { sevenDays, fourteenDays, twentyEightDays, custom }
+
+extension ParseToString on Deadlines {
+  String toShortString() {
+    switch (this) {
+      case Deadlines.sevenDays:
+        return '7 days';
+      case Deadlines.fourteenDays:
+        return '14 days';
+      case Deadlines.twentyEightDays:
+        return '28 days';
+      default:
+        return '';
+    }
+  }
+}
+
 class ReserverData {
   User? user;
   double? amount;
