@@ -6,6 +6,7 @@ import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/fun
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/project_name_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/rules_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/token_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/visual_page.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/fund_project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/funding_goal_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_deadline_provider.dart';
@@ -13,6 +14,7 @@ import 'package:tribes_crowdfunding_interview_project/provider/project_descripti
 import 'package:tribes_crowdfunding_interview_project/provider/project_name_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_rules_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_token_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_visual_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/widget/flow_indicator.dart';
 
 class FundingPage extends StatelessWidget {
@@ -29,6 +31,7 @@ class FundingPage extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProjectDeadlineProvider()),
         ChangeNotifierProvider(create: (_) => ProjectFundingRulesProvider()),
         ChangeNotifierProvider(create: (_) => ProjectDescriptionProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectVisualProvider()),
       ],
       child: Scaffold(
         body: Padding(
@@ -71,6 +74,7 @@ class FundingPageView extends StatelessWidget {
           const ProjectDeadlinePage(),
           const ProjectFudningRulesPage(),
           const ProjectDescriptionPage(),
+          const ProjectVisualPage(),
           Container(
             height: 300,
             width: 300,

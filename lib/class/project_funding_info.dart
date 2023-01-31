@@ -1,3 +1,5 @@
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/enum/overfunding_rules.dart';
 import 'package:tribes_crowdfunding_interview_project/enum/underfunding_rules.dart';
 
@@ -60,7 +62,25 @@ enum ProjectVisualType { isImage, isEmoji }
 
 class ProjectVisualData {
   ProjectVisualType? projectVisualType;
+  EmojiVisual? emojiVisual;
+  ImageVisual? imageVisual;
+  ProjectVisualData(
+      {this.projectVisualType, this.emojiVisual, this.imageVisual});
 }
+
+class EmojiVisual {
+  Color? color;
+  Emoji? emoji;
+  EmojiVisual({this.color, this.emoji});
+}
+
+class ImageVisual {
+  String? path;
+  ImagePathSourceType? sourceType;
+  ImageVisual({this.path, this.sourceType});
+}
+
+enum ImagePathSourceType { fromLocal, fromInternet }
 
 class ProjectFundingManagementData {
   int? signatureThreshold;

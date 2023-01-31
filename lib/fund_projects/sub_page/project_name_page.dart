@@ -22,7 +22,7 @@ class ProjectNamePage extends StatelessWidget {
           if (projectNameProvider.isCompleted)
             TextButton(
                 onPressed: () => projectNameProvider.submit(context),
-                child: const Text("Contibue"))
+                child: const Text("Continue"))
         ],
       ),
     );
