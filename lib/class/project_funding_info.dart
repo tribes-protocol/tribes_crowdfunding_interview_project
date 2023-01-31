@@ -1,3 +1,6 @@
+import 'package:tribes_crowdfunding_interview_project/enum/overfunding_rules.dart';
+import 'package:tribes_crowdfunding_interview_project/enum/underfunding_rules.dart';
+
 class ProjectFundingData {
   FundingGoal? fundingGoal;
   String? projectName;
@@ -10,13 +13,10 @@ class ProjectFundingData {
   ProjectVisualData? projectVisualData;
 }
 
-enum OverFundingRules { allowOverfundingUntilDeadline, stopAtTheGoal }
-
-enum UnderFundingRules { returnFunds, holdFunds }
-
 class ProjectFundingRules {
   OverFundingRules? overFundingRules;
   UnderFundingRules? underFundingRules;
+  ProjectFundingRules({this.overFundingRules, this.underFundingRules});
 }
 
 class ProjectReserveData {

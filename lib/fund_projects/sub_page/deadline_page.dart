@@ -47,7 +47,7 @@ class ProjectDeadlinePage extends StatelessWidget {
               var chosenDate = await showDatePicker(
                 context: context,
                 initialDate: currentDate,
-                firstDate: DateTime(currentDate.year),
+                firstDate: currentDate,
                 lastDate: DateTime(currentDate.year + 1),
               );
               if (chosenDate != null && currentDate.compareTo(chosenDate) < 0) {
