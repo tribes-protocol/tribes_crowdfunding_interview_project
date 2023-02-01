@@ -12,7 +12,6 @@ class _EditAmountDialogState extends State<EditAmountDialog> {
   late TextEditingController controller;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = TextEditingController.fromValue(
         TextEditingValue(text: widget.initialValue.toString()));

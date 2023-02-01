@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/deadline_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/funding_goal_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/management_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/project_name_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/reserve_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/rules_page.dart';
@@ -12,6 +13,7 @@ import 'package:tribes_crowdfunding_interview_project/provider/fund_project_prov
 import 'package:tribes_crowdfunding_interview_project/provider/funding_goal_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_description_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_management_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_name_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_reserve_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_rules_provider.dart';
@@ -35,6 +37,7 @@ class FundingPage extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProjectDescriptionProvider()),
         ChangeNotifierProvider(create: (_) => ProjectVisualProvider()),
         ChangeNotifierProvider(create: (_) => ProjectReserveProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectManagementProvider()),
       ],
       child: Scaffold(
         body: Padding(
@@ -70,20 +73,16 @@ class FundingPageView extends StatelessWidget {
         // physics: const NeverScrollableScrollPhysics(),
         controller: fundingPageProvider.pageController,
         onPageChanged: fundingPageProvider.pageChanged,
-        children: [
-          const FundingGoalPage(),
-          const ProjectNamePage(),
-          const TokenNamePage(),
-          const ProjectDeadlinePage(),
-          const ProjectFudningRulesPage(),
-          const ProjectDescriptionPage(),
-          const ProjectVisualPage(),
-          const ProjectReservePage(),
-          Container(
-            height: 300,
-            width: 300,
-            color: Colors.blue,
-          ),
+        children: const [
+          FundingGoalPage(),
+          ProjectNamePage(),
+          TokenNamePage(),
+          ProjectDeadlinePage(),
+          ProjectFudningRulesPage(),
+          ProjectDescriptionPage(),
+          ProjectVisualPage(),
+          ProjectReservePage(),
+          ProjectManagementPage(),
         ],
       ),
     );

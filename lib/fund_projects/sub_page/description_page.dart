@@ -39,11 +39,13 @@ class ProjectDescriptionPage extends StatelessWidget {
           ),
           TextFormField(
             controller: projectDescriptionProvider.projectDescriptionController,
+            onChanged: projectDescriptionProvider.onProjectDescriptionChanged,
           ),
           if (projectDescriptionProvider.isCompleted)
             TextButton(
-                onPressed: () => projectDescriptionProvider.submit(context),
-                child: const Text("Contibue"))
+              onPressed: () => projectDescriptionProvider.submit(context),
+              child: const Text("Continue"),
+            )
         ],
       ),
     );

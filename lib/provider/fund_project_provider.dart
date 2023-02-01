@@ -58,8 +58,8 @@ class FundProjectProvider extends ChangeNotifier {
     forwardpage();
   }
 
-  void setManagement(ProjectFundingManagementData? managementData) {
-    projectFundingData.projectFundingManagementInfo = managementData;
+  void setManagement(FundingManagementData? managementData) {
+    projectFundingData.fundingManagementInfo = managementData;
     forwardpage();
   }
 }

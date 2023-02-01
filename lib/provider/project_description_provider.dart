@@ -6,7 +6,7 @@ class ProjectDescriptionProvider extends ChangeNotifier {
   bool isCompleted = false;
   TextEditingController projectDescriptionController = TextEditingController();
   String? _description;
-  void onProjectNameChanged(String value) {
+  void onProjectDescriptionChanged(String value) {
     if (value.isNotEmpty) {
       _description = value;
       isCompleted = true;

@@ -11,7 +11,7 @@ class ProjectFundingData {
   ProjectFundingRules? projectFundingRules;
   String? description;
   ProjectReserveData? projectReserveData;
-  ProjectFundingManagementData? projectFundingManagementInfo;
+  FundingManagementData? fundingManagementInfo;
   ProjectVisualData? projectVisualData;
 }
 
@@ -98,7 +98,12 @@ class ImageVisual {
 
 enum ImagePathSourceType { fromLocal, fromInternet }
 
-class ProjectFundingManagementData {
-  int? signatureThreshold;
-  List<User>? signers;
+class FundingManagementData {
+  int signatureThreshold;
+  User baseUser;
+  List<User> signers;
+  FundingManagementData(
+      {this.signatureThreshold = 1,
+      this.signers = const [],
+      required this.baseUser});
 }
