@@ -13,18 +13,23 @@ class Indicator extends StatelessWidget {
         // fit: StackFit.expand,
         children: [
           Container(
-            height: 5,
-            width: 40,
+            height: 4,
+            width: 36.33,
             // margin: const EdgeInsets.symmetric(horizontal: 5),
             decoration: const BoxDecoration(
-                shape: BoxShape.rectangle, color: Colors.grey),
+              shape: BoxShape.rectangle,
+              color: Colors.grey,
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+            ),
           ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             height: 5,
             width: isActive ? 40 : 0,
             decoration: const BoxDecoration(
-                shape: BoxShape.rectangle, color: Coloring.iceColdBlue),
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+                shape: BoxShape.rectangle,
+                color: Coloring.iceColdBlue),
           )
         ],
       ),

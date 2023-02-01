@@ -22,8 +22,9 @@ class ProjectFundingRules {
 }
 
 class ProjectReserveData {
-  List<ReserveData>? userReserverInfo;
-  ProjectReserveData({this.userReserverInfo});
+  List<ReserveData>? userReserveData;
+  ReserveData baseUserReserveData;
+  ProjectReserveData({this.userReserveData, required this.baseUserReserveData});
 }
 
 enum Deadlines { sevenDays, fourteenDays, twentyEightDays, custom }
@@ -71,6 +72,20 @@ class User {
 class FundingGoal {
   double? amountInUSD;
   double? amountInCrypto;
+  String getAmountInUSD() {
+    if (amountInUSD != null) {
+      return "\$${amountInUSD!.toStringAsFixed(2)}";
+    }
+    return '\$0';
+  }
+
+  String getAmountInCrypto() {
+    if (amountInCrypto != null) {
+      return "${amountInCrypto!.toStringAsFixed(3)} ETH";
+    }
+    return '0 ETH';
+  }
+
   FundingGoal({this.amountInUSD, this.amountInCrypto});
 }
 
@@ -102,6 +117,18 @@ class FundingManagementData {
   int signatureThreshold;
   User baseUser;
   List<User> signers;
+  int getNumberOfSigners() {
+    return 1 + signers.length;
+  }
+
+  int getThresholdLimit() {
+    return 1 + signers.length;
+  }
+
+  int getThreshold() {
+    return signatureThreshold;
+  }
+
   FundingManagementData(
       {this.signatureThreshold = 1,
       this.signers = const [],

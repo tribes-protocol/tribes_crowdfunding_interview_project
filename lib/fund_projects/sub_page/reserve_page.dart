@@ -17,16 +17,26 @@ class ProjectReservePage extends StatelessWidget {
         children: [
           const Text("Reserve"),
           const Text("Choose a name for this fundraising project"),
-          TextButton(
-            onPressed: () {
+          TextField(
+            decoration: const InputDecoration.collapsed(
+                hintText: 'name or wallet address'),
+            onTap: () {
               showSearch(
                 context: context,
-                delegate: UserSearchDelegate(
-                  onSelect: provider.addReserveUser,
-                ),
+                delegate: UserSearchDelegate(onSelect: provider.addReserveUser),
               );
             },
-            child: const Text("wall"),
+          ),
+          ListTile(
+            title: Text("${provider.baseUser.user?.name}"),
+            subtitle: Text("${provider.baseUser.amount}%"),
+            onTap: () async {
+              var newAmount = await showDialog<double?>(
+                  context: context, builder: (_) => const EditAmountDialog());
+              if (newAmount != null) {
+                provider.changeBaseUserAmount(newAmount);
+              }
+            },
           ),
           for (var index = 0; index < provider.listReserveData.length; index++)
             ListTile(

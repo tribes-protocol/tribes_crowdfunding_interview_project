@@ -107,7 +107,7 @@ class _EmojiPickingPageState extends State<EmojiPickingPage> {
         Offstage(
           offstage: !showEmojiPicker,
           child: SizedBox(
-            height: 300,
+            height: 400,
             child: EmojiPicker(
               onEmojiSelected: (catorogy, emoji) {
                 changeEmoji(emoji);
