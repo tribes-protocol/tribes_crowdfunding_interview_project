@@ -22,7 +22,8 @@ class ProjectFundingRules {
 }
 
 class ProjectReserveData {
-  List<ReserverData>? userReserverInfo;
+  List<ReserveData>? userReserverInfo;
+  ProjectReserveData({this.userReserverInfo});
 }
 
 enum Deadlines { sevenDays, fourteenDays, twentyEightDays, custom }
@@ -42,14 +43,29 @@ extension ParseToString on Deadlines {
   }
 }
 
-class ReserverData {
+class ReserveData {
   User? user;
   double? amount;
+  ReserveData({this.user, this.amount});
+  @override
+  bool operator ==(Object other) {
+    return other is ReserveData && user == other.user;
+  }
 }
 
 class User {
   String? name;
   String? token;
+  String? imagePath;
+  @override
+  bool operator ==(Object other) {
+    return other is User && name == other.name && token == other.token;
+  }
+
+  User({
+    this.name,
+    this.token,
+  });
 }
 
 class FundingGoal {

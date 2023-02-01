@@ -4,6 +4,7 @@ import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/dea
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/funding_goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/project_name_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/reserve_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/rules_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/token_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/visual_page.dart';
@@ -12,6 +13,7 @@ import 'package:tribes_crowdfunding_interview_project/provider/funding_goal_prov
 import 'package:tribes_crowdfunding_interview_project/provider/project_deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_description_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_name_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_reserve_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_rules_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_visual_provider.dart';
@@ -32,6 +34,7 @@ class FundingPage extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProjectFundingRulesProvider()),
         ChangeNotifierProvider(create: (_) => ProjectDescriptionProvider()),
         ChangeNotifierProvider(create: (_) => ProjectVisualProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectReserveProvider()),
       ],
       child: Scaffold(
         body: Padding(
@@ -75,6 +78,7 @@ class FundingPageView extends StatelessWidget {
           const ProjectFudningRulesPage(),
           const ProjectDescriptionPage(),
           const ProjectVisualPage(),
+          const ProjectReservePage(),
           Container(
             height: 300,
             width: 300,
