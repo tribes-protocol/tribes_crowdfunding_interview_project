@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/fund_goal_info.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/deadline_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/funding_goal_page.dart';
@@ -52,7 +53,14 @@ class FundingPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButton(),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.info)),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) => const FundingGoalInfo()),
+                          );
+                        },
+                        icon: const Icon(Icons.info)),
                   ],
                 ),
               ),

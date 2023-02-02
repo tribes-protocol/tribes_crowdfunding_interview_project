@@ -21,28 +21,34 @@ class FundingGoalPage extends StatelessWidget {
             "Funding goal",
             style: TextStyling.header4,
           ),
-          Text(
-            "How much do you want to raise?",
-            style: TextStyling.body,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "How much do you want to raise?",
+              style: TextStyling.body,
+            ),
           ),
-          TextFormField(
-            controller: fundingGoalProvider.amountInUSDController,
-            onChanged: fundingGoalProvider.onAmountInUSDChanged,
-            keyboardType: TextInputType.number,
-            style: TextStyling.header4,
-            decoration: InputDecoration(
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: TextFormField(
+              controller: fundingGoalProvider.amountInUSDController,
+              onChanged: fundingGoalProvider.onAmountInUSDChanged,
+              keyboardType: TextInputType.number,
+              style: TextStyling.header4,
+              decoration: InputDecoration(
+                fillColor: Colors.grey[200],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(3),
+                  borderSide: const BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
                 ),
-              ),
-              filled: true,
-              hintText: '0',
-              suffix: const Text(
-                "USD",
+                filled: true,
+                hintText: '0',
+                suffix: const Text(
+                  "USD",
+                ),
               ),
             ),
           ),

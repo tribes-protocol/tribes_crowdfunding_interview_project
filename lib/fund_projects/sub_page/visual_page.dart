@@ -25,16 +25,19 @@ class ProjectVisualPage extends StatelessWidget {
             "Visual",
             style: TextStyling.header4,
           ),
-          Text(
-            "Add a visual to use as your project's logo and token",
-            style: TextStyling.body,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "Add a visual to use as your project's logo and token",
+              style: TextStyling.body,
+            ),
           ),
-          const SizedBox(
-            height: 60,
-          ),
-          Center(
-            child: ProjectVisual(
-              projectVisualData: projectVisualProvider.projectVisualData,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 60),
+            child: Center(
+              child: ProjectVisual(
+                projectVisualData: projectVisualProvider.projectVisualData,
+              ),
             ),
           ),
           const Spacer(),

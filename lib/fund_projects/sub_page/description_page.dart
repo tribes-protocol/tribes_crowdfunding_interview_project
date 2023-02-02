@@ -25,58 +25,71 @@ class ProjectDescriptionPage extends StatelessWidget {
             "Description",
             style: TextStyling.header4,
           ),
-          Text(
-            "Quickly explain how you'll use the funds",
-            style: TextStyling.body,
-          ),
-          Text(
-            "Markdown formatting works",
-            style: TextStyling.secondaryAlt,
-          ),
-          DefaultTabController(
-            length: 2,
-            child: Container(
-              height: 45,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(25),
-              ),
-              child: TabBar(
-                  unselectedLabelColor: Colors.black,
-                  indicator: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  tabs: [
-                    Text(
-                      "Write",
-                      style: TextStyling.tabOption,
-                    ),
-                    Text(
-                      "Preview",
-                      style: TextStyling.tabOption,
-                    ),
-                  ]),
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "Quickly explain how you'll use the funds",
+              style: TextStyling.body,
             ),
           ),
-          TextFormField(
-            controller: projectDescriptionProvider.projectDescriptionController,
-            onChanged: projectDescriptionProvider.onProjectDescriptionChanged,
-            style: TextStyling.body,
-            decoration: InputDecoration(
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "Markdown formatting works",
+              style: TextStyling.secondaryAlt,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: DefaultTabController(
+              length: 2,
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(25),
                 ),
+                child: TabBar(
+                    unselectedLabelColor: Colors.black,
+                    indicator: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    tabs: [
+                      Text(
+                        "Write",
+                        style: TextStyling.tabOption,
+                      ),
+                      Text(
+                        "Preview",
+                        style: TextStyling.tabOption,
+                      ),
+                    ]),
               ),
-              filled: true,
-              hintText: 'You can add this later, too',
             ),
-            minLines: 5,
-            maxLines: 7,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: TextFormField(
+              controller:
+                  projectDescriptionProvider.projectDescriptionController,
+              onChanged: projectDescriptionProvider.onProjectDescriptionChanged,
+              style: TextStyling.body,
+              decoration: InputDecoration(
+                fillColor: Colors.grey[200],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(3),
+                  borderSide: const BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                filled: true,
+                hintText: 'You can add this later, too',
+              ),
+              minLines: 7,
+              maxLines: 9,
+            ),
           ),
           const Spacer(),
           if (projectDescriptionProvider.isCompleted)

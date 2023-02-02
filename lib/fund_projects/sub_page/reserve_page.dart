@@ -17,96 +17,109 @@ class ProjectReservePage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
           top: 80, left: Spacing.double, right: Spacing.double),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Reserve",
-            style: TextStyling.header4,
-          ),
-          Text(
-            "You may reserve a portion of the total tokens for specific people.",
-            style: TextStyling.body,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
-                ),
-              ),
-              filled: true,
-              hintText: 'name or wallet address',
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Reserve",
+              style: TextStyling.header4,
             ),
-            style: TextStyling.body,
-            onTap: () {
-              showSearch(
-                context: context,
-                delegate: UserSearchDelegate(onSelect: provider.addReserveUser),
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: UserTile(
-              title: Text(
-                "${provider.baseUser.user?.name}",
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                "You may reserve a portion of the total tokens for specific people.",
                 style: TextStyling.body,
               ),
-              trailing: Text("${provider.baseUser.amount}%"),
-              onPressed: () async {
-                var newAmount = await showDialog<double?>(
-                    context: context, builder: (_) => const EditAmountDialog());
-                if (newAmount != null) {
-                  provider.changeBaseUserAmount(newAmount);
-                }
-              },
             ),
-          ),
-          for (var index = 0; index < provider.listReserveData.length; index++)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: TextField(
+                decoration: InputDecoration(
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(3),
+                    borderSide: const BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                  filled: true,
+                  hintText: 'name or wallet address',
+                ),
+                style: TextStyling.body,
+                onTap: () {
+                  showSearch(
+                    context: context,
+                    delegate:
+                        UserSearchDelegate(onSelect: provider.addReserveUser),
+                  );
+                },
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: UserTile(
-                title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("${provider.listReserveData[index].user?.name}"),
-                      GestureDetector(
-                        onTap: () => provider
-                            .removeReserveUser(provider.listReserveData[index]),
-                        child: const Icon(Icons.close),
-                      ),
-                    ]),
-                trailing: Text("${provider.listReserveData[index].amount}%"),
+                title: Text(
+                  "${provider.baseUser.user?.name}",
+                  style: TextStyling.body,
+                ),
+                trailing: Text("${provider.baseUser.amount}%"),
                 onPressed: () async {
                   var newAmount = await showDialog<double?>(
                       context: context,
                       builder: (_) => const EditAmountDialog());
                   if (newAmount != null) {
-                    provider.changeAmount(index, newAmount);
+                    provider.changeBaseUserAmount(newAmount);
                   }
                 },
-                // trailing: IconButton(
-                //   onPressed: () {
-                //     provider.removeReserveUser(provider.listReserveData[index]);
-                //   },
-                //   icon: const Icon(Icons.close),
-                // ),
               ),
             ),
-          ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-            title: const Text("Issued to founders"),
-            trailing: Text("${provider.issuedToFunder}%"),
-          ),
-          const Spacer(),
-          CustomTextButton(
-              onPressed: () => provider.submit(context), title: "Continue"),
-          const Spacer(),
-        ],
+            for (var index = 0;
+                index < provider.listReserveData.length;
+                index++)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: UserTile(
+                  title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("${provider.listReserveData[index].user?.name}"),
+                        GestureDetector(
+                          onTap: () => provider.removeReserveUser(
+                              provider.listReserveData[index]),
+                          child: const Icon(Icons.close),
+                        ),
+                      ]),
+                  trailing: Text("${provider.listReserveData[index].amount}%"),
+                  onPressed: () async {
+                    var newAmount = await showDialog<double?>(
+                        context: context,
+                        builder: (_) => const EditAmountDialog());
+                    if (newAmount != null) {
+                      provider.changeAmount(index, newAmount);
+                    }
+                  },
+                  // trailing: IconButton(
+                  //   onPressed: () {
+                  //     provider.removeReserveUser(provider.listReserveData[index]);
+                  //   },
+                  //   icon: const Icon(Icons.close),
+                  // ),
+                ),
+              ),
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+              title: const Text("Issued to founders"),
+              trailing: Text("${provider.issuedToFunder}%"),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: Spacing.x8),
+              child: CustomTextButton(
+                  onPressed: () => provider.submit(context), title: "Continue"),
+            ),
+          ],
+        ),
       ),
     );
   }

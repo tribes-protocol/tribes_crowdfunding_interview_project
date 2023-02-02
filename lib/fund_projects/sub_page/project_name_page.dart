@@ -21,25 +21,31 @@ class ProjectNamePage extends StatelessWidget {
             "Project Name",
             style: TextStyling.header4,
           ),
-          Text(
-            "Choose a name for this fundraising project",
-            style: TextStyling.body,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "Choose a name for this fundraising project",
+              style: TextStyling.body,
+            ),
           ),
-          TextFormField(
-            onChanged: projectNameProvider.onProjectNameChanged,
-            controller: projectNameProvider.projectNameController,
-            style: TextStyling.header4,
-            decoration: InputDecoration(
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: TextFormField(
+              onChanged: projectNameProvider.onProjectNameChanged,
+              controller: projectNameProvider.projectNameController,
+              style: TextStyling.header4,
+              decoration: InputDecoration(
+                fillColor: Colors.grey[200],
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(3),
+                  borderSide: const BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
                 ),
+                filled: true,
+                hintText: 'Name',
               ),
-              filled: true,
-              hintText: 'Name',
             ),
           ),
           const Spacer(),

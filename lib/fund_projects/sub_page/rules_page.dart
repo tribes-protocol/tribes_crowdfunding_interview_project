@@ -26,7 +26,10 @@ class ProjectFudningRulesPage extends StatelessWidget {
             "Rules",
             style: TextStyling.header4,
           ),
-          const Divider(),
+          const Padding(
+            padding: EdgeInsets.only(top: Spacing.double),
+            child: Divider(),
+          ),
           ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(
@@ -55,7 +58,10 @@ class ProjectFudningRulesPage extends StatelessWidget {
                     )
                   : null,
             ),
-          const Divider(),
+          const Padding(
+            padding: EdgeInsets.only(top: Spacing.double),
+            child: Divider(),
+          ),
           ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(

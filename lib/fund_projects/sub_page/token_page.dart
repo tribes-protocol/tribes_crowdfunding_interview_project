@@ -25,32 +25,41 @@ class TokenNamePage extends StatelessWidget {
             "Token",
             style: TextStyling.header4,
           ),
-          Text(
-            "Choose a symbol for the project's token, like you'd see on a stock ticker",
-            style: TextStyling.body,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "Choose a symbol for the project's token, like you'd see on a stock ticker",
+              style: TextStyling.body,
+            ),
           ),
-          TextFormField(
-            controller: projectTokenProvider.projectTokenController,
-            onChanged: projectTokenProvider.onTokenNameChanged,
-            inputFormatters: [UpperCaseTextFormatter()],
-            style: TextStyling.header4,
-            decoration: InputDecoration(
-                fillColor: Colors.grey[200],
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(3),
-                  borderSide: const BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: TextFormField(
+              controller: projectTokenProvider.projectTokenController,
+              onChanged: projectTokenProvider.onTokenNameChanged,
+              inputFormatters: [UpperCaseTextFormatter()],
+              style: TextStyling.header4,
+              decoration: InputDecoration(
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(3),
+                    borderSide: const BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
                   ),
-                ),
-                filled: true,
-                hintText: 'Token',
-                prefix: const Text("\$")),
+                  filled: true,
+                  hintText: 'Token',
+                  prefix: const Text("\$")),
+            ),
           ),
           if (projectTokenProvider.projectToken != null)
-            Text(
-              "1 ETH = 10,000 \$${projectTokenProvider.projectToken}",
-              style: TextStyling.secondaryAlt,
+            Padding(
+              padding: const EdgeInsets.only(top: Spacing.double),
+              child: Text(
+                "1 ETH = 10,000 \$${projectTokenProvider.projectToken}",
+                style: TextStyling.secondaryAlt,
+              ),
             ),
           const Spacer(),
           if (projectTokenProvider.isCompleted)

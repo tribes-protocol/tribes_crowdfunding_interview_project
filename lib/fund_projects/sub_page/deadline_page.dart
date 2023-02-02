@@ -25,13 +25,21 @@ class ProjectDeadlinePage extends StatelessWidget {
             "Deadline",
             style: TextStyling.header4,
           ),
-          Text(
-            "When does funding close?",
-            style: TextStyling.body,
+          Padding(
+            padding: const EdgeInsets.only(top: Spacing.double),
+            child: Text(
+              "When does funding close?",
+              style: TextStyling.body,
+            ),
           ),
-          const Divider(),
+          const Padding(
+            padding:
+                EdgeInsets.only(top: Spacing.double, bottom: Spacing.double),
+            child: Divider(),
+          ),
           for (var i = 0; i < (Deadlines.values.length - 1); i++)
             ListTile(
+              contentPadding: EdgeInsets.zero,
               title: Text(
                 Deadlines.values[i].toShortString(),
                 style: TextStyling.body,
@@ -47,6 +55,7 @@ class ProjectDeadlinePage extends StatelessWidget {
                       : null,
             ),
           ListTile(
+            contentPadding: EdgeInsets.zero,
             title: Text(
               "Choose a Date ...",
               style: TextStyling.body,

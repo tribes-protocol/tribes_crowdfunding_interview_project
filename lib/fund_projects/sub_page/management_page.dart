@@ -15,100 +15,115 @@ class ProjectManagementPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
           top: 80, left: Spacing.double, right: Spacing.double),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Management",
-            style: TextStyling.header4,
-          ),
-          Text(
-            "Project funds are held in a multisignature wallet for security. Transactions are approved when they reach the signature threshold.",
-            style: TextStyling.body,
-          ),
-          const Divider(),
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            title: Text(
-              "Signers",
-              style: TextStyling.body1,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Management",
+              style: TextStyling.header4,
             ),
-            subtitle: Text(
-              "Who can sign to approve wallet actions?",
-              style: TextStyling.secondaryAlt,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                "Project funds are held in a multisignature wallet for security. Transactions are approved when they reach the signature threshold.",
+                style: TextStyling.body,
+              ),
             ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
+            const Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: Divider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Signers",
+                  style: TextStyling.body1,
+                ),
+                subtitle: Text(
+                  "Who can sign to approve wallet actions?",
+                  style: TextStyling.secondaryAlt,
                 ),
               ),
-              filled: true,
-              hintText: 'name or wallet address',
             ),
-            style: TextStyling.body,
-            onTap: () {
-              showSearch(
-                context: context,
-                delegate: UserSearchDelegate(onSelect: provider.addSigner),
-              );
-            },
-          ),
-          ListTile(
-            title: Text("${provider.baseUser.name}"),
-          ),
-          for (var user in provider.signers)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: TextField(
+                decoration: InputDecoration(
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(3),
+                    borderSide: const BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                  filled: true,
+                  hintText: 'name or wallet address',
+                ),
+                style: TextStyling.body,
+                onTap: () {
+                  showSearch(
+                    context: context,
+                    delegate: UserSearchDelegate(onSelect: provider.addSigner),
+                  );
+                },
+              ),
+            ),
             ListTile(
-              title: Text("${user.name}"),
-              trailing: IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => provider.removeSigner(user),
+              title: Text("${provider.baseUser.name}"),
+            ),
+            for (var user in provider.signers)
+              ListTile(
+                title: Text("${user.name}"),
+                trailing: IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => provider.removeSigner(user),
+                ),
+              ),
+            const Divider(),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                "Signature threshold",
+                style: TextStyling.body1,
+              ),
+              subtitle: Text(
+                "How many executives must approve wallet actions?",
+                style: TextStyling.secondaryAlt,
               ),
             ),
-          const Divider(),
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            title: Text(
-              "Signature threshold",
-              style: TextStyling.body1,
+            ListTile(
+              title: Text(
+                  "${provider.signatureThreshold} of ${provider.signatureThresholdLimit}"),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () => provider.decreaseSignatureThresshold(),
+                    icon: const Icon(Icons.remove_circle),
+                    color: Colors.blue,
+                  ),
+                  IconButton(
+                    onPressed: () => provider.increaseSignatureThresshold(),
+                    icon: const Icon(Icons.add_circle),
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
             ),
-            subtitle: Text(
-              "How many executives must approve wallet actions?",
-              style: TextStyling.secondaryAlt,
-            ),
-          ),
-          ListTile(
-            title: Text(
-                "${provider.signatureThreshold} of ${provider.signatureThresholdLimit}"),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () => provider.decreaseSignatureThresshold(),
-                  icon: const Icon(Icons.remove_circle),
-                  color: Colors.blue,
+            if (provider.isCompleted)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: Spacing.x8),
+                child: CustomTextButton(
+                  onPressed: () => provider.submit(context),
+                  title: "Continue",
                 ),
-                IconButton(
-                  onPressed: () => provider.increaseSignatureThresshold(),
-                  icon: const Icon(Icons.add_circle),
-                  color: Colors.blue,
-                ),
-              ],
-            ),
-          ),
-          const Spacer(),
-          if (provider.isCompleted)
-            CustomTextButton(
-              onPressed: () => provider.submit(context),
-              title: "Continue",
-            ),
-          const Spacer(),
-        ],
+              ),
+          ],
+        ),
       ),
     );
   }
