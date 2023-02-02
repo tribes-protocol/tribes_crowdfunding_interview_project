@@ -19,7 +19,8 @@ import 'package:tribes_crowdfunding_interview_project/provider/project_reserve_p
 import 'package:tribes_crowdfunding_interview_project/provider/project_rules_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_visual_provider.dart';
-import 'package:tribes_crowdfunding_interview_project/widget/flow_indicator.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/spacing.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/flow_indicator.dart';
 
 class FundingPage extends StatelessWidget {
   const FundingPage({Key? key}) : super(key: key);
@@ -41,17 +42,19 @@ class FundingPage extends StatelessWidget {
       ],
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(top: 50, left: 5, right: 5),
+          padding: const EdgeInsets.only(top: 50),
           child: Column(
             children: [
               const FundingPageControllView(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const BackButton(),
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.question_mark)),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const BackButton(),
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.info)),
+                  ],
+                ),
               ),
               const FundingPageView()
             ],

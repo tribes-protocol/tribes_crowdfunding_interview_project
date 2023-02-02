@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tribes_crowdfunding_interview_project/widget/indicator.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/indicator.dart';
 
 class FlowIndicator extends StatelessWidget {
   final int currentPage;

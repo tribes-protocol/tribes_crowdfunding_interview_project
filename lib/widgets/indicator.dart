@@ -27,9 +27,10 @@ class Indicator extends StatelessWidget {
             height: 5,
             width: isActive ? 40 : 0,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-                shape: BoxShape.rectangle,
-                color: Coloring.iceColdBlue),
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+              shape: BoxShape.rectangle,
+              color: Coloring.indicatorColor,
+            ),
           )
         ],
       ),

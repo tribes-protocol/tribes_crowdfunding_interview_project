@@ -2,7 +2,8 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
-import 'package:tribes_crowdfunding_interview_project/widget/circle_container.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/text_style.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/circle_container.dart';
 
 class EmojiPickingPage extends StatefulWidget {
   const EmojiPickingPage({Key? key}) : super(key: key);
@@ -37,20 +38,26 @@ class _EmojiPickingPageState extends State<EmojiPickingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-                onPressed: pickedEmoji != null
-                    ? () {
-                        Navigator.pop(
-                            context,
-                            EmojiVisual(
-                                color: pickedColor, emoji: pickedEmoji));
-                      }
-                    : null,
-                child: const Text("Done")),
+              onPressed: pickedEmoji != null
+                  ? () {
+                      Navigator.pop(context,
+                          EmojiVisual(color: pickedColor, emoji: pickedEmoji));
+                    }
+                  : null,
+              child: Text(
+                "Done",
+                style: TextStyling.body1.copyWith(color: Colors.black),
+              ),
+            ),
             TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Cancel")),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "Cancel",
+                style: TextStyling.body.copyWith(color: Colors.black),
+              ),
+            ),
           ],
         ),
         CircleContainer(

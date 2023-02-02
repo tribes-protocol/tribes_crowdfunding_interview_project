@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/text_style.dart';
 
 class UserSearchDelegate extends SearchDelegate<User?> {
   final Function(User)? onSelect;
@@ -64,8 +65,14 @@ class UserSearchDelegate extends SearchDelegate<User?> {
                 onSelect!(result);
               }
             },
-            title: Text("${result.name}"),
-            subtitle: Text("${result.token}"),
+            title: Text(
+              "${result.name}",
+              style: TextStyling.bodyBold,
+            ),
+            subtitle: Text(
+              "${result.token}",
+              style: TextStyling.secondaryAlt,
+            ),
           );
         });
   }
@@ -89,8 +96,14 @@ class UserSearchDelegate extends SearchDelegate<User?> {
                 onSelect!(result);
               }
             },
-            title: Text("${result.name}"),
-            subtitle: Text("${result.token}"),
+            title: Text(
+              "${result.name}",
+              style: TextStyling.bodyBold,
+            ),
+            subtitle: Text(
+              "${result.token}",
+              style: TextStyling.secondaryAlt,
+            ),
           );
         });
   }

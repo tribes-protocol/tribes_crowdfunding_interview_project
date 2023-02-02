@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
-import 'package:tribes_crowdfunding_interview_project/widget/project_visual.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/text_style.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/custom_text_button.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/project_visual.dart';
 
 class ProjectPreviewPage extends StatelessWidget {
   final ProjectFundingData fundingData;
@@ -14,7 +17,7 @@ class ProjectPreviewPage extends StatelessWidget {
     var fundingGoal = fundingData.fundingGoal;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 50, left: 5, right: 5),
+        padding: const EdgeInsets.only(top: 50, left: 16, right: 16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,57 +26,116 @@ class ProjectPreviewPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const BackButton(),
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.question_mark)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.info)),
                 ],
               ),
-              const Text("Project preview"),
+              Text(
+                "Project preview",
+                style: TextStyling.header4,
+              ),
               Center(
-                child: ProjectVisual(
-                  projectVisualData: fundingData.projectVisualData!,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24),
+                  child: ProjectVisual(
+                    projectVisualData: fundingData.projectVisualData!,
+                  ),
                 ),
               ),
               ListTile(
-                title: const Text("Goal"),
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Goal",
+                  style: TextStyling.body,
+                ),
                 trailing: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("\$${fundingGoal?.getAmountInUSD()}"),
-                    Text("${fundingGoal?.getAmountInCrypto()}")
+                    Text(
+                      "${fundingGoal?.getAmountInUSD()}",
+                      style: TextStyling.body1,
+                    ),
+                    Text(
+                      "${fundingGoal?.getAmountInCrypto()}",
+                      style: TextStyling.secondaryAlt,
+                    )
                   ],
                 ),
               ),
               ListTile(
-                title: const Text("Name"),
-                trailing: Text("${fundingData.projectName}"),
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Name",
+                  style: TextStyling.body,
+                ),
+                trailing: Text(
+                  "${fundingData.projectName}",
+                  style: TextStyling.body1,
+                ),
               ),
               ListTile(
+                contentPadding: EdgeInsets.zero,
                 title: const Text("Token"),
-                trailing: Text("\$${fundingData.tokenName}"),
+                trailing: Text(
+                  "\$${fundingData.tokenName}",
+                  style: TextStyling.body1,
+                ),
               ),
               ListTile(
-                title: const Text("Description"),
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Description",
+                  style: TextStyling.body,
+                ),
                 trailing:
                     const TextButton(onPressed: null, child: Text("Edit")),
-                subtitle: Text("${fundingData.description}"),
+                subtitle: Text(
+                  "${fundingData.description}",
+                  style: TextStyling.secondaryAlt,
+                ),
               ),
               const Divider(),
               ListTile(
-                title: const Text("Deadline"),
-                trailing: Text(
-                  fundingData.deadLine.toString(),
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Deadline",
+                  style: TextStyling.body,
                 ),
-              ),
-              TextButton(onPressed: () {}, child: const Text("Launch Funding")),
-              ListTile(
-                title: const Text("Management"),
                 trailing: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                        "${fundingData.fundingManagementInfo?.getNumberOfSigners()} signer(s)"),
+                      '7 days',
+                      style: TextStyling.body1,
+                    ),
                     Text(
-                        "${fundingData.fundingManagementInfo?.getThreshold()}/${fundingData.fundingManagementInfo?.getThresholdLimit()} signature threshold")
+                      DateFormat.yMMM().format(fundingData.deadLine!),
+                      style: TextStyling.secondaryAlt,
+                    ),
+                  ],
+                ),
+              ),
+              CustomTextButton(
+                  onPressed: () {}, title: "Launch Funding \$9.99"),
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  "Management",
+                  style: TextStyling.body,
+                ),
+                trailing: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "${fundingData.fundingManagementInfo?.getNumberOfSigners()} signer(s)",
+                      style: TextStyling.body1,
+                    ),
+                    Text(
+                      "${fundingData.fundingManagementInfo?.getThreshold()}/${fundingData.fundingManagementInfo?.getThresholdLimit()} signature threshold",
+                      style: TextStyling.secondaryAlt,
+                    )
                   ],
                 ),
               ),

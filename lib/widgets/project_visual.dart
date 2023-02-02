@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
-import 'package:tribes_crowdfunding_interview_project/widget/circle_container.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/circle_container.dart';
 
 class ProjectVisual extends StatelessWidget {
   final ProjectVisualData? projectVisualData;

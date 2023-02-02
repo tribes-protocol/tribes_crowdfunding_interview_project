@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tribes_crowdfunding_interview_project/class/project_funding_info.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_deadline_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/spacing.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/text_style.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/custom_text_button.dart';
 
 class ProjectDeadlinePage extends StatelessWidget {
   const ProjectDeadlinePage({Key? key}) : super(key: key);
@@ -10,15 +13,29 @@ class ProjectDeadlinePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var projectDeadlineProvider = context.watch<ProjectDeadlineProvider>();
     return Container(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(
+        top: 80,
+        left: Spacing.double,
+        right: Spacing.double,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Deadline"),
-          const Text("When does funding close?"),
+          Text(
+            "Deadline",
+            style: TextStyling.header4,
+          ),
+          Text(
+            "When does funding close?",
+            style: TextStyling.body,
+          ),
+          const Divider(),
           for (var i = 0; i < (Deadlines.values.length - 1); i++)
             ListTile(
-              title: Text(Deadlines.values[i].toShortString()),
+              title: Text(
+                Deadlines.values[i].toShortString(),
+                style: TextStyling.body,
+              ),
               onTap: () =>
                   projectDeadlineProvider.setDeadline(Deadlines.values[i]),
               trailing:
@@ -30,8 +47,9 @@ class ProjectDeadlinePage extends StatelessWidget {
                       : null,
             ),
           ListTile(
-            title: const Text(
+            title: Text(
               "Choose a Date ...",
+              style: TextStyling.body,
             ),
             subtitle: projectDeadlineProvider.chosenDeadline == Deadlines.custom
                 ? Text(projectDeadlineProvider.chosenDate.toString())
@@ -55,11 +73,13 @@ class ProjectDeadlinePage extends StatelessWidget {
               }
             },
           ),
+          const Spacer(),
           if (projectDeadlineProvider.isCompleted)
-            TextButton(
+            CustomTextButton(
               onPressed: () => projectDeadlineProvider.submit(context),
-              child: const Text("Continue"),
-            )
+              title: "Continue",
+            ),
+          const Spacer()
         ],
       ),
     );

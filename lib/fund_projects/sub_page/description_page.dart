@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tribes_crowdfunding_interview_project/provider/project_description_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/spacing.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/text_style.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/custom_text_button.dart';
 
 class ProjectDescriptionPage extends StatelessWidget {
   const ProjectDescriptionPage({Key? key}) : super(key: key);
@@ -10,13 +13,26 @@ class ProjectDescriptionPage extends StatelessWidget {
     var projectDescriptionProvider =
         context.watch<ProjectDescriptionProvider>();
     return Container(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(
+        top: 80,
+        left: Spacing.double,
+        right: Spacing.double,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Description"),
-          const Text("Quickly explain how you'll use the funds"),
-          const Text("Markdown formatting works"),
+          Text(
+            "Description",
+            style: TextStyling.header4,
+          ),
+          Text(
+            "Quickly explain how you'll use the funds",
+            style: TextStyling.body,
+          ),
+          Text(
+            "Markdown formatting works",
+            style: TextStyling.secondaryAlt,
+          ),
           DefaultTabController(
             length: 2,
             child: Container(
@@ -31,21 +47,44 @@ class ProjectDescriptionPage extends StatelessWidget {
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  tabs: const [
-                    Text("Write"),
-                    Text("Preview"),
+                  tabs: [
+                    Text(
+                      "Write",
+                      style: TextStyling.tabOption,
+                    ),
+                    Text(
+                      "Preview",
+                      style: TextStyling.tabOption,
+                    ),
                   ]),
             ),
           ),
           TextFormField(
             controller: projectDescriptionProvider.projectDescriptionController,
             onChanged: projectDescriptionProvider.onProjectDescriptionChanged,
+            style: TextStyling.body,
+            decoration: InputDecoration(
+              fillColor: Colors.grey[200],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(
+                  width: 0,
+                  style: BorderStyle.none,
+                ),
+              ),
+              filled: true,
+              hintText: 'You can add this later, too',
+            ),
+            minLines: 5,
+            maxLines: 7,
           ),
+          const Spacer(),
           if (projectDescriptionProvider.isCompleted)
-            TextButton(
+            CustomTextButton(
               onPressed: () => projectDescriptionProvider.submit(context),
-              child: const Text("Continue"),
-            )
+              title: "Continue",
+            ),
+          const Spacer(),
         ],
       ),
     );
