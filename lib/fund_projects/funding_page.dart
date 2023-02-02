@@ -1,0 +1,115 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/fund_goal_info.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/deadline_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/description_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/funding_goal_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/management_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/project_name_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/reserve_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/rules_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/token_page.dart';
+import 'package:tribes_crowdfunding_interview_project/fund_projects/sub_page/visual_page.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/fund_project_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/funding_goal_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_deadline_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_description_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_management_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_name_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_reserve_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_rules_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_token_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/provider/project_visual_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/styles/spacing.dart';
+import 'package:tribes_crowdfunding_interview_project/widgets/flow_indicator.dart';
+
+class FundingPage extends StatelessWidget {
+  const FundingPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FundProjectProvider()),
+        ChangeNotifierProvider(create: (_) => FundingGoalProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectNameProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectTokenProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectDeadlineProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectFundingRulesProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectDescriptionProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectVisualProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectReserveProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectManagementProvider()),
+      ],
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              const FundingPageControllView(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const BackButton(),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) => const FundingGoalInfo()),
+                          );
+                        },
+                        icon: const Icon(Icons.info)),
+                  ],
+                ),
+              ),
+              const FundingPageView()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FundingPageView extends StatelessWidget {
+  const FundingPageView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var fundingPageProvider = context.watch<FundProjectProvider>();
+    return Expanded(
+      child: PageView(
+        // physics: const NeverScrollableScrollPhysics(),
+        controller: fundingPageProvider.pageController,
+        onPageChanged: fundingPageProvider.pageChanged,
+        children: const [
+          FundingGoalPage(),
+          ProjectNamePage(),
+          TokenNamePage(),
+          ProjectDeadlinePage(),
+          ProjectFudningRulesPage(),
+          ProjectDescriptionPage(),
+          ProjectVisualPage(),
+          ProjectReservePage(),
+          ProjectManagementPage(),
+        ],
+      ),
+    );
+  }
+}
+
+class FundingPageControllView extends StatelessWidget {
+  const FundingPageControllView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var fundingPageProvider = context.watch<FundProjectProvider>();
+
+    return FlowIndicator(
+      currentPage: fundingPageProvider.currentPage,
+      numberOfPage: fundingPageProvider.numberOfPage,
+    );
+  }
+}
