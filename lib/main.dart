@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'styles/spacing.dart';
+import 'package:tribes_crowdfunding_interview_project/theme/colors/tribe_color_schema.dart';
+import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/theme/typograpy.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,36 +9,32 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tribes Crowdfunder',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    final brightness = MediaQuery.of(context).platformBrightness;
+    print(brightness);
+
+    return TribesThemeProvider(
+      theme: CompanyTheme(
+        textStyleScheme: TextStyleSchema(),
+        colorScheme: brightness == Brightness.light
+            ? TribeColorsSchema.light()
+            : TribeColorsSchema.dark(),
       ),
-      home: Material(
-        child: Center(
-          child: InkWell(
-            onTap: () {
-              // start a crowdfund here
-            },
-            child: Container(
-                padding: const EdgeInsets.all(Spacing.double),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(Spacing.standard),
-                ),
-                child: const Text(
-                  'Start a crowdfund',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                )),
+      child: Builder(builder: (context) {
+        return MaterialApp(
+          title: 'Tribes Crowdfunder',
+          home: Scaffold(
+            body: Center(
+              child: Text(
+                'hello',
+                style: context.textStyles.body,
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
