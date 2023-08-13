@@ -17,9 +17,15 @@ class TextStyleSchema {
       fontFamily: 'Inter',
       fontWeight: FontWeight.w400
     ),
+    this.secondary = const TextStyle(
+      fontSize: 13,
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w400
+    ),
   });
 
   final TextStyle header3;
   final TextStyle header4;
   final TextStyle body;
+  final TextStyle secondary;
 }

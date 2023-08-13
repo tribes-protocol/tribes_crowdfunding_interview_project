@@ -41,14 +41,22 @@ mixin _$TribeColorsSchema {
   Color get textEntitySymbolColor => throw _privateConstructorUsedError;
   Color get baseNav => throw _privateConstructorUsedError;
   Color get baseContent => throw _privateConstructorUsedError;
-  Color get label1text => throw _privateConstructorUsedError;
-  Color get label2text => throw _privateConstructorUsedError;
-  Color get label1 => throw _privateConstructorUsedError;
-  Color get label2 => throw _privateConstructorUsedError;
-  Color get label3 => throw _privateConstructorUsedError;
-  Color get label4 => throw _privateConstructorUsedError;
-  Color get labet5 => throw _privateConstructorUsedError;
-  Color get label6 => throw _privateConstructorUsedError;
+  Color get labelLight1text => throw _privateConstructorUsedError;
+  Color get labelLight2text => throw _privateConstructorUsedError;
+  Color get labelLight1 => throw _privateConstructorUsedError;
+  Color get labelLight2 => throw _privateConstructorUsedError;
+  Color get labelLight3 => throw _privateConstructorUsedError;
+  Color get labelLight4 => throw _privateConstructorUsedError;
+  Color get labelLight5 => throw _privateConstructorUsedError;
+  Color get labelLight6 => throw _privateConstructorUsedError;
+  Color get labelDark1text => throw _privateConstructorUsedError;
+  Color get labelDark2text => throw _privateConstructorUsedError;
+  Color get labelDark1 => throw _privateConstructorUsedError;
+  Color get labelDark2 => throw _privateConstructorUsedError;
+  Color get labelDark3 => throw _privateConstructorUsedError;
+  Color get labelDark4 => throw _privateConstructorUsedError;
+  Color get labelDark5 => throw _privateConstructorUsedError;
+  Color get labelDark6 => throw _privateConstructorUsedError;
   Color get header1 => throw _privateConstructorUsedError;
   Color get header2 => throw _privateConstructorUsedError;
   Color get header3 => throw _privateConstructorUsedError;
@@ -98,14 +106,22 @@ abstract class $TribeColorsSchemaCopyWith<$Res> {
       Color textEntitySymbolColor,
       Color baseNav,
       Color baseContent,
-      Color label1text,
-      Color label2text,
-      Color label1,
-      Color label2,
-      Color label3,
-      Color label4,
-      Color labet5,
-      Color label6,
+      Color labelLight1text,
+      Color labelLight2text,
+      Color labelLight1,
+      Color labelLight2,
+      Color labelLight3,
+      Color labelLight4,
+      Color labelLight5,
+      Color labelLight6,
+      Color labelDark1text,
+      Color labelDark2text,
+      Color labelDark1,
+      Color labelDark2,
+      Color labelDark3,
+      Color labelDark4,
+      Color labelDark5,
+      Color labelDark6,
       Color header1,
       Color header2,
       Color header3,
@@ -157,14 +173,22 @@ class _$TribeColorsSchemaCopyWithImpl<$Res, $Val extends TribeColorsSchema>
     Object? textEntitySymbolColor = null,
     Object? baseNav = null,
     Object? baseContent = null,
-    Object? label1text = null,
-    Object? label2text = null,
-    Object? label1 = null,
-    Object? label2 = null,
-    Object? label3 = null,
-    Object? label4 = null,
-    Object? labet5 = null,
-    Object? label6 = null,
+    Object? labelLight1text = null,
+    Object? labelLight2text = null,
+    Object? labelLight1 = null,
+    Object? labelLight2 = null,
+    Object? labelLight3 = null,
+    Object? labelLight4 = null,
+    Object? labelLight5 = null,
+    Object? labelLight6 = null,
+    Object? labelDark1text = null,
+    Object? labelDark2text = null,
+    Object? labelDark1 = null,
+    Object? labelDark2 = null,
+    Object? labelDark3 = null,
+    Object? labelDark4 = null,
+    Object? labelDark5 = null,
+    Object? labelDark6 = null,
     Object? header1 = null,
     Object? header2 = null,
     Object? header3 = null,
@@ -278,37 +302,69 @@ class _$TribeColorsSchemaCopyWithImpl<$Res, $Val extends TribeColorsSchema>
           ? _value.baseContent
           : baseContent // ignore: cast_nullable_to_non_nullable
               as Color,
-      label1text: null == label1text
-          ? _value.label1text
-          : label1text // ignore: cast_nullable_to_non_nullable
+      labelLight1text: null == labelLight1text
+          ? _value.labelLight1text
+          : labelLight1text // ignore: cast_nullable_to_non_nullable
               as Color,
-      label2text: null == label2text
-          ? _value.label2text
-          : label2text // ignore: cast_nullable_to_non_nullable
+      labelLight2text: null == labelLight2text
+          ? _value.labelLight2text
+          : labelLight2text // ignore: cast_nullable_to_non_nullable
               as Color,
-      label1: null == label1
-          ? _value.label1
-          : label1 // ignore: cast_nullable_to_non_nullable
+      labelLight1: null == labelLight1
+          ? _value.labelLight1
+          : labelLight1 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label2: null == label2
-          ? _value.label2
-          : label2 // ignore: cast_nullable_to_non_nullable
+      labelLight2: null == labelLight2
+          ? _value.labelLight2
+          : labelLight2 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label3: null == label3
-          ? _value.label3
-          : label3 // ignore: cast_nullable_to_non_nullable
+      labelLight3: null == labelLight3
+          ? _value.labelLight3
+          : labelLight3 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label4: null == label4
-          ? _value.label4
-          : label4 // ignore: cast_nullable_to_non_nullable
+      labelLight4: null == labelLight4
+          ? _value.labelLight4
+          : labelLight4 // ignore: cast_nullable_to_non_nullable
               as Color,
-      labet5: null == labet5
-          ? _value.labet5
-          : labet5 // ignore: cast_nullable_to_non_nullable
+      labelLight5: null == labelLight5
+          ? _value.labelLight5
+          : labelLight5 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label6: null == label6
-          ? _value.label6
-          : label6 // ignore: cast_nullable_to_non_nullable
+      labelLight6: null == labelLight6
+          ? _value.labelLight6
+          : labelLight6 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark1text: null == labelDark1text
+          ? _value.labelDark1text
+          : labelDark1text // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark2text: null == labelDark2text
+          ? _value.labelDark2text
+          : labelDark2text // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark1: null == labelDark1
+          ? _value.labelDark1
+          : labelDark1 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark2: null == labelDark2
+          ? _value.labelDark2
+          : labelDark2 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark3: null == labelDark3
+          ? _value.labelDark3
+          : labelDark3 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark4: null == labelDark4
+          ? _value.labelDark4
+          : labelDark4 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark5: null == labelDark5
+          ? _value.labelDark5
+          : labelDark5 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark6: null == labelDark6
+          ? _value.labelDark6
+          : labelDark6 // ignore: cast_nullable_to_non_nullable
               as Color,
       header1: null == header1
           ? _value.header1
@@ -392,14 +448,22 @@ abstract class _$$_TribeColorsSchemaCopyWith<$Res>
       Color textEntitySymbolColor,
       Color baseNav,
       Color baseContent,
-      Color label1text,
-      Color label2text,
-      Color label1,
-      Color label2,
-      Color label3,
-      Color label4,
-      Color labet5,
-      Color label6,
+      Color labelLight1text,
+      Color labelLight2text,
+      Color labelLight1,
+      Color labelLight2,
+      Color labelLight3,
+      Color labelLight4,
+      Color labelLight5,
+      Color labelLight6,
+      Color labelDark1text,
+      Color labelDark2text,
+      Color labelDark1,
+      Color labelDark2,
+      Color labelDark3,
+      Color labelDark4,
+      Color labelDark5,
+      Color labelDark6,
       Color header1,
       Color header2,
       Color header3,
@@ -449,14 +513,22 @@ class __$$_TribeColorsSchemaCopyWithImpl<$Res>
     Object? textEntitySymbolColor = null,
     Object? baseNav = null,
     Object? baseContent = null,
-    Object? label1text = null,
-    Object? label2text = null,
-    Object? label1 = null,
-    Object? label2 = null,
-    Object? label3 = null,
-    Object? label4 = null,
-    Object? labet5 = null,
-    Object? label6 = null,
+    Object? labelLight1text = null,
+    Object? labelLight2text = null,
+    Object? labelLight1 = null,
+    Object? labelLight2 = null,
+    Object? labelLight3 = null,
+    Object? labelLight4 = null,
+    Object? labelLight5 = null,
+    Object? labelLight6 = null,
+    Object? labelDark1text = null,
+    Object? labelDark2text = null,
+    Object? labelDark1 = null,
+    Object? labelDark2 = null,
+    Object? labelDark3 = null,
+    Object? labelDark4 = null,
+    Object? labelDark5 = null,
+    Object? labelDark6 = null,
     Object? header1 = null,
     Object? header2 = null,
     Object? header3 = null,
@@ -570,37 +642,69 @@ class __$$_TribeColorsSchemaCopyWithImpl<$Res>
           ? _value.baseContent
           : baseContent // ignore: cast_nullable_to_non_nullable
               as Color,
-      label1text: null == label1text
-          ? _value.label1text
-          : label1text // ignore: cast_nullable_to_non_nullable
+      labelLight1text: null == labelLight1text
+          ? _value.labelLight1text
+          : labelLight1text // ignore: cast_nullable_to_non_nullable
               as Color,
-      label2text: null == label2text
-          ? _value.label2text
-          : label2text // ignore: cast_nullable_to_non_nullable
+      labelLight2text: null == labelLight2text
+          ? _value.labelLight2text
+          : labelLight2text // ignore: cast_nullable_to_non_nullable
               as Color,
-      label1: null == label1
-          ? _value.label1
-          : label1 // ignore: cast_nullable_to_non_nullable
+      labelLight1: null == labelLight1
+          ? _value.labelLight1
+          : labelLight1 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label2: null == label2
-          ? _value.label2
-          : label2 // ignore: cast_nullable_to_non_nullable
+      labelLight2: null == labelLight2
+          ? _value.labelLight2
+          : labelLight2 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label3: null == label3
-          ? _value.label3
-          : label3 // ignore: cast_nullable_to_non_nullable
+      labelLight3: null == labelLight3
+          ? _value.labelLight3
+          : labelLight3 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label4: null == label4
-          ? _value.label4
-          : label4 // ignore: cast_nullable_to_non_nullable
+      labelLight4: null == labelLight4
+          ? _value.labelLight4
+          : labelLight4 // ignore: cast_nullable_to_non_nullable
               as Color,
-      labet5: null == labet5
-          ? _value.labet5
-          : labet5 // ignore: cast_nullable_to_non_nullable
+      labelLight5: null == labelLight5
+          ? _value.labelLight5
+          : labelLight5 // ignore: cast_nullable_to_non_nullable
               as Color,
-      label6: null == label6
-          ? _value.label6
-          : label6 // ignore: cast_nullable_to_non_nullable
+      labelLight6: null == labelLight6
+          ? _value.labelLight6
+          : labelLight6 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark1text: null == labelDark1text
+          ? _value.labelDark1text
+          : labelDark1text // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark2text: null == labelDark2text
+          ? _value.labelDark2text
+          : labelDark2text // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark1: null == labelDark1
+          ? _value.labelDark1
+          : labelDark1 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark2: null == labelDark2
+          ? _value.labelDark2
+          : labelDark2 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark3: null == labelDark3
+          ? _value.labelDark3
+          : labelDark3 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark4: null == labelDark4
+          ? _value.labelDark4
+          : labelDark4 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark5: null == labelDark5
+          ? _value.labelDark5
+          : labelDark5 // ignore: cast_nullable_to_non_nullable
+              as Color,
+      labelDark6: null == labelDark6
+          ? _value.labelDark6
+          : labelDark6 // ignore: cast_nullable_to_non_nullable
               as Color,
       header1: null == header1
           ? _value.header1
@@ -679,14 +783,22 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
       required this.textEntitySymbolColor,
       required this.baseNav,
       required this.baseContent,
-      required this.label1text,
-      required this.label2text,
-      required this.label1,
-      required this.label2,
-      required this.label3,
-      required this.label4,
-      required this.labet5,
-      required this.label6,
+      required this.labelLight1text,
+      required this.labelLight2text,
+      required this.labelLight1,
+      required this.labelLight2,
+      required this.labelLight3,
+      required this.labelLight4,
+      required this.labelLight5,
+      required this.labelLight6,
+      required this.labelDark1text,
+      required this.labelDark2text,
+      required this.labelDark1,
+      required this.labelDark2,
+      required this.labelDark3,
+      required this.labelDark4,
+      required this.labelDark5,
+      required this.labelDark6,
       required this.header1,
       required this.header2,
       required this.header3,
@@ -750,21 +862,37 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
   @override
   final Color baseContent;
   @override
-  final Color label1text;
+  final Color labelLight1text;
   @override
-  final Color label2text;
+  final Color labelLight2text;
   @override
-  final Color label1;
+  final Color labelLight1;
   @override
-  final Color label2;
+  final Color labelLight2;
   @override
-  final Color label3;
+  final Color labelLight3;
   @override
-  final Color label4;
+  final Color labelLight4;
   @override
-  final Color labet5;
+  final Color labelLight5;
   @override
-  final Color label6;
+  final Color labelLight6;
+  @override
+  final Color labelDark1text;
+  @override
+  final Color labelDark2text;
+  @override
+  final Color labelDark1;
+  @override
+  final Color labelDark2;
+  @override
+  final Color labelDark3;
+  @override
+  final Color labelDark4;
+  @override
+  final Color labelDark5;
+  @override
+  final Color labelDark6;
   @override
   final Color header1;
   @override
@@ -790,7 +918,7 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
 
   @override
   String toString() {
-    return 'TribeColorsSchema._(laserTagReg: $laserTagReg, marsOrange: $marsOrange, moonCheeseYellow: $moonCheeseYellow, iceColdBlue: $iceColdBlue, touchGreenGrass: $touchGreenGrass, luxuryPurple: $luxuryPurple, hawtSalmon: $hawtSalmon, nightOwlBlack: $nightOwlBlack, winterWhite: $winterWhite, grey70: $grey70, white70p: $white70p, black25p: $black25p, black50p: $black50p, black08p: $black08p, okayColor: $okayColor, errorColor: $errorColor, indicatorColor: $indicatorColor, red50p: $red50p, webCardBackgroundColor: $webCardBackgroundColor, twitterCardBackgroundColor: $twitterCardBackgroundColor, separatorColor: $separatorColor, baseNavigationBarColor: $baseNavigationBarColor, textEntitySymbolColor: $textEntitySymbolColor, baseNav: $baseNav, baseContent: $baseContent, label1text: $label1text, label2text: $label2text, label1: $label1, label2: $label2, label3: $label3, label4: $label4, labet5: $labet5, label6: $label6, header1: $header1, header2: $header2, header3: $header3, header4: $header4, header45: $header45, header5: $header5, body: $body, secondary: $secondary, caption: $caption, unread: $unread, coinbaseBackground: $coinbaseBackground)';
+    return 'TribeColorsSchema._(laserTagReg: $laserTagReg, marsOrange: $marsOrange, moonCheeseYellow: $moonCheeseYellow, iceColdBlue: $iceColdBlue, touchGreenGrass: $touchGreenGrass, luxuryPurple: $luxuryPurple, hawtSalmon: $hawtSalmon, nightOwlBlack: $nightOwlBlack, winterWhite: $winterWhite, grey70: $grey70, white70p: $white70p, black25p: $black25p, black50p: $black50p, black08p: $black08p, okayColor: $okayColor, errorColor: $errorColor, indicatorColor: $indicatorColor, red50p: $red50p, webCardBackgroundColor: $webCardBackgroundColor, twitterCardBackgroundColor: $twitterCardBackgroundColor, separatorColor: $separatorColor, baseNavigationBarColor: $baseNavigationBarColor, textEntitySymbolColor: $textEntitySymbolColor, baseNav: $baseNav, baseContent: $baseContent, labelLight1text: $labelLight1text, labelLight2text: $labelLight2text, labelLight1: $labelLight1, labelLight2: $labelLight2, labelLight3: $labelLight3, labelLight4: $labelLight4, labelLight5: $labelLight5, labelLight6: $labelLight6, labelDark1text: $labelDark1text, labelDark2text: $labelDark2text, labelDark1: $labelDark1, labelDark2: $labelDark2, labelDark3: $labelDark3, labelDark4: $labelDark4, labelDark5: $labelDark5, labelDark6: $labelDark6, header1: $header1, header2: $header2, header3: $header3, header4: $header4, header45: $header45, header5: $header5, body: $body, secondary: $secondary, caption: $caption, unread: $unread, coinbaseBackground: $coinbaseBackground)';
   }
 
   @override
@@ -834,8 +962,7 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
             (identical(other.red50p, red50p) || other.red50p == red50p) &&
             (identical(other.webCardBackgroundColor, webCardBackgroundColor) ||
                 other.webCardBackgroundColor == webCardBackgroundColor) &&
-            (identical(other.twitterCardBackgroundColor,
-                    twitterCardBackgroundColor) ||
+            (identical(other.twitterCardBackgroundColor, twitterCardBackgroundColor) ||
                 other.twitterCardBackgroundColor ==
                     twitterCardBackgroundColor) &&
             (identical(other.separatorColor, separatorColor) ||
@@ -847,30 +974,49 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
             (identical(other.baseNav, baseNav) || other.baseNav == baseNav) &&
             (identical(other.baseContent, baseContent) ||
                 other.baseContent == baseContent) &&
-            (identical(other.label1text, label1text) ||
-                other.label1text == label1text) &&
-            (identical(other.label2text, label2text) ||
-                other.label2text == label2text) &&
-            (identical(other.label1, label1) || other.label1 == label1) &&
-            (identical(other.label2, label2) || other.label2 == label2) &&
-            (identical(other.label3, label3) || other.label3 == label3) &&
-            (identical(other.label4, label4) || other.label4 == label4) &&
-            (identical(other.labet5, labet5) || other.labet5 == labet5) &&
-            (identical(other.label6, label6) || other.label6 == label6) &&
+            (identical(other.labelLight1text, labelLight1text) ||
+                other.labelLight1text == labelLight1text) &&
+            (identical(other.labelLight2text, labelLight2text) ||
+                other.labelLight2text == labelLight2text) &&
+            (identical(other.labelLight1, labelLight1) ||
+                other.labelLight1 == labelLight1) &&
+            (identical(other.labelLight2, labelLight2) ||
+                other.labelLight2 == labelLight2) &&
+            (identical(other.labelLight3, labelLight3) ||
+                other.labelLight3 == labelLight3) &&
+            (identical(other.labelLight4, labelLight4) ||
+                other.labelLight4 == labelLight4) &&
+            (identical(other.labelLight5, labelLight5) ||
+                other.labelLight5 == labelLight5) &&
+            (identical(other.labelLight6, labelLight6) ||
+                other.labelLight6 == labelLight6) &&
+            (identical(other.labelDark1text, labelDark1text) ||
+                other.labelDark1text == labelDark1text) &&
+            (identical(other.labelDark2text, labelDark2text) ||
+                other.labelDark2text == labelDark2text) &&
+            (identical(other.labelDark1, labelDark1) ||
+                other.labelDark1 == labelDark1) &&
+            (identical(other.labelDark2, labelDark2) ||
+                other.labelDark2 == labelDark2) &&
+            (identical(other.labelDark3, labelDark3) ||
+                other.labelDark3 == labelDark3) &&
+            (identical(other.labelDark4, labelDark4) ||
+                other.labelDark4 == labelDark4) &&
+            (identical(other.labelDark5, labelDark5) ||
+                other.labelDark5 == labelDark5) &&
+            (identical(other.labelDark6, labelDark6) ||
+                other.labelDark6 == labelDark6) &&
             (identical(other.header1, header1) || other.header1 == header1) &&
             (identical(other.header2, header2) || other.header2 == header2) &&
             (identical(other.header3, header3) || other.header3 == header3) &&
             (identical(other.header4, header4) || other.header4 == header4) &&
-            (identical(other.header45, header45) ||
-                other.header45 == header45) &&
+            (identical(other.header45, header45) || other.header45 == header45) &&
             (identical(other.header5, header5) || other.header5 == header5) &&
             (identical(other.body, body) || other.body == body) &&
-            (identical(other.secondary, secondary) ||
-                other.secondary == secondary) &&
+            (identical(other.secondary, secondary) || other.secondary == secondary) &&
             (identical(other.caption, caption) || other.caption == caption) &&
             (identical(other.unread, unread) || other.unread == unread) &&
-            (identical(other.coinbaseBackground, coinbaseBackground) ||
-                other.coinbaseBackground == coinbaseBackground));
+            (identical(other.coinbaseBackground, coinbaseBackground) || other.coinbaseBackground == coinbaseBackground));
   }
 
   @override
@@ -901,14 +1047,22 @@ class _$_TribeColorsSchema implements _TribeColorsSchema {
         textEntitySymbolColor,
         baseNav,
         baseContent,
-        label1text,
-        label2text,
-        label1,
-        label2,
-        label3,
-        label4,
-        labet5,
-        label6,
+        labelLight1text,
+        labelLight2text,
+        labelLight1,
+        labelLight2,
+        labelLight3,
+        labelLight4,
+        labelLight5,
+        labelLight6,
+        labelDark1text,
+        labelDark2text,
+        labelDark1,
+        labelDark2,
+        labelDark3,
+        labelDark4,
+        labelDark5,
+        labelDark6,
         header1,
         header2,
         header3,
@@ -957,14 +1111,22 @@ abstract class _TribeColorsSchema implements TribeColorsSchema {
       required final Color textEntitySymbolColor,
       required final Color baseNav,
       required final Color baseContent,
-      required final Color label1text,
-      required final Color label2text,
-      required final Color label1,
-      required final Color label2,
-      required final Color label3,
-      required final Color label4,
-      required final Color labet5,
-      required final Color label6,
+      required final Color labelLight1text,
+      required final Color labelLight2text,
+      required final Color labelLight1,
+      required final Color labelLight2,
+      required final Color labelLight3,
+      required final Color labelLight4,
+      required final Color labelLight5,
+      required final Color labelLight6,
+      required final Color labelDark1text,
+      required final Color labelDark2text,
+      required final Color labelDark1,
+      required final Color labelDark2,
+      required final Color labelDark3,
+      required final Color labelDark4,
+      required final Color labelDark5,
+      required final Color labelDark6,
       required final Color header1,
       required final Color header2,
       required final Color header3,
@@ -1028,21 +1190,37 @@ abstract class _TribeColorsSchema implements TribeColorsSchema {
   @override
   Color get baseContent;
   @override
-  Color get label1text;
+  Color get labelLight1text;
   @override
-  Color get label2text;
+  Color get labelLight2text;
   @override
-  Color get label1;
+  Color get labelLight1;
   @override
-  Color get label2;
+  Color get labelLight2;
   @override
-  Color get label3;
+  Color get labelLight3;
   @override
-  Color get label4;
+  Color get labelLight4;
   @override
-  Color get labet5;
+  Color get labelLight5;
   @override
-  Color get label6;
+  Color get labelLight6;
+  @override
+  Color get labelDark1text;
+  @override
+  Color get labelDark2text;
+  @override
+  Color get labelDark1;
+  @override
+  Color get labelDark2;
+  @override
+  Color get labelDark3;
+  @override
+  Color get labelDark4;
+  @override
+  Color get labelDark5;
+  @override
+  Color get labelDark6;
   @override
   Color get header1;
   @override
