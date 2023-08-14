@@ -1,0 +1,77 @@
+{
+    "commonStart": "Start",
+    "commoName": "Name",
+    "commoContinue": "Continue",
+    "commoPhoto": "Photo",
+    "commoEmoji": "Emoji",
+    "commoDone": "Done",
+    "commoCancel": "Cancel",
+    "commoChoose": "Choose",
+    "days": "{day, plural, =1{1 day} other{{day} days}}",
+    "@days": {
+        "placeholders": {
+            "day": {
+                "type": "int"
+            }
+        }
+    },
+
+    "introTitle": "Fund your project",
+    "introSubtitle": "Name your project and funding goal, then invite people to participate.",
+    "introDescription": "When people fund your project, they’ll immediately receive tokens in your project proportional to their contribution.",
+    "fundingTitle": "Funding goal",
+    "fundingSubtitle": "How much do you want to raise?",
+    "fundingIn": "Fundraise in",
+    "projectTitle": "Project name",
+    "projectSubtitle": "Choose a name for this fundraising project",
+    "tokenTitle": "Token",
+    "tokenSubtitle": "Choose a symbol for the project`s token, like you`d see on a stock ticker",
+    "deadlineTitle": "Deadline",
+    "deadlineSubtitle": "When does funding close?",
+    "deadlineChooseDate": "Choose a Date ...",
+
+    "rulesTitle": "Rules",
+    "overfundingTitle": "Over-funding",
+    "overfundingSubtitle": "If you meet your fundraising goal before the deadline",
+    "overfundingAllow": "Allow overfunding until the deadline",
+    "overfundingStop": "Stop at the goal",
+    "underfundingTitle": "Under-funding",
+    "underfundingSubtitle": "If you meet your fundraising goal before the deadline",
+    "underfundingReturn": "Return funds",
+    "underfundingHold": "Hold funds",
+
+    "descriptionTitle": "Description",
+    "descriptionSubtitle": "Quickly explain how you`ll use the funds",
+    "descriptionWrite": "Write",
+    "descriptionWriteHint": "You can add this later, too",
+    "descriptionPreview": "Preview",
+    
+    "visualTitle": "Visual",
+    "visualSubtitle": "Add a visual to use as your project`s logo and token",
+
+    "reserveTitle": "Reserve",
+    "reserveSubtitle": "You may reserve a portion of the total tokens for specific people.",
+    "reserveDescription": "Reserved tokens are issued when the funding closes.",
+    "reserveButton": "wallet address or .eth",
+    "reserveIssuedAmountDescription": "Issued to funders",
+
+    "managementTitle": "Management",
+    "managementSubtitle": "Project funds are held in a multisignature wallet for security. Transactions are approved when they reach the signature threshold.",
+    "managementSigners": "Signers",
+    "managementSignersDescription": "Who can sign to approve wallet actions?",
+    "managementSignersWaletHint": "name or wallet address",
+    "managementSignatureTreshold": "Signature threshold",
+    "managementSignatureTresholdDescription": "How many executives must approve wallet actions?",
+    "managementSignersAmount": "{current} of {total}",
+    "@managementSignersAmount": {
+        "placeholders": {
+            "current": {
+                "type": "int"
+              },
+              "total": {
+                "type": "int"
+              }
+        }
+    },
+    "managementSignersRecommended": "Recommended majority"
+}
