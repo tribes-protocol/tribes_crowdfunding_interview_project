@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/colors/tribe_color_schema.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/typograpy.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_color_spot.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final brightness = MediaQuery.of(context).platformBrightness;
-    print(brightness);
 
     return TribesThemeProvider(
       theme: CompanyTheme(
@@ -27,10 +27,9 @@ class MyApp extends StatelessWidget {
           title: 'Tribes Crowdfunder',
           home: Scaffold(
             body: Center(
-              child: Text(
-                'hello',
-                style: context.textStyles.body,
-              ),
+              child: TribeColorPalette(onPressed: (value) {
+                
+              },),
             ),
           ),
         );

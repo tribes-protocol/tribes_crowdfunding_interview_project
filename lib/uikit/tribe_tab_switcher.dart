@@ -29,12 +29,12 @@ class TribeTabSwircher extends StatefulWidget {
 
 class _TribeTabSwircherState extends State<TribeTabSwircher>
     with SingleTickerProviderStateMixin {
-  final GlobalKey _key = GlobalKey();
   late TabController _controller;
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override

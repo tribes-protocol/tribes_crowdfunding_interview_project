@@ -78,7 +78,7 @@ class _TribeInputTextState extends State<TribeInputText> {
     return TextField(
       controller: _controller,
       keyboardType: _inputType,
-      inputFormatters: _inputType == TribeInputType.money
+      inputFormatters: widget.textInputType == TribeInputType.money
           ? [
               CurrencyTextInputFormatter(decimalDigits: 0, symbol: ''),
             ]

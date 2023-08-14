@@ -7,7 +7,8 @@ class TribeProgressIndicator extends StatefulWidget {
     super.key,
     required this.steps,
     required this.progress,
-  }) : assert(progress <= steps, 'Prigress can`t be be bigger the overall steps');
+  }) : assert(
+            progress <= steps, 'Progress can`t be be bigger the overall steps');
 
   final int steps;
   final int progress;
@@ -39,7 +40,10 @@ class _TribeProgressIndicatorState extends State<TribeProgressIndicator> {
 }
 
 class _AnimatedStep extends StatefulWidget {
-  const _AnimatedStep(this.index, {super.key, required this.selected});
+  const _AnimatedStep(
+    this.index, {
+    required this.selected,
+  });
 
   final int index;
   final bool selected;
@@ -127,7 +131,6 @@ class _AnimatedStepState extends State<_AnimatedStep>
 
 class _Step extends StatelessWidget {
   const _Step({
-    super.key,
     this.selected = false,
   });
 
