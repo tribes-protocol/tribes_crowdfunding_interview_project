@@ -19,8 +19,9 @@ class TribeApplication extends StatelessWidget {
     return TribesThemeProvider(
       theme: CompanyTheme(
         textStyleScheme: TextStyleSchema(),
-        colorScheme:
-            brightness == Brightness.light ? TribeColorsSchema.light() : TribeColorsSchema.dark(),
+        colorScheme: brightness == Brightness.light
+            ? TribeColorsSchema.light()
+            : TribeColorsSchema.dark(),
       ),
       child: Builder(builder: (context) {
         return ProviderScope(
@@ -41,10 +42,13 @@ class TribeApplication extends StatelessWidget {
                 Locale('en'),
               ],
               theme: ThemeData(
+                scaffoldBackgroundColor: context.colors.baseContent,
                 colorScheme: Theme.of(context).colorScheme.copyWith(
                       primary: context.colors.baseContent,
                     ),
                 appBarTheme: Theme.of(context).appBarTheme.copyWith(
+                      elevation: 0,
+                      color: context.colors.baseContent,
                       iconTheme: Theme.of(context).iconTheme.copyWith(
                             color: context.colors.labelLight2,
                           ),

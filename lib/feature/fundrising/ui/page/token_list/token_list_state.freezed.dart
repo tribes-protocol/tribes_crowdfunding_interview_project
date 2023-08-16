@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TokenListState {
   AsyncValue<List<Token>> get tokens => throw _privateConstructorUsedError;
+  List<Token> get filteredTokens => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TokenListStateCopyWith<TokenListState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $TokenListStateCopyWith<$Res> {
           TokenListState value, $Res Function(TokenListState) then) =
       _$TokenListStateCopyWithImpl<$Res, TokenListState>;
   @useResult
-  $Res call({AsyncValue<List<Token>> tokens});
+  $Res call({AsyncValue<List<Token>> tokens, List<Token> filteredTokens});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$TokenListStateCopyWithImpl<$Res, $Val extends TokenListState>
   @override
   $Res call({
     Object? tokens = null,
+    Object? filteredTokens = null,
   }) {
     return _then(_value.copyWith(
       tokens: null == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<Token>>,
+      filteredTokens: null == filteredTokens
+          ? _value.filteredTokens
+          : filteredTokens // ignore: cast_nullable_to_non_nullable
+              as List<Token>,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_TokenListStateCopyWith<$Res>
       __$$_TokenListStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncValue<List<Token>> tokens});
+  $Res call({AsyncValue<List<Token>> tokens, List<Token> filteredTokens});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_TokenListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tokens = null,
+    Object? filteredTokens = null,
   }) {
     return _then(_$_TokenListState(
       tokens: null == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<Token>>,
+      filteredTokens: null == filteredTokens
+          ? _value._filteredTokens
+          : filteredTokens // ignore: cast_nullable_to_non_nullable
+              as List<Token>,
     ));
   }
 }
@@ -92,15 +103,26 @@ class __$$_TokenListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TokenListState implements _TokenListState {
-  const _$_TokenListState({this.tokens = const AsyncLoading()});
+  const _$_TokenListState(
+      {this.tokens = const AsyncLoading(),
+      final List<Token> filteredTokens = const []})
+      : _filteredTokens = filteredTokens;
 
   @override
   @JsonKey()
   final AsyncValue<List<Token>> tokens;
+  final List<Token> _filteredTokens;
+  @override
+  @JsonKey()
+  List<Token> get filteredTokens {
+    if (_filteredTokens is EqualUnmodifiableListView) return _filteredTokens;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredTokens);
+  }
 
   @override
   String toString() {
-    return 'TokenListState(tokens: $tokens)';
+    return 'TokenListState(tokens: $tokens, filteredTokens: $filteredTokens)';
   }
 
   @override
@@ -108,11 +130,14 @@ class _$_TokenListState implements _TokenListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TokenListState &&
-            (identical(other.tokens, tokens) || other.tokens == tokens));
+            (identical(other.tokens, tokens) || other.tokens == tokens) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredTokens, _filteredTokens));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tokens);
+  int get hashCode => Object.hash(runtimeType, tokens,
+      const DeepCollectionEquality().hash(_filteredTokens));
 
   @JsonKey(ignore: true)
   @override
@@ -122,11 +147,14 @@ class _$_TokenListState implements _TokenListState {
 }
 
 abstract class _TokenListState implements TokenListState {
-  const factory _TokenListState({final AsyncValue<List<Token>> tokens}) =
-      _$_TokenListState;
+  const factory _TokenListState(
+      {final AsyncValue<List<Token>> tokens,
+      final List<Token> filteredTokens}) = _$_TokenListState;
 
   @override
   AsyncValue<List<Token>> get tokens;
+  @override
+  List<Token> get filteredTokens;
   @override
   @JsonKey(ignore: true)
   _$$_TokenListStateCopyWith<_$_TokenListState> get copyWith =>

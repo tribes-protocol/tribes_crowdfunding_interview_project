@@ -16,6 +16,8 @@
         }
     },
     "commonError": "Something went wrong. Please try again leter...",
+    "commonEmpty": "Sorry, nothing is here...",
+    "commonSearch": "Search",
 
     "introTitle": "Fund your project",
     "introSubtitle": "Name your project and funding goal, then invite people to participate.",

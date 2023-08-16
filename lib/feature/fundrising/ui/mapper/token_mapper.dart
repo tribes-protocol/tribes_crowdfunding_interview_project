@@ -23,9 +23,9 @@ class TokenMapper {
       case TokenType.act:
         return 'Achain';
       case TokenType.bnb:
-        return 'Achain';
-      case TokenType.btx:
         return 'BNB';
+      case TokenType.btx:
+        return 'BitCore';
 
       case TokenType.burst:
         return 'Burst';

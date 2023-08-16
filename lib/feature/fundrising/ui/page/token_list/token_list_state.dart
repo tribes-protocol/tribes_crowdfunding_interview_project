@@ -8,5 +8,6 @@ part 'token_list_state.freezed.dart';
 class TokenListState with _$TokenListState {
   const factory TokenListState({
     @Default(AsyncLoading()) AsyncValue<List<Token>> tokens,
+    @Default([]) List<Token> filteredTokens,
   }) = _TokenListState;
 }

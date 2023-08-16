@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/token_type.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/mapper/token_mapper.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/provider/token_list_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_empty.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_error.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_input_search.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_loading.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_tile.dart';
 
@@ -27,6 +30,7 @@ class _TokenListPageState extends ConsumerState<TokenListPage> {
   @override
   Widget build(BuildContext context) {
     final mapper = ref.watch(tokenMapperProvider);
+    final controller = ref.watch(tokenListControllerProvider.notifier);
     final state = ref.watch(tokenListControllerProvider);
 
     return Scaffold(
@@ -36,23 +40,38 @@ class _TokenListPageState extends ConsumerState<TokenListPage> {
         padding: const EdgeInsets.all(24),
         child: state.tokens.map(
           data: (data) {
-            final tokens = data.value;
+            final tokens = state.filteredTokens;
 
-            return ListView.builder(
-              itemCount: tokens.length,
-              itemBuilder: (context, index) {
-                final token = tokens[index];
-
-                return TribeTile(
-                  icon: mapper.mapTokenIcon(token.type),
-                  title: mapper.mapTokeName(token.type),
-                  subtitle: '',
-                  suffix: const SizedBox.shrink(),
-                  onPressed: () {
-                    Navigator.of(context).pop(token);
+            return Column(
+              children: [
+                TribeInputSearch(
+                  hint: context.localisation.commonSearch,
+                  onSearch: (query) {
+                    controller.search(query);
                   },
-                );
-              },
+                ),
+                if (tokens.isEmpty)
+                  const Expanded(child: TribeEmptyState())
+                else
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: tokens.length,
+                      itemBuilder: (context, index) {
+                        final token = tokens[index];
+
+                        return TribeTile(
+                          icon: mapper.mapTokenIcon(token.type),
+                          title: mapper.mapTokeName(token.type),
+                          subtitle: '',
+                          suffix: const SizedBox.shrink(),
+                          onPressed: () {
+                            Navigator.of(context).pop(token);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+              ],
             );
           },
           error: (e) => const TribeError(),

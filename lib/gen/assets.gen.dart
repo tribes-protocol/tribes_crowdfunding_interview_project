@@ -55,6 +55,16 @@ class $AssetsImagesGen {
   $AssetsImagesTokensGen get tokens => const $AssetsImagesTokensGen();
 }
 
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/empty.json
+  String get empty => 'assets/lottie/empty.json';
+
+  /// List of all assets
+  List<String> get values => [empty];
+}
+
 class $AssetsImagesTokensGen {
   const $AssetsImagesTokensGen();
 
@@ -156,6 +166,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 
 class AssetGenImage {
