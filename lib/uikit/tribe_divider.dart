@@ -8,8 +8,8 @@ class TribeDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(
-        Spacing.double,
+      padding: const EdgeInsets.symmetric(
+        vertical: Spacing.double,
       ),
       child: Container(
         width: double.infinity,

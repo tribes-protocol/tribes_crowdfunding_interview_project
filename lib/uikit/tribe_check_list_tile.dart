@@ -8,19 +8,24 @@ class TribeCheckListTile extends StatelessWidget {
     super.key,
     required this.title,
     this.checked = false,
+    this.onChecked,
   });
 
   final String title;
   final bool checked;
+  final ValueSetter<bool>? onChecked;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(title, style: context.textStyles.body),
-      trailing: SvgPicture.asset(
+      trailing: checked ? SvgPicture.asset(
         Assets.icons.iconCheck,
         width: 24,
         height: 24,
+      ) : null,
+      onTap: () => onChecked?.call(
+        !checked,
       ),
     );
   }

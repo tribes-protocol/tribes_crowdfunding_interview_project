@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
@@ -10,7 +12,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_page.dart';
 
 final router = GoRouter(
-  initialLocation: ProjectContract.path,
+  initialLocation: DeadlineContract.path,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -37,6 +39,13 @@ final router = GoRouter(
       name: ProjectContract.name,
       builder: (BuildContext context, GoRouterState state) {
         return const ProjectPage();
+      },
+    ),
+    GoRoute(
+      path: DeadlineContract.path,
+      name: DeadlineContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return const DeadlinePage();
       },
     ),
   ],
