@@ -97,8 +97,6 @@ class GoalController extends StateNotifier<GoalState> {
       return 0;
     }
 
-    print('Calculate crypto: $ratio');
-
     return money * ratio;
   }
 
@@ -109,8 +107,6 @@ class GoalController extends StateNotifier<GoalState> {
     if (crypto < 0.01) {
       return 0;
     }
-
-    print('Calculate money: $ratio');
 
     return crypto / ratio;
   }

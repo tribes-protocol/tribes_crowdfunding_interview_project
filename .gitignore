@@ -57,3 +57,4 @@ bricks/hooks/post_gen.dart
 bricks/hooks/pubspec.yaml
 mason-lock.json
 mason.yaml
+bricks/__brick__/{{name}}/provider/{{name}}_provider.dart
