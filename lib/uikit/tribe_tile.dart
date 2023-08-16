@@ -10,18 +10,21 @@ class TribeTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.subtitle,
+    this.suffix,
     this.onPressed,
   });
 
   final Widget icon;
   final String title;
   final String subtitle;
+  final Widget? suffix;
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(vertical: Spacing.double),
+      onTap: onPressed,
       title: Row(
         children: [
           SizedBox(
@@ -39,21 +42,23 @@ class TribeTile extends StatelessWidget {
                   title,
                   style: context.textStyles.secondary,
                 ),
-                TribeSpaceHorizontal.half(),
-                Text(
-                  subtitle,
-                  style: context.textStyles.body.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: context.colors.labelLight1),
-                )
+                if (subtitle.isNotEmpty) ...[
+                  TribeSpaceHorizontal.half(),
+                  Text(
+                    subtitle,
+                    style: context.textStyles.body
+                        .copyWith(fontWeight: FontWeight.w700, color: context.colors.labelLight1),
+                  )
+                ]
               ],
             ),
           ),
-          SvgPicture.asset(
-            Assets.icons.arrowRight,
-            width: 24,
-            height: 24,
-          )
+          suffix ??
+              SvgPicture.asset(
+                Assets.icons.arrowRight,
+                width: 24,
+                height: 24,
+              )
         ],
       ),
     );

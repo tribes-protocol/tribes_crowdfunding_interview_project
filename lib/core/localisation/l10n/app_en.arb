@@ -15,10 +15,11 @@
             }
         }
     },
+    "commonError": "Something went wrong. Please try again leter...",
 
     "introTitle": "Fund your project",
     "introSubtitle": "Name your project and funding goal, then invite people to participate.",
-    "introDescription": "When people fund your project, they’ll immediately receive tokens in your project proportional to their contribution.",
+    "introDescription": "When people fund your project, the`ll immediately receive tokens in your project proportional to their contribution.",
     "fundingTitle": "Funding goal",
     "fundingSubtitle": "How much do you want to raise?",
     "fundingIn": "Fundraise in",

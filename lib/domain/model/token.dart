@@ -6,8 +6,7 @@ part 'token.freezed.dart';
 @freezed
 class Token with _$Token {
   const factory Token({
-    required TokenType name,
     required double ratio,
+    required TokenType type,
   }) = _Token;
-
 }

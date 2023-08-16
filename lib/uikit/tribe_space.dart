@@ -4,6 +4,7 @@ class Spacing {
   Spacing._();
 
   static const hairline = 0.5;
+  static const divider = 1.0;
   static const micro = 2.0;
   static const half = 4.0;
   static const standard = 8.0;
@@ -31,7 +32,7 @@ class TribeSpaceHorizontal extends StatelessWidget {
     );
   }
 
-  factory  TribeSpaceHorizontal.hairline() => const TribeSpaceHorizontal(Spacing.hairline);
+  factory TribeSpaceHorizontal.hairline() => const TribeSpaceHorizontal(Spacing.hairline);
   factory TribeSpaceHorizontal.micro() => const TribeSpaceHorizontal(Spacing.micro);
   factory TribeSpaceHorizontal.half() => const TribeSpaceHorizontal(Spacing.half);
   factory TribeSpaceHorizontal.standard() => const TribeSpaceHorizontal(Spacing.standard);
@@ -46,8 +47,7 @@ class TribeSpaceHorizontal extends StatelessWidget {
 
 class TribeSpaceVertical extends StatelessWidget {
   const TribeSpaceVertical(
-        this.height,
-    {
+    this.height, {
     super.key,
   });
 
@@ -61,6 +61,7 @@ class TribeSpaceVertical extends StatelessWidget {
   }
 
   factory TribeSpaceVertical.hairline() => const TribeSpaceVertical(Spacing.hairline);
+  factory TribeSpaceVertical.divider() => const TribeSpaceVertical(Spacing.divider);
   factory TribeSpaceVertical.micro() => const TribeSpaceVertical(Spacing.micro);
   factory TribeSpaceVertical.half() => const TribeSpaceVertical(Spacing.half);
   factory TribeSpaceVertical.standard() => const TribeSpaceVertical(Spacing.standard);

@@ -1,5 +1,6 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 
 enum TribeInputType {
@@ -10,6 +11,7 @@ enum TribeInputType {
 class TribeInputText extends StatefulWidget {
   const TribeInputText({
     super.key,
+    this.controller,
     this.prefix,
     this.suffix,
     this.hint,
@@ -20,6 +22,7 @@ class TribeInputText extends StatefulWidget {
   final String? prefix;
   final String? suffix;
   final String? hint;
+  final TextEditingController? controller;
   final TribeInputType textInputType;
   final ValueSetter<String>? onValueChange;
 
@@ -31,11 +34,14 @@ class _TribeInputTextState extends State<TribeInputText> {
   final TextEditingController _controller = TextEditingController();
   late TextInputType _inputType;
 
+  TextEditingController get _activeController =>
+      widget.controller != null ? widget.controller! : _controller;
+
   @override
   void initState() {
     _initKeyboard();
-    _controller.addListener(() => setState(() {
-          final text = _controller.text;
+    _activeController.addListener(() => setState(() {
+          final text = _activeController.text;
           if (widget.textInputType == TribeInputType.money) {
             widget.onValueChange?.call(text.replaceAll(',', ''));
           } else {
@@ -74,21 +80,27 @@ class _TribeInputTextState extends State<TribeInputText> {
         color: context.colors.labelLight6,
       ),
     );
+    final textColor = _activeController.text == '0' && widget.textInputType == TribeInputType.money
+        ? context.colors.labelLight3
+        : context.colors.labelLight1;
 
     return TextField(
-      controller: _controller,
+      controller: _activeController,
       keyboardType: _inputType,
       inputFormatters: widget.textInputType == TribeInputType.money
           ? [
-              CurrencyTextInputFormatter(decimalDigits: 0, symbol: ''),
+              CurrencyTextInputFormatter(symbol: ''),
+              TestFormatter(),
             ]
           : null,
       // TODO(yaroslav): ask designer to include into theme palete
       cursorColor: const Color(0xFF007AFF),
-      style: context.textStyles.header4,
+      style: context.textStyles.header4.copyWith(
+        color: textColor,
+      ),
       decoration: InputDecoration(
-        prefix:
-            prefix != null && _controller.text.isEmpty ? Text(prefix) : null,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        prefix: prefix != null && _controller.text.isEmpty ? Text(prefix) : null,
         suffix: suffix != null
             ? Transform.translate(
                 offset: const Offset(0, -4),
@@ -125,5 +137,12 @@ class _TribeInputTextState extends State<TribeInputText> {
       case TribeInputType.text:
         _inputType = TextInputType.name;
     }
+  }
+}
+
+class TestFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    return newValue;
   }
 }

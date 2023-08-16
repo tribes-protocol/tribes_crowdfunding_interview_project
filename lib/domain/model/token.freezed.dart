@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Token {
-  TokenType get name => throw _privateConstructorUsedError;
   double get ratio => throw _privateConstructorUsedError;
+  TokenType get type => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TokenCopyWith<Token> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ abstract class $TokenCopyWith<$Res> {
   factory $TokenCopyWith(Token value, $Res Function(Token) then) =
       _$TokenCopyWithImpl<$Res, Token>;
   @useResult
-  $Res call({TokenType name, double ratio});
+  $Res call({double ratio, TokenType type});
 }
 
 /// @nodoc
@@ -44,18 +44,18 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? ratio = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as TokenType,
       ratio: null == ratio
           ? _value.ratio
           : ratio // ignore: cast_nullable_to_non_nullable
               as double,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TokenType,
     ) as $Val);
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
       __$$_TokenCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TokenType name, double ratio});
+  $Res call({double ratio, TokenType type});
 }
 
 /// @nodoc
@@ -78,18 +78,18 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? ratio = null,
+    Object? type = null,
   }) {
     return _then(_$_Token(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as TokenType,
       ratio: null == ratio
           ? _value.ratio
           : ratio // ignore: cast_nullable_to_non_nullable
               as double,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TokenType,
     ));
   }
 }
@@ -97,16 +97,16 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
 /// @nodoc
 
 class _$_Token implements _Token {
-  const _$_Token({required this.name, required this.ratio});
+  const _$_Token({required this.ratio, required this.type});
 
   @override
-  final TokenType name;
-  @override
   final double ratio;
+  @override
+  final TokenType type;
 
   @override
   String toString() {
-    return 'Token(name: $name, ratio: $ratio)';
+    return 'Token(ratio: $ratio, type: $type)';
   }
 
   @override
@@ -114,12 +114,12 @@ class _$_Token implements _Token {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Token &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.ratio, ratio) || other.ratio == ratio));
+            (identical(other.ratio, ratio) || other.ratio == ratio) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, ratio);
+  int get hashCode => Object.hash(runtimeType, ratio, type);
 
   @JsonKey(ignore: true)
   @override
@@ -130,12 +130,12 @@ class _$_Token implements _Token {
 
 abstract class _Token implements Token {
   const factory _Token(
-      {required final TokenType name, required final double ratio}) = _$_Token;
+      {required final double ratio, required final TokenType type}) = _$_Token;
 
   @override
-  TokenType get name;
-  @override
   double get ratio;
+  @override
+  TokenType get type;
   @override
   @JsonKey(ignore: true)
   _$$_TokenCopyWith<_$_Token> get copyWith =>
