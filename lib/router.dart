@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/description_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
@@ -15,7 +17,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'feature/fundrising/ui/page/rules/rules_contract.dart';
 
 final router = GoRouter(
-  initialLocation: RulesContract.path,
+  initialLocation: DescriptionContract.path,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -56,6 +58,13 @@ final router = GoRouter(
       name: RulesContract.name,
       builder: (BuildContext context, GoRouterState state) {
         return const RulesPage();
+      },
+    ),
+    GoRoute(
+      path: DescriptionContract.path,
+      name: DescriptionContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return const DescriptionPage();
       },
     ),
   ],

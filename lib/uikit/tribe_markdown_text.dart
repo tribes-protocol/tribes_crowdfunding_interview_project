@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-// import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
@@ -15,14 +14,13 @@ class TribeMarkdownText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Spacing.standard),
       decoration: BoxDecoration(
-          color: context.colors.labelLight6,
-          borderRadius: BorderRadius.circular(Spacing.hairline)),
-      height: 300,
-      width: 400,
-      child: MarkdownBody(
+        color: context.colors.labelLight6,
+        borderRadius: BorderRadius.circular(Spacing.hairline),
+      ),
+      child: Markdown(
         selectable: true,
+        padding: const EdgeInsets.all(8),
         data: data,
       ),
     );

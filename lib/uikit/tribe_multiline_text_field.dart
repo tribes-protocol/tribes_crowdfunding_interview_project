@@ -5,10 +5,14 @@ import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 class TribeMultiLineTextField extends StatefulWidget {
   const TribeMultiLineTextField({
     super.key,
+    this.controller,
     this.hint,
+    this.onTextChanged,
   });
 
   final String? hint;
+  final TextEditingController? controller;
+  final ValueSetter<String>? onTextChanged;
 
   @override
   State<TribeMultiLineTextField> createState() =>
@@ -25,11 +29,13 @@ class _TribeMultiLineTextFieldState extends State<TribeMultiLineTextField> {
       ),
     );
     return TextField(
+      controller: widget.controller,
       keyboardType: TextInputType.multiline,
       autocorrect: false,
       enableSuggestions: false,
       maxLines: null,
       minLines: 6,
+      onChanged: (value) => widget.onTextChanged?.call(value),
       decoration: InputDecoration(
         hintText: widget.hint,
         hintStyle: context.textStyles.body,
