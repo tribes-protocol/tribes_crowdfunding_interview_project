@@ -44,7 +44,7 @@ class TribeApplication extends StatelessWidget {
               theme: ThemeData(
                 scaffoldBackgroundColor: context.colors.baseContent,
                 colorScheme: Theme.of(context).colorScheme.copyWith(
-                      primary: context.colors.baseContent,
+
                     ),
                 appBarTheme: Theme.of(context).appBarTheme.copyWith(
                       elevation: 0,

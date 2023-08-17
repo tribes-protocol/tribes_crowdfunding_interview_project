@@ -9,4 +9,16 @@ class DeadlineController extends StateNotifier<DeadlineState> {
   void onDeadlineSected(int days) {
     state = state.copyWith(deadline: days);
   }
+
+  void setCustomDeadline(int? deadline) {
+    var newState = state.copyWith(
+      customDeadline: deadline,
+    );
+
+    if(deadline != null) {
+      newState = newState.copyWith(deadline: deadline);
+    }
+
+    state = newState;
+  }
 }

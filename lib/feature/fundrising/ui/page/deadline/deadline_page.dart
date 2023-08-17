@@ -65,8 +65,37 @@ class _DeadlinePageState extends ConsumerState<DeadlinePage> {
                       )
                       .toList(),
                 ),
-                TribeCheckListTile(
-                  title: context.localisation.deadlineChooseDate,
+                if (state.customDeadline != null)
+                  TribeCheckListTile(
+                    title: context.localisation.days(state.customDeadline!),
+                    checked: state.customDeadline == state.deadline,
+                    onChecked: (checked) {
+                      if (checked) {
+                        controller.onDeadlineSected(state.customDeadline!);
+                      }
+                    },
+                  ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: InkWell(
+                    child: Text(
+                      context.localisation.deadlineChooseDate,
+                      style: context.textStyles.body,
+                    ),
+                    onTap: () async {
+                      final now = DateTime.now();
+                      final deadline = await showDatePicker(
+                          context: context,
+                          initialDate: now,
+                          firstDate: now,
+                          lastDate: now.add(const Duration(days: 60)));
+
+                      controller.setCustomDeadline(
+                        deadline?.difference(now).inDays,
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

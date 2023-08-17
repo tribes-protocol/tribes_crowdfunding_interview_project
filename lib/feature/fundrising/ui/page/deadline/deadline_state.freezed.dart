@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DeadlineState {
   List<int> get deadlines => throw _privateConstructorUsedError;
+  int? get customDeadline => throw _privateConstructorUsedError;
   int? get deadline => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $DeadlineStateCopyWith<$Res> {
           DeadlineState value, $Res Function(DeadlineState) then) =
       _$DeadlineStateCopyWithImpl<$Res, DeadlineState>;
   @useResult
-  $Res call({List<int> deadlines, int? deadline});
+  $Res call({List<int> deadlines, int? customDeadline, int? deadline});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$DeadlineStateCopyWithImpl<$Res, $Val extends DeadlineState>
   @override
   $Res call({
     Object? deadlines = null,
+    Object? customDeadline = freezed,
     Object? deadline = freezed,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +56,10 @@ class _$DeadlineStateCopyWithImpl<$Res, $Val extends DeadlineState>
           ? _value.deadlines
           : deadlines // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      customDeadline: freezed == customDeadline
+          ? _value.customDeadline
+          : customDeadline // ignore: cast_nullable_to_non_nullable
+              as int?,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$_DeadlineStateCopyWith<$Res>
       __$$_DeadlineStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> deadlines, int? deadline});
+  $Res call({List<int> deadlines, int? customDeadline, int? deadline});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$_DeadlineStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? deadlines = null,
+    Object? customDeadline = freezed,
     Object? deadline = freezed,
   }) {
     return _then(_$_DeadlineState(
@@ -92,6 +99,10 @@ class __$$_DeadlineStateCopyWithImpl<$Res>
           ? _value._deadlines
           : deadlines // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      customDeadline: freezed == customDeadline
+          ? _value.customDeadline
+          : customDeadline // ignore: cast_nullable_to_non_nullable
+              as int?,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
@@ -104,7 +115,9 @@ class __$$_DeadlineStateCopyWithImpl<$Res>
 
 class _$_DeadlineState implements _DeadlineState {
   const _$_DeadlineState(
-      {final List<int> deadlines = const [7, 14, 28], this.deadline})
+      {final List<int> deadlines = const [7, 14, 28],
+      this.customDeadline,
+      this.deadline})
       : _deadlines = deadlines;
 
   final List<int> _deadlines;
@@ -117,11 +130,13 @@ class _$_DeadlineState implements _DeadlineState {
   }
 
   @override
+  final int? customDeadline;
+  @override
   final int? deadline;
 
   @override
   String toString() {
-    return 'DeadlineState(deadlines: $deadlines, deadline: $deadline)';
+    return 'DeadlineState(deadlines: $deadlines, customDeadline: $customDeadline, deadline: $deadline)';
   }
 
   @override
@@ -131,13 +146,18 @@ class _$_DeadlineState implements _DeadlineState {
             other is _$_DeadlineState &&
             const DeepCollectionEquality()
                 .equals(other._deadlines, _deadlines) &&
+            (identical(other.customDeadline, customDeadline) ||
+                other.customDeadline == customDeadline) &&
             (identical(other.deadline, deadline) ||
                 other.deadline == deadline));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_deadlines), deadline);
+      runtimeType,
+      const DeepCollectionEquality().hash(_deadlines),
+      customDeadline,
+      deadline);
 
   @JsonKey(ignore: true)
   @override
@@ -148,10 +168,14 @@ class _$_DeadlineState implements _DeadlineState {
 
 abstract class _DeadlineState implements DeadlineState {
   const factory _DeadlineState(
-      {final List<int> deadlines, final int? deadline}) = _$_DeadlineState;
+      {final List<int> deadlines,
+      final int? customDeadline,
+      final int? deadline}) = _$_DeadlineState;
 
   @override
   List<int> get deadlines;
+  @override
+  int? get customDeadline;
   @override
   int? get deadline;
   @override
