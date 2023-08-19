@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DeadlineState {
   List<int> get deadlines => throw _privateConstructorUsedError;
   int? get customDeadline => throw _privateConstructorUsedError;
-  int? get deadline => throw _privateConstructorUsedError;
+  int? get selected => throw _privateConstructorUsedError;
+  DateTime? get deadline => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DeadlineStateCopyWith<DeadlineState> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $DeadlineStateCopyWith<$Res> {
           DeadlineState value, $Res Function(DeadlineState) then) =
       _$DeadlineStateCopyWithImpl<$Res, DeadlineState>;
   @useResult
-  $Res call({List<int> deadlines, int? customDeadline, int? deadline});
+  $Res call(
+      {List<int> deadlines,
+      int? customDeadline,
+      int? selected,
+      DateTime? deadline});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$DeadlineStateCopyWithImpl<$Res, $Val extends DeadlineState>
   $Res call({
     Object? deadlines = null,
     Object? customDeadline = freezed,
+    Object? selected = freezed,
     Object? deadline = freezed,
   }) {
     return _then(_value.copyWith(
@@ -60,10 +66,14 @@ class _$DeadlineStateCopyWithImpl<$Res, $Val extends DeadlineState>
           ? _value.customDeadline
           : customDeadline // ignore: cast_nullable_to_non_nullable
               as int?,
+      selected: freezed == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as int?,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -76,7 +86,11 @@ abstract class _$$_DeadlineStateCopyWith<$Res>
       __$$_DeadlineStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> deadlines, int? customDeadline, int? deadline});
+  $Res call(
+      {List<int> deadlines,
+      int? customDeadline,
+      int? selected,
+      DateTime? deadline});
 }
 
 /// @nodoc
@@ -92,6 +106,7 @@ class __$$_DeadlineStateCopyWithImpl<$Res>
   $Res call({
     Object? deadlines = null,
     Object? customDeadline = freezed,
+    Object? selected = freezed,
     Object? deadline = freezed,
   }) {
     return _then(_$_DeadlineState(
@@ -103,22 +118,28 @@ class __$$_DeadlineStateCopyWithImpl<$Res>
           ? _value.customDeadline
           : customDeadline // ignore: cast_nullable_to_non_nullable
               as int?,
+      selected: freezed == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as int?,
       deadline: freezed == deadline
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_DeadlineState implements _DeadlineState {
+class _$_DeadlineState extends _DeadlineState {
   const _$_DeadlineState(
       {final List<int> deadlines = const [7, 14, 28],
       this.customDeadline,
+      this.selected,
       this.deadline})
-      : _deadlines = deadlines;
+      : _deadlines = deadlines,
+        super._();
 
   final List<int> _deadlines;
   @override
@@ -132,11 +153,13 @@ class _$_DeadlineState implements _DeadlineState {
   @override
   final int? customDeadline;
   @override
-  final int? deadline;
+  final int? selected;
+  @override
+  final DateTime? deadline;
 
   @override
   String toString() {
-    return 'DeadlineState(deadlines: $deadlines, customDeadline: $customDeadline, deadline: $deadline)';
+    return 'DeadlineState(deadlines: $deadlines, customDeadline: $customDeadline, selected: $selected, deadline: $deadline)';
   }
 
   @override
@@ -148,6 +171,8 @@ class _$_DeadlineState implements _DeadlineState {
                 .equals(other._deadlines, _deadlines) &&
             (identical(other.customDeadline, customDeadline) ||
                 other.customDeadline == customDeadline) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
             (identical(other.deadline, deadline) ||
                 other.deadline == deadline));
   }
@@ -157,6 +182,7 @@ class _$_DeadlineState implements _DeadlineState {
       runtimeType,
       const DeepCollectionEquality().hash(_deadlines),
       customDeadline,
+      selected,
       deadline);
 
   @JsonKey(ignore: true)
@@ -166,18 +192,22 @@ class _$_DeadlineState implements _DeadlineState {
       __$$_DeadlineStateCopyWithImpl<_$_DeadlineState>(this, _$identity);
 }
 
-abstract class _DeadlineState implements DeadlineState {
+abstract class _DeadlineState extends DeadlineState {
   const factory _DeadlineState(
       {final List<int> deadlines,
       final int? customDeadline,
-      final int? deadline}) = _$_DeadlineState;
+      final int? selected,
+      final DateTime? deadline}) = _$_DeadlineState;
+  const _DeadlineState._() : super._();
 
   @override
   List<int> get deadlines;
   @override
   int? get customDeadline;
   @override
-  int? get deadline;
+  int? get selected;
+  @override
+  DateTime? get deadline;
   @override
   @JsonKey(ignore: true)
   _$$_DeadlineStateCopyWith<_$_DeadlineState> get copyWith =>

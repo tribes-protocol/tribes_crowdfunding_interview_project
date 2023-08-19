@@ -91,8 +91,8 @@ class __$$_DescriptionStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DescriptionState implements _DescriptionState {
-  const _$_DescriptionState({this.description = ''});
+class _$_DescriptionState extends _DescriptionState {
+  const _$_DescriptionState({this.description = ''}) : super._();
 
   @override
   @JsonKey()
@@ -122,9 +122,10 @@ class _$_DescriptionState implements _DescriptionState {
       __$$_DescriptionStateCopyWithImpl<_$_DescriptionState>(this, _$identity);
 }
 
-abstract class _DescriptionState implements DescriptionState {
+abstract class _DescriptionState extends DescriptionState {
   const factory _DescriptionState({final String description}) =
       _$_DescriptionState;
+  const _DescriptionState._() : super._();
 
   @override
   String get description;

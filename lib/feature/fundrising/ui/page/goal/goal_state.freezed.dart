@@ -130,12 +130,13 @@ class __$$_GoalStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GoalState implements _GoalState {
+class _$_GoalState extends _GoalState {
   const _$_GoalState(
       {this.token = const AsyncLoading(),
       this.money = 0,
       this.crypto = 0,
-      this.moneyEditing = true});
+      this.moneyEditing = true})
+      : super._();
 
   @override
   @JsonKey()
@@ -178,12 +179,13 @@ class _$_GoalState implements _GoalState {
       __$$_GoalStateCopyWithImpl<_$_GoalState>(this, _$identity);
 }
 
-abstract class _GoalState implements GoalState {
+abstract class _GoalState extends GoalState {
   const factory _GoalState(
       {final AsyncValue<Token> token,
       final double money,
       final double crypto,
       final bool moneyEditing}) = _$_GoalState;
+  const _GoalState._() : super._();
 
   @override
   AsyncValue<Token> get token;

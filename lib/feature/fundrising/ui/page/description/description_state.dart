@@ -8,4 +8,8 @@ class DescriptionState with _$DescriptionState {
   const factory DescriptionState({
     @Default('') String description,
   }) =_DescriptionState;
+
+  bool get ready => description.isNotEmpty;
+
+  const DescriptionState._();
 }

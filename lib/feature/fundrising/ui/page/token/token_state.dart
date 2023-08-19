@@ -8,4 +8,8 @@ class TokenState with _$TokenState {
     String? error,
     @Default('') String tokenName,
   }) = _TokenState;
+
+  bool get ready => tokenName.isNotEmpty;
+
+  const TokenState._();
 }

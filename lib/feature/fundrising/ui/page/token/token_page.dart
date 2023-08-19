@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
+import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/provider/token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
@@ -17,7 +18,7 @@ class TokentPage extends ConsumerStatefulWidget {
     required this.amount,
   });
 
-  final String token;
+  final Token token;
   final double amount;
 
   @override
@@ -70,7 +71,8 @@ class _TokenPageState extends ConsumerState<TokentPage> {
                 TribeSpaceVertical.double(),
                 Text(
                   context.localisation.tokenRate(
-                    widget.token,
+                    (widget.amount * widget.token.ratio).toStringAsFixed(2),
+                    widget.token.type.name.toUpperCase(),
                     widget.amount,
                     state.tokenName,
                   ),

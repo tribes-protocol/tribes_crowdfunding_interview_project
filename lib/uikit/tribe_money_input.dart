@@ -68,7 +68,7 @@ class _TribeMoneyInputTextState extends State<TribeMoneyInputText> {
         color: context.colors.labelLight6,
       ),
     );
-    final textColor = context.colors.labelLight3;
+    final textColor = context.colors.labelLight1;
 
     return TextField(
       controller: _activeController,

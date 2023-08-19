@@ -50,9 +50,7 @@ class _ProjectPageState extends ConsumerState<ProjectPage> {
                 TribeInputText(
                   autocorrect: false,
                   autofocus: true,
-                  textInputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
-                  ],
+                  textCapitalization: TextCapitalization.none,
                   onValueChange: controller.onNameChanged,
                 )
               ],

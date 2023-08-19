@@ -12,4 +12,8 @@ class GoalState with _$GoalState {
     @Default(0) double crypto,
     @Default(true) bool moneyEditing,
   }) = _GoalState;
+
+  bool get ready => money > 0 && crypto > 0;
+
+  const GoalState._();
 }

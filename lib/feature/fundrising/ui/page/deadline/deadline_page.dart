@@ -55,7 +55,7 @@ class _DeadlinePageState extends ConsumerState<DeadlinePage> {
                       .map(
                         (days) => TribeCheckListTile(
                           title: context.localisation.days(days),
-                          checked: days == state.deadline,
+                          checked: days == state.selected,
                           onChecked: (checked) {
                             if (checked) {
                               controller.onDeadlineSected(days);
@@ -68,7 +68,7 @@ class _DeadlinePageState extends ConsumerState<DeadlinePage> {
                 if (state.customDeadline != null)
                   TribeCheckListTile(
                     title: context.localisation.days(state.customDeadline!),
-                    checked: state.customDeadline == state.deadline,
+                    checked: state.customDeadline == state.selected,
                     onChecked: (checked) {
                       if (checked) {
                         controller.onDeadlineSected(state.customDeadline!);

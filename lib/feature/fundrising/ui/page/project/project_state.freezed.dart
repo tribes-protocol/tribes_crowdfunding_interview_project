@@ -91,8 +91,8 @@ class __$$_ProjectStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProjectState implements _ProjectState {
-  const _$_ProjectState({this.projectName = ''});
+class _$_ProjectState extends _ProjectState {
+  const _$_ProjectState({this.projectName = ''}) : super._();
 
   @override
   @JsonKey()
@@ -122,8 +122,9 @@ class _$_ProjectState implements _ProjectState {
       __$$_ProjectStateCopyWithImpl<_$_ProjectState>(this, _$identity);
 }
 
-abstract class _ProjectState implements ProjectState {
+abstract class _ProjectState extends ProjectState {
   const factory _ProjectState({final String projectName}) = _$_ProjectState;
+  const _ProjectState._() : super._();
 
   @override
   String get projectName;

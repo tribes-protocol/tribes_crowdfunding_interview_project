@@ -24,9 +24,11 @@ class GoalController extends StateNotifier<GoalState> {
   void onTokenChanged(Token token) {
     var newState = state.copyWith(token: AsyncValue.data(token));
     if (!state.moneyEditing) {
-      newState = newState.copyWith(crypto: _calculateCrypto(state.money, token.ratio));
+      newState =
+          newState.copyWith(crypto: _calculateCrypto(state.money, token.ratio));
     } else {
-      newState = newState.copyWith(money: _calculateMoney(state.crypto, token.ratio));
+      newState =
+          newState.copyWith(money: _calculateMoney(state.crypto, token.ratio));
     }
 
     state = newState;
@@ -34,6 +36,10 @@ class GoalController extends StateNotifier<GoalState> {
 
   void onMoneyChange(double? money) {
     if (!state.moneyEditing) {
+      return;
+    }
+
+    if (state.money == money) {
       return;
     }
 
@@ -52,7 +58,8 @@ class GoalController extends StateNotifier<GoalState> {
     final ratio = state.token.valueOrNull?.ratio;
 
     if (ratio != null) {
-      state = newState.copyWith(money: money, crypto: _calculateCrypto(money, ratio));
+      state = newState.copyWith(
+          money: money, crypto: _calculateCrypto(money, ratio));
     } else {
       state = newState;
     }
@@ -79,7 +86,8 @@ class GoalController extends StateNotifier<GoalState> {
     final ratio = state.token.valueOrNull?.ratio;
 
     if (ratio != null) {
-      state = newState.copyWith(crypto: crypto, money: _calculateMoney(crypto, ratio));
+      state = newState.copyWith(
+          crypto: crypto, money: _calculateMoney(crypto, ratio));
     } else {
       state = newState;
     }

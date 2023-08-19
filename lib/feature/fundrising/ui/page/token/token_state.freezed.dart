@@ -102,8 +102,8 @@ class __$$_TokenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TokenState implements _TokenState {
-  const _$_TokenState({this.error, this.tokenName = ''});
+class _$_TokenState extends _TokenState {
+  const _$_TokenState({this.error, this.tokenName = ''}) : super._();
 
   @override
   final String? error;
@@ -136,9 +136,10 @@ class _$_TokenState implements _TokenState {
       __$$_TokenStateCopyWithImpl<_$_TokenState>(this, _$identity);
 }
 
-abstract class _TokenState implements TokenState {
+abstract class _TokenState extends TokenState {
   const factory _TokenState({final String? error, final String tokenName}) =
       _$_TokenState;
+  const _TokenState._() : super._();
 
   @override
   String? get error;

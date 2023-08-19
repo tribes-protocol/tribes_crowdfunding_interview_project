@@ -30,9 +30,12 @@
     "projectSubtitle": "Choose a name for this fundraising project",
     "tokenTitle": "Token",
     "tokenSubtitle": "Choose a symbol for the project`s token, like you`d see on a stock ticker",
-    "tokenRate": "1 {token} = {amount} {name}",
+    "tokenRate": "{crypto} {token} = {amount} {name}",
     "@tokenRate": {
         "placeholders": {
+            "crypto": {
+                "type": "String"
+              },
             "token": {
                 "type": "String"
               },

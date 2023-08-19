@@ -15,7 +15,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_page.dart';
 
-class PreviewRouter {
+class FundrisingRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     Widget? page;
     switch (settings.name) {
@@ -26,8 +26,8 @@ class PreviewRouter {
         page = const ProjectPage();
         break;
       case TokenContract.name:
-        final params = settings.arguments as TokenParams?;
-        page = TokentPage(token: params?.token ?? '', amount: params?.amount ?? 0,);
+        final params = settings.arguments as TokenParams;
+        page = TokentPage(token: params.token, amount: params.amount,);
         break;
       case DeadlineContract.name:
         page = const DeadlinePage();
@@ -41,6 +41,9 @@ class PreviewRouter {
       case VisualContract.name:
         page = const VisualPage();
         break;
+        // case Revi.name:
+        // page = const VisualPage();
+        // break;
     }
 
     return MaterialPageRoute<dynamic>(

@@ -102,8 +102,8 @@ class __$$_RulesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RulesState implements _RulesState {
-  const _$_RulesState({this.overfunding, this.underfunding});
+class _$_RulesState extends _RulesState {
+  const _$_RulesState({this.overfunding, this.underfunding}) : super._();
 
   @override
   final Overfunding? overfunding;
@@ -136,10 +136,11 @@ class _$_RulesState implements _RulesState {
       __$$_RulesStateCopyWithImpl<_$_RulesState>(this, _$identity);
 }
 
-abstract class _RulesState implements RulesState {
+abstract class _RulesState extends RulesState {
   const factory _RulesState(
       {final Overfunding? overfunding,
       final Underfunding? underfunding}) = _$_RulesState;
+  const _RulesState._() : super._();
 
   @override
   Overfunding? get overfunding;

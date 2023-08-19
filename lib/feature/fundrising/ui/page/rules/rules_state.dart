@@ -17,4 +17,8 @@ class RulesState with _$RulesState {
     Overfunding? overfunding,
     Underfunding? underfunding,
   }) =_RulesState;
+
+  bool get ready => overfunding != null && underfunding != null;
+
+  const RulesState._();
 }

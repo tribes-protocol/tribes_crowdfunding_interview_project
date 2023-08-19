@@ -7,4 +7,8 @@ class ProjectState with _$ProjectState {
   const factory ProjectState({
     @Default('') String projectName,
   }) = _ProjectState;
+
+  bool get ready => projectName.isNotEmpty;
+
+  const ProjectState._();
 }

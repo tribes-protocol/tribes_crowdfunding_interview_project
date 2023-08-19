@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_contract.dart';
@@ -24,10 +23,10 @@ final router = GoRouter(
       },
     ),
     GoRoute(
-      path: PreviewContract.path,
-      name: PreviewContract.name,
+      path: FundrisingContract.path,
+      name: FundrisingContract.name,
       builder: (BuildContext context, GoRouterState state) {
-        return const PreviewPage();
+        return const FundrisingPage();
       },
     ),
     GoRoute(

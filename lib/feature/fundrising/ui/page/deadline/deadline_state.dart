@@ -8,6 +8,11 @@ class DeadlineState with _$DeadlineState {
   const factory DeadlineState({
     @Default([7, 14, 28]) List<int> deadlines,
     int? customDeadline,
-    int? deadline,
+    int? selected,
+    DateTime? deadline,
   }) =_DeadlineState;
+
+  bool get ready => deadline != null;
+
+  const DeadlineState._();
 }
