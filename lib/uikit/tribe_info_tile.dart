@@ -38,11 +38,12 @@ class TribeInfoTile extends StatelessWidget {
               )),
               Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   if (suffixTitle != null)
                     Text(
                       suffixTitle!,
+                      textAlign: TextAlign.end,
                       style: context.textStyles.body
                           .copyWith(fontWeight: FontWeight.w700),
                     ),
@@ -51,6 +52,7 @@ class TribeInfoTile extends StatelessWidget {
                   if (suffixSubtitle != null)
                     Text(
                       suffixSubtitle!,
+                      textAlign: TextAlign.end,
                       style: context.textStyles.secondary.copyWith(
                         fontSize: suffixTitle == null ? 16 : 13,
                         color: context.colors.labelLight2,

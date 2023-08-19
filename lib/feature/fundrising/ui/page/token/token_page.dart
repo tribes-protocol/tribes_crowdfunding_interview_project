@@ -74,7 +74,7 @@ class _TokenPageState extends ConsumerState<TokentPage> {
                   context.localisation.tokenRate(
                     (widget.amount * widget.token.ratio).toStringAsFixed(2),
                     widget.token.type.name.toUpperCase(),
-                    widget.amount,
+                    double.parse(widget.amount.toStringAsFixed(2)),
                     state.tokenName,
                   ),
                   style: context.textStyles.secondary,

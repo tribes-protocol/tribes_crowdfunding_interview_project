@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ManagementState {
+  int get treshold => throw _privateConstructorUsedError;
   Set<User> get users => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +30,7 @@ abstract class $ManagementStateCopyWith<$Res> {
           ManagementState value, $Res Function(ManagementState) then) =
       _$ManagementStateCopyWithImpl<$Res, ManagementState>;
   @useResult
-  $Res call({Set<User> users});
+  $Res call({int treshold, Set<User> users});
 }
 
 /// @nodoc
@@ -45,9 +46,14 @@ class _$ManagementStateCopyWithImpl<$Res, $Val extends ManagementState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? treshold = null,
     Object? users = null,
   }) {
     return _then(_value.copyWith(
+      treshold: null == treshold
+          ? _value.treshold
+          : treshold // ignore: cast_nullable_to_non_nullable
+              as int,
       users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -64,7 +70,7 @@ abstract class _$$_ManagementStateCopyWith<$Res>
       __$$_ManagementStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Set<User> users});
+  $Res call({int treshold, Set<User> users});
 }
 
 /// @nodoc
@@ -78,9 +84,14 @@ class __$$_ManagementStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? treshold = null,
     Object? users = null,
   }) {
     return _then(_$_ManagementState(
+      treshold: null == treshold
+          ? _value.treshold
+          : treshold // ignore: cast_nullable_to_non_nullable
+              as int,
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -92,8 +103,13 @@ class __$$_ManagementStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ManagementState implements _ManagementState {
-  const _$_ManagementState({final Set<User> users = const {}}) : _users = users;
+  const _$_ManagementState(
+      {this.treshold = 1, final Set<User> users = const {}})
+      : _users = users;
 
+  @override
+  @JsonKey()
+  final int treshold;
   final Set<User> _users;
   @override
   @JsonKey()
@@ -105,7 +121,7 @@ class _$_ManagementState implements _ManagementState {
 
   @override
   String toString() {
-    return 'ManagementState(users: $users)';
+    return 'ManagementState(treshold: $treshold, users: $users)';
   }
 
   @override
@@ -113,12 +129,14 @@ class _$_ManagementState implements _ManagementState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ManagementState &&
+            (identical(other.treshold, treshold) ||
+                other.treshold == treshold) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(
+      runtimeType, treshold, const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -128,8 +146,11 @@ class _$_ManagementState implements _ManagementState {
 }
 
 abstract class _ManagementState implements ManagementState {
-  const factory _ManagementState({final Set<User> users}) = _$_ManagementState;
+  const factory _ManagementState({final int treshold, final Set<User> users}) =
+      _$_ManagementState;
 
+  @override
+  int get treshold;
   @override
   Set<User> get users;
   @override

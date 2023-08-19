@@ -18,6 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FundrisingState {
   int get steps => throw _privateConstructorUsedError;
   int get progress => throw _privateConstructorUsedError;
+  TribeVisualType? get type => throw _privateConstructorUsedError;
+  Color? get background => throw _privateConstructorUsedError;
+  double? get money => throw _privateConstructorUsedError;
+  Token? get token => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get tokenName => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  DateTime? get deadline => throw _privateConstructorUsedError;
+  Set<User>? get signers => throw _privateConstructorUsedError;
+  Set<User>? get managers => throw _privateConstructorUsedError;
+  int? get managersTreshold => throw _privateConstructorUsedError;
+  dynamic get lastStep => throw _privateConstructorUsedError;
   WizardStep get initialStep => throw _privateConstructorUsedError;
   StepNavigation get currentStep => throw _privateConstructorUsedError;
 
@@ -35,8 +47,23 @@ abstract class $FundrisingStateCopyWith<$Res> {
   $Res call(
       {int steps,
       int progress,
+      TribeVisualType? type,
+      Color? background,
+      double? money,
+      Token? token,
+      String? name,
+      String? tokenName,
+      String? description,
+      DateTime? deadline,
+      Set<User>? signers,
+      Set<User>? managers,
+      int? managersTreshold,
+      dynamic lastStep,
       WizardStep initialStep,
       StepNavigation currentStep});
+
+  $TribeVisualTypeCopyWith<$Res>? get type;
+  $TokenCopyWith<$Res>? get token;
 }
 
 /// @nodoc
@@ -54,6 +81,18 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
   $Res call({
     Object? steps = null,
     Object? progress = null,
+    Object? type = freezed,
+    Object? background = freezed,
+    Object? money = freezed,
+    Object? token = freezed,
+    Object? name = freezed,
+    Object? tokenName = freezed,
+    Object? description = freezed,
+    Object? deadline = freezed,
+    Object? signers = freezed,
+    Object? managers = freezed,
+    Object? managersTreshold = freezed,
+    Object? lastStep = freezed,
     Object? initialStep = null,
     Object? currentStep = null,
   }) {
@@ -66,6 +105,54 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TribeVisualType?,
+      background: freezed == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      money: freezed == money
+          ? _value.money
+          : money // ignore: cast_nullable_to_non_nullable
+              as double?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as Token?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenName: freezed == tokenName
+          ? _value.tokenName
+          : tokenName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deadline: freezed == deadline
+          ? _value.deadline
+          : deadline // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      signers: freezed == signers
+          ? _value.signers
+          : signers // ignore: cast_nullable_to_non_nullable
+              as Set<User>?,
+      managers: freezed == managers
+          ? _value.managers
+          : managers // ignore: cast_nullable_to_non_nullable
+              as Set<User>?,
+      managersTreshold: freezed == managersTreshold
+          ? _value.managersTreshold
+          : managersTreshold // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastStep: freezed == lastStep
+          ? _value.lastStep
+          : lastStep // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       initialStep: null == initialStep
           ? _value.initialStep
           : initialStep // ignore: cast_nullable_to_non_nullable
@@ -75,6 +162,30 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
           : currentStep // ignore: cast_nullable_to_non_nullable
               as StepNavigation,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TribeVisualTypeCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $TribeVisualTypeCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenCopyWith<$Res>? get token {
+    if (_value.token == null) {
+      return null;
+    }
+
+    return $TokenCopyWith<$Res>(_value.token!, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
+    });
   }
 }
 
@@ -89,8 +200,25 @@ abstract class _$$_FundrisingStateCopyWith<$Res>
   $Res call(
       {int steps,
       int progress,
+      TribeVisualType? type,
+      Color? background,
+      double? money,
+      Token? token,
+      String? name,
+      String? tokenName,
+      String? description,
+      DateTime? deadline,
+      Set<User>? signers,
+      Set<User>? managers,
+      int? managersTreshold,
+      dynamic lastStep,
       WizardStep initialStep,
       StepNavigation currentStep});
+
+  @override
+  $TribeVisualTypeCopyWith<$Res>? get type;
+  @override
+  $TokenCopyWith<$Res>? get token;
 }
 
 /// @nodoc
@@ -106,6 +234,18 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
   $Res call({
     Object? steps = null,
     Object? progress = null,
+    Object? type = freezed,
+    Object? background = freezed,
+    Object? money = freezed,
+    Object? token = freezed,
+    Object? name = freezed,
+    Object? tokenName = freezed,
+    Object? description = freezed,
+    Object? deadline = freezed,
+    Object? signers = freezed,
+    Object? managers = freezed,
+    Object? managersTreshold = freezed,
+    Object? lastStep = freezed,
     Object? initialStep = null,
     Object? currentStep = null,
   }) {
@@ -118,6 +258,51 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as int,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TribeVisualType?,
+      background: freezed == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      money: freezed == money
+          ? _value.money
+          : money // ignore: cast_nullable_to_non_nullable
+              as double?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as Token?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tokenName: freezed == tokenName
+          ? _value.tokenName
+          : tokenName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deadline: freezed == deadline
+          ? _value.deadline
+          : deadline // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      signers: freezed == signers
+          ? _value._signers
+          : signers // ignore: cast_nullable_to_non_nullable
+              as Set<User>?,
+      managers: freezed == managers
+          ? _value._managers
+          : managers // ignore: cast_nullable_to_non_nullable
+              as Set<User>?,
+      managersTreshold: freezed == managersTreshold
+          ? _value.managersTreshold
+          : managersTreshold // ignore: cast_nullable_to_non_nullable
+              as int?,
+      lastStep: freezed == lastStep ? _value.lastStep! : lastStep,
       initialStep: null == initialStep
           ? _value.initialStep
           : initialStep // ignore: cast_nullable_to_non_nullable
@@ -136,13 +321,68 @@ class _$_FundrisingState implements _FundrisingState {
   const _$_FundrisingState(
       {required this.steps,
       required this.progress,
-      this.initialStep = WizardStep.management,
-      this.currentStep = const StepNavigation(step: WizardStep.management)});
+      this.type,
+      this.background,
+      this.money,
+      this.token,
+      this.name,
+      this.tokenName,
+      this.description,
+      this.deadline,
+      final Set<User>? signers,
+      final Set<User>? managers,
+      this.managersTreshold,
+      this.lastStep = false,
+      this.initialStep = WizardStep.goal,
+      this.currentStep = const StepNavigation(step: WizardStep.goal)})
+      : _signers = signers,
+        _managers = managers;
 
   @override
   final int steps;
   @override
   final int progress;
+  @override
+  final TribeVisualType? type;
+  @override
+  final Color? background;
+  @override
+  final double? money;
+  @override
+  final Token? token;
+  @override
+  final String? name;
+  @override
+  final String? tokenName;
+  @override
+  final String? description;
+  @override
+  final DateTime? deadline;
+  final Set<User>? _signers;
+  @override
+  Set<User>? get signers {
+    final value = _signers;
+    if (value == null) return null;
+    if (_signers is EqualUnmodifiableSetView) return _signers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(value);
+  }
+
+  final Set<User>? _managers;
+  @override
+  Set<User>? get managers {
+    final value = _managers;
+    if (value == null) return null;
+    if (_managers is EqualUnmodifiableSetView) return _managers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(value);
+  }
+
+  @override
+  final int? managersTreshold;
+  @override
+  @JsonKey()
+  final dynamic lastStep;
   @override
   @JsonKey()
   final WizardStep initialStep;
@@ -152,7 +392,7 @@ class _$_FundrisingState implements _FundrisingState {
 
   @override
   String toString() {
-    return 'FundrisingState(steps: $steps, progress: $progress, initialStep: $initialStep, currentStep: $currentStep)';
+    return 'FundrisingState(steps: $steps, progress: $progress, type: $type, background: $background, money: $money, token: $token, name: $name, tokenName: $tokenName, description: $description, deadline: $deadline, signers: $signers, managers: $managers, managersTreshold: $managersTreshold, lastStep: $lastStep, initialStep: $initialStep, currentStep: $currentStep)';
   }
 
   @override
@@ -163,6 +403,23 @@ class _$_FundrisingState implements _FundrisingState {
             (identical(other.steps, steps) || other.steps == steps) &&
             (identical(other.progress, progress) ||
                 other.progress == progress) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.background, background) ||
+                other.background == background) &&
+            (identical(other.money, money) || other.money == money) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.deadline, deadline) ||
+                other.deadline == deadline) &&
+            const DeepCollectionEquality().equals(other._signers, _signers) &&
+            const DeepCollectionEquality().equals(other._managers, _managers) &&
+            (identical(other.managersTreshold, managersTreshold) ||
+                other.managersTreshold == managersTreshold) &&
+            const DeepCollectionEquality().equals(other.lastStep, lastStep) &&
             (identical(other.initialStep, initialStep) ||
                 other.initialStep == initialStep) &&
             (identical(other.currentStep, currentStep) ||
@@ -170,8 +427,24 @@ class _$_FundrisingState implements _FundrisingState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, steps, progress, initialStep, currentStep);
+  int get hashCode => Object.hash(
+      runtimeType,
+      steps,
+      progress,
+      type,
+      background,
+      money,
+      token,
+      name,
+      tokenName,
+      description,
+      deadline,
+      const DeepCollectionEquality().hash(_signers),
+      const DeepCollectionEquality().hash(_managers),
+      managersTreshold,
+      const DeepCollectionEquality().hash(lastStep),
+      initialStep,
+      currentStep);
 
   @JsonKey(ignore: true)
   @override
@@ -184,6 +457,18 @@ abstract class _FundrisingState implements FundrisingState {
   const factory _FundrisingState(
       {required final int steps,
       required final int progress,
+      final TribeVisualType? type,
+      final Color? background,
+      final double? money,
+      final Token? token,
+      final String? name,
+      final String? tokenName,
+      final String? description,
+      final DateTime? deadline,
+      final Set<User>? signers,
+      final Set<User>? managers,
+      final int? managersTreshold,
+      final dynamic lastStep,
       final WizardStep initialStep,
       final StepNavigation currentStep}) = _$_FundrisingState;
 
@@ -191,6 +476,30 @@ abstract class _FundrisingState implements FundrisingState {
   int get steps;
   @override
   int get progress;
+  @override
+  TribeVisualType? get type;
+  @override
+  Color? get background;
+  @override
+  double? get money;
+  @override
+  Token? get token;
+  @override
+  String? get name;
+  @override
+  String? get tokenName;
+  @override
+  String? get description;
+  @override
+  DateTime? get deadline;
+  @override
+  Set<User>? get signers;
+  @override
+  Set<User>? get managers;
+  @override
+  int? get managersTreshold;
+  @override
+  dynamic get lastStep;
   @override
   WizardStep get initialStep;
   @override

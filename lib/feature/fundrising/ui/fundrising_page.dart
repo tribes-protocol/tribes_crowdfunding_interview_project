@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_router.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_state.dart';
@@ -9,6 +11,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/provider/description_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/provider/management_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/provider/preview_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/provider/reserve_provider.dart';
@@ -73,14 +76,18 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
 
     ref.listenManual(tokenControllerProvider, (previous, next) {
       if (next.ready) {
-        controller.setName(next.tokenName);
+        controller.setTokenName(next.tokenName);
       }
     });
 
-    ref.listenManual(deadlineControllerProvider, (previous, next) {
+    ref.listenManual(descriptionControllerProvider, (previous, next) {
       if (next.ready) {
-        controller.setDeadline(next.deadline!);
+        controller.setDescription(next.description!);
       }
+    });
+
+    ref.listenManual(visualControllerProvider, (previous, next) {
+        controller.setVisual(next.visualType, next.color);
     });
 
     ref.listenManual(deadlineControllerProvider, (previous, next) {
@@ -93,11 +100,15 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       controller.setSigners(next.users);
     });
 
+    ref.listenManual(managementControllerProvider, (previous, next) {
+      controller.setMangement(next.users, next.treshold);
+    });
+
     ref.listenManual(
         fundrisingControllerProvider.select((value) => value.currentStep),
         (previous, next) {
       final navigation = next;
-      Navigator.of(_navigatorKey.currentContext!).pushNamed(
+      Navigator.of(_navigatorKey.currentContext!).pushReplacementNamed(
         navigation.step.name,
         arguments: navigation.params,
       );
@@ -125,17 +136,45 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
                 onGenerateRoute: FundrisingRouter.onGenerateRoute,
               ),
             ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: TribeButton(
-                  text: context.localisation.commoContinue,
-                  onPressed: stepReady
-                      ? () {
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: TribeButton(
+                text: context.localisation.commoContinue,
+                onPressed: stepReady
+                    ? () {
+                        if (!state.lastStep) {
                           controller.next();
+                        } else {
+                          final type = state.type!;
+                          final background = state.background!;
+                          final money = state.money!;
+                          final token = state.token!;
+                          final name = state.name!;
+                          final tokenName = state.tokenName!;
+                          final description = state.description!;
+                          final deadline = state.deadline!;
+                          final signers = state.signers!;
+                          final managers = state.managers!;
+                          final managersTreshold = state.managersTreshold!;
+                          context.replaceNamed(PreviewContract.name,
+                              extra: PreviewParams(
+                                type: state.type!,
+                                background: state.background!,
+                                money: state.money!,
+                                token: state.token!,
+                                name: state.name!,
+                                tokenName: state.tokenName!,
+                                description: state.description!,
+                                deadline: state.deadline!,
+                                signers: state.signers!,
+                                managers: state.managers!,
+                                managersTreshold: state.managersTreshold!,
+                              ));
                         }
-                      : null,
-                ),
-              )
+                      }
+                    : null,
+              ),
+            )
           ],
         ),
       ),

@@ -16,18 +16,79 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PreviewState {
-  TribeVisualType get type => throw _privateConstructorUsedError;
-  Color get background => throw _privateConstructorUsedError;
-  double get money => throw _privateConstructorUsedError;
-  Token get token => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get tokenName => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  DateTime get deadline => throw _privateConstructorUsedError;
-  List<User> get signers => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PreviewStateCopyWith<PreviewState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)
+        $default, {
+    required TResult Function() empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult? Function()? empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PreviewState value) $default, {
+    required TResult Function(_PreviewStateEmpty value) empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PreviewState value)? $default, {
+    TResult? Function(_PreviewStateEmpty value)? empty,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PreviewState value)? $default, {
+    TResult Function(_PreviewStateEmpty value)? empty,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -36,20 +97,6 @@ abstract class $PreviewStateCopyWith<$Res> {
   factory $PreviewStateCopyWith(
           PreviewState value, $Res Function(PreviewState) then) =
       _$PreviewStateCopyWithImpl<$Res, PreviewState>;
-  @useResult
-  $Res call(
-      {TribeVisualType type,
-      Color background,
-      double money,
-      Token token,
-      String name,
-      String tokenName,
-      String description,
-      DateTime deadline,
-      List<User> signers});
-
-  $TribeVisualTypeCopyWith<$Res> get type;
-  $TokenCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -61,84 +108,151 @@ class _$PreviewStateCopyWithImpl<$Res, $Val extends PreviewState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-    Object? background = null,
-    Object? money = null,
-    Object? token = null,
-    Object? name = null,
-    Object? tokenName = null,
-    Object? description = null,
-    Object? deadline = null,
-    Object? signers = null,
-  }) {
-    return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as TribeVisualType,
-      background: null == background
-          ? _value.background
-          : background // ignore: cast_nullable_to_non_nullable
-              as Color,
-      money: null == money
-          ? _value.money
-          : money // ignore: cast_nullable_to_non_nullable
-              as double,
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as Token,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenName: null == tokenName
-          ? _value.tokenName
-          : tokenName // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      deadline: null == deadline
-          ? _value.deadline
-          : deadline // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      signers: null == signers
-          ? _value.signers
-          : signers // ignore: cast_nullable_to_non_nullable
-              as List<User>,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TribeVisualTypeCopyWith<$Res> get type {
-    return $TribeVisualTypeCopyWith<$Res>(_value.type, (value) {
-      return _then(_value.copyWith(type: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TokenCopyWith<$Res> get token {
-    return $TokenCopyWith<$Res>(_value.token, (value) {
-      return _then(_value.copyWith(token: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_PreviewStateCopyWith<$Res>
-    implements $PreviewStateCopyWith<$Res> {
+abstract class _$$_PreviewStateEmptyCopyWith<$Res> {
+  factory _$$_PreviewStateEmptyCopyWith(_$_PreviewStateEmpty value,
+          $Res Function(_$_PreviewStateEmpty) then) =
+      __$$_PreviewStateEmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PreviewStateEmptyCopyWithImpl<$Res>
+    extends _$PreviewStateCopyWithImpl<$Res, _$_PreviewStateEmpty>
+    implements _$$_PreviewStateEmptyCopyWith<$Res> {
+  __$$_PreviewStateEmptyCopyWithImpl(
+      _$_PreviewStateEmpty _value, $Res Function(_$_PreviewStateEmpty) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_PreviewStateEmpty implements _PreviewStateEmpty {
+  const _$_PreviewStateEmpty();
+
+  @override
+  String toString() {
+    return 'PreviewState.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PreviewStateEmpty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)
+        $default, {
+    required TResult Function() empty,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult? Function()? empty,
+  }) {
+    return empty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PreviewState value) $default, {
+    required TResult Function(_PreviewStateEmpty value) empty,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PreviewState value)? $default, {
+    TResult? Function(_PreviewStateEmpty value)? empty,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PreviewState value)? $default, {
+    TResult Function(_PreviewStateEmpty value)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PreviewStateEmpty implements PreviewState {
+  const factory _PreviewStateEmpty() = _$_PreviewStateEmpty;
+}
+
+/// @nodoc
+abstract class _$$_PreviewStateCopyWith<$Res> {
   factory _$$_PreviewStateCopyWith(
           _$_PreviewState value, $Res Function(_$_PreviewState) then) =
       __$$_PreviewStateCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {TribeVisualType type,
@@ -149,11 +263,11 @@ abstract class _$$_PreviewStateCopyWith<$Res>
       String tokenName,
       String description,
       DateTime deadline,
-      List<User> signers});
+      Set<User> signers,
+      Set<User> managers,
+      int managersTreshold});
 
-  @override
   $TribeVisualTypeCopyWith<$Res> get type;
-  @override
   $TokenCopyWith<$Res> get token;
 }
 
@@ -177,6 +291,8 @@ class __$$_PreviewStateCopyWithImpl<$Res>
     Object? description = null,
     Object? deadline = null,
     Object? signers = null,
+    Object? managers = null,
+    Object? managersTreshold = null,
   }) {
     return _then(_$_PreviewState(
       type: null == type
@@ -214,8 +330,32 @@ class __$$_PreviewStateCopyWithImpl<$Res>
       signers: null == signers
           ? _value._signers
           : signers // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as Set<User>,
+      managers: null == managers
+          ? _value._managers
+          : managers // ignore: cast_nullable_to_non_nullable
+              as Set<User>,
+      managersTreshold: null == managersTreshold
+          ? _value.managersTreshold
+          : managersTreshold // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TribeVisualTypeCopyWith<$Res> get type {
+    return $TribeVisualTypeCopyWith<$Res>(_value.type, (value) {
+      return _then(_value.copyWith(type: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenCopyWith<$Res> get token {
+    return $TokenCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value));
+    });
   }
 }
 
@@ -231,8 +371,11 @@ class _$_PreviewState implements _PreviewState {
       required this.tokenName,
       required this.description,
       required this.deadline,
-      required final List<User> signers})
-      : _signers = signers;
+      required final Set<User> signers,
+      required final Set<User> managers,
+      required this.managersTreshold})
+      : _signers = signers,
+        _managers = managers;
 
   @override
   final TribeVisualType type;
@@ -250,17 +393,28 @@ class _$_PreviewState implements _PreviewState {
   final String description;
   @override
   final DateTime deadline;
-  final List<User> _signers;
+  final Set<User> _signers;
   @override
-  List<User> get signers {
-    if (_signers is EqualUnmodifiableListView) return _signers;
+  Set<User> get signers {
+    if (_signers is EqualUnmodifiableSetView) return _signers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_signers);
+    return EqualUnmodifiableSetView(_signers);
+  }
+
+  final Set<User> _managers;
+  @override
+  Set<User> get managers {
+    if (_managers is EqualUnmodifiableSetView) return _managers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_managers);
   }
 
   @override
+  final int managersTreshold;
+
+  @override
   String toString() {
-    return 'PreviewState(type: $type, background: $background, money: $money, token: $token, name: $name, tokenName: $tokenName, description: $description, deadline: $deadline, signers: $signers)';
+    return 'PreviewState(type: $type, background: $background, money: $money, token: $token, name: $name, tokenName: $tokenName, description: $description, deadline: $deadline, signers: $signers, managers: $managers, managersTreshold: $managersTreshold)';
   }
 
   @override
@@ -280,7 +434,10 @@ class _$_PreviewState implements _PreviewState {
                 other.description == description) &&
             (identical(other.deadline, deadline) ||
                 other.deadline == deadline) &&
-            const DeepCollectionEquality().equals(other._signers, _signers));
+            const DeepCollectionEquality().equals(other._signers, _signers) &&
+            const DeepCollectionEquality().equals(other._managers, _managers) &&
+            (identical(other.managersTreshold, managersTreshold) ||
+                other.managersTreshold == managersTreshold));
   }
 
   @override
@@ -294,13 +451,116 @@ class _$_PreviewState implements _PreviewState {
       tokenName,
       description,
       deadline,
-      const DeepCollectionEquality().hash(_signers));
+      const DeepCollectionEquality().hash(_signers),
+      const DeepCollectionEquality().hash(_managers),
+      managersTreshold);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_PreviewStateCopyWith<_$_PreviewState> get copyWith =>
       __$$_PreviewStateCopyWithImpl<_$_PreviewState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)
+        $default, {
+    required TResult Function() empty,
+  }) {
+    return $default(type, background, money, token, name, tokenName,
+        description, deadline, signers, managers, managersTreshold);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult? Function()? empty,
+  }) {
+    return $default?.call(type, background, money, token, name, tokenName,
+        description, deadline, signers, managers, managersTreshold);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            TribeVisualType type,
+            Color background,
+            double money,
+            Token token,
+            String name,
+            String tokenName,
+            String description,
+            DateTime deadline,
+            Set<User> signers,
+            Set<User> managers,
+            int managersTreshold)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(type, background, money, token, name, tokenName,
+          description, deadline, signers, managers, managersTreshold);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PreviewState value) $default, {
+    required TResult Function(_PreviewStateEmpty value) empty,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PreviewState value)? $default, {
+    TResult? Function(_PreviewStateEmpty value)? empty,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PreviewState value)? $default, {
+    TResult Function(_PreviewStateEmpty value)? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _PreviewState implements PreviewState {
@@ -313,27 +573,21 @@ abstract class _PreviewState implements PreviewState {
       required final String tokenName,
       required final String description,
       required final DateTime deadline,
-      required final List<User> signers}) = _$_PreviewState;
+      required final Set<User> signers,
+      required final Set<User> managers,
+      required final int managersTreshold}) = _$_PreviewState;
 
-  @override
   TribeVisualType get type;
-  @override
   Color get background;
-  @override
   double get money;
-  @override
   Token get token;
-  @override
   String get name;
-  @override
   String get tokenName;
-  @override
   String get description;
-  @override
   DateTime get deadline;
-  @override
-  List<User> get signers;
-  @override
+  Set<User> get signers;
+  Set<User> get managers;
+  int get managersTreshold;
   @JsonKey(ignore: true)
   _$$_PreviewStateCopyWith<_$_PreviewState> get copyWith =>
       throw _privateConstructorUsedError;

@@ -10,6 +10,8 @@ part 'preview_state.freezed.dart';
 
 @freezed
 class PreviewState with _$PreviewState {
+  const factory PreviewState.empty() = _PreviewStateEmpty;
+  
   const factory PreviewState({
     required TribeVisualType type,
     required Color background,
@@ -19,6 +21,8 @@ class PreviewState with _$PreviewState {
     required String tokenName,
     required String description,
     required DateTime deadline,
-    required List<User> signers,
+    required Set<User> signers,
+    required Set<User> managers,
+    required int managersTreshold,
   }) =_PreviewState;
 }

@@ -7,6 +7,7 @@ part 'management_state.freezed.dart';
 @freezed
 class ManagementState with _$ManagementState {
   const factory ManagementState({
+    @Default(1) int treshold,
     @Default({}) Set<User> users,
   }) =_ManagementState;
 }

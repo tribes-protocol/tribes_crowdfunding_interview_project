@@ -18,4 +18,8 @@ class ManagementController extends StateNotifier<ManagementState> {
     users.remove(user);
     state = state.copyWith(users: users);
   }
+
+  void setTreshold(int value) {
+    state = state.copyWith(treshold: value + 1);
+  }
 }

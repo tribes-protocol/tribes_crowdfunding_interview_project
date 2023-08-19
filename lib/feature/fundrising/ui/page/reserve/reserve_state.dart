@@ -10,7 +10,7 @@ class ReserveState with _$ReserveState {
     @Default({}) Set<User> users,
   }) = _ReserveState;
 
-  const ReserveState._();
-
   double get procentage => users.length * portion;
+
+    const ReserveState._();
 }
