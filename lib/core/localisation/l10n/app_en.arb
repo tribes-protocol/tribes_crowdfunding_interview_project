@@ -60,6 +60,11 @@
     "reserveButton": "wallet address or .eth",
     "reserveIssuedAmountDescription": "Issued to funders",
 
+    "infoLabel": "MORE INFO",
+    "infoTitle": "Funding goal",
+    "infoText": "Lorem ipsum crypto hipster aren’t we all worried about things that don’t matter, show up, get paid, hold on to your breath while you plan your escape.",
+    "infoSubtitle": "Subheader",
+
     "managementTitle": "Management",
     "managementSubtitle": "Project funds are held in a multisignature wallet for security. Transactions are approved when they reach the signature threshold.",
     "managementSigners": "Signers",

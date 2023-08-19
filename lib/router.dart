@@ -8,6 +8,8 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
@@ -24,7 +26,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'feature/fundrising/ui/page/rules/rules_contract.dart';
 
 final router = GoRouter(
-  initialLocation: ReserveContract.path,
+  initialLocation: InfoContract.path,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -104,6 +106,13 @@ final router = GoRouter(
       name: UserListContract.name,
       builder: (BuildContext context, GoRouterState state) {
         return const UserListPage();
+      },
+    ),
+    GoRoute(
+      path: InfoContract.path,
+      name: InfoContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return const InfoPage();
       },
     ),
   ],
