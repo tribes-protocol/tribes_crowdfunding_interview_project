@@ -3,9 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/provider/preview_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_divider.dart';
@@ -29,17 +32,21 @@ class _PreviewPageState extends ConsumerState<PreviewPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(ref.read(previewControllerProvider.notifier).init(widget.params));
+      unawaited(
+          ref.read(previewControllerProvider.notifier).init(widget.params));
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(previewControllerProvider).mapOrNull((value) => value);
-    if(state == null) {
+    final controller = ref.watch(previewControllerProvider.notifier);
+    final state =
+        ref.watch(previewControllerProvider).mapOrNull((value) => value);
+    if (state == null) {
       return const SizedBox();
     }
+    final now = DateTime.now();
 
     return Scaffold(
       body: SafeArea(
@@ -56,6 +63,18 @@ class _PreviewPageState extends ConsumerState<PreviewPage> {
           TribeVisual(
             type: state.type,
             background: state.background,
+            onImagePressed: () async {
+              final result =
+                  await context.pushNamed<VisualResult?>(VisualContract.name,
+                      extra: VisualParams(
+                        type: state.type,
+                        background: state.background,
+                      ));
+
+              if (result != null) {
+                controller.updateVisual(result);
+              }
+            },
           ),
           TribeInfoTile(
             title: context.localisation.previewGoal,
@@ -84,15 +103,25 @@ class _PreviewPageState extends ConsumerState<PreviewPage> {
                     child: MarkdownBody(data: state.description))),
           ),
           const TribeDivider(),
+          TribeInfoTile(
+            title: context.localisation.previewDeadline,
+            suffixTitle: context.localisation.days(state.deadline.difference(now).inDays),
+            suffixSubtitle: DateFormat('MMMM dd').format(state.deadline),
+          ),
+          TribeSpaceVertical.standard(),
           TribeButton(
             text: context.localisation.previewLaunchButton,
             onPressed: () {},
           ),
-          TribeSpaceVertical.x8(),
+          TribeSpaceVertical.quad(),
           TribeInfoTile(
             title: context.localisation.previewManagement,
-            suffixTitle: context.localisation.previewSigners(state.signers.length),
-            suffixSubtitle: context.localisation.previewTreshold(state.managersTreshold, state.managers.length),
+            suffixTitle:
+                context.localisation.previewSigners(state.signers.length),
+            suffixSubtitle: context.localisation.previewTreshold(
+              state.managersTreshold,
+              state.managers.length,
+            ),
           ),
         ],
       )),

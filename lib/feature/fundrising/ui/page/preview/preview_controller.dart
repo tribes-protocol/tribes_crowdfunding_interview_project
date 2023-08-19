@@ -5,6 +5,7 @@ import 'package:tribes_crowdfunding_interview_project/domain/model/token_type.da
 import 'package:tribes_crowdfunding_interview_project/domain/model/user.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_state.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_visual.dart';
 
 class PreviewController extends StateNotifier<PreviewState> {
@@ -23,6 +24,13 @@ class PreviewController extends StateNotifier<PreviewState> {
       signers: params.signers,
       managers: params.managers,
       managersTreshold: params.managersTreshold,
+    );
+  }
+
+  void updateVisual(VisualResult result) {
+    state = state.required.copyWith(
+      type: result.type,
+      background: result.background,
     );
   }
 }

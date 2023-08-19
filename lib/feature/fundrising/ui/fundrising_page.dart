@@ -87,7 +87,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
     });
 
     ref.listenManual(visualControllerProvider, (previous, next) {
-        controller.setVisual(next.visualType, next.color);
+      controller.setVisual(next.visualType, next.color);
     });
 
     ref.listenManual(deadlineControllerProvider, (previous, next) {
@@ -145,31 +145,23 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
                         if (!state.lastStep) {
                           controller.next();
                         } else {
-                          final type = state.type!;
-                          final background = state.background!;
-                          final money = state.money!;
-                          final token = state.token!;
-                          final name = state.name!;
-                          final tokenName = state.tokenName!;
-                          final description = state.description!;
-                          final deadline = state.deadline!;
-                          final signers = state.signers!;
-                          final managers = state.managers!;
-                          final managersTreshold = state.managersTreshold!;
-                          context.replaceNamed(PreviewContract.name,
-                              extra: PreviewParams(
-                                type: state.type!,
-                                background: state.background!,
-                                money: state.money!,
-                                token: state.token!,
-                                name: state.name!,
-                                tokenName: state.tokenName!,
-                                description: state.description!,
-                                deadline: state.deadline!,
-                                signers: state.signers!,
-                                managers: state.managers!,
-                                managersTreshold: state.managersTreshold!,
-                              ));
+                          WidgetsBinding.instance
+                              .addPostFrameCallback((_) {
+                            context.replaceNamed(PreviewContract.name,
+                                extra: PreviewParams(
+                                  type: state.type!,
+                                  background: state.background!,
+                                  money: state.money!,
+                                  token: state.token!,
+                                  name: state.name!,
+                                  tokenName: state.tokenName!,
+                                  description: state.description!,
+                                  deadline: state.deadline!,
+                                  signers: state.signers,
+                                  managers: state.managers,
+                                  managersTreshold: state.managersTreshold,
+                                ));
+                          });
                         }
                       }
                     : null,

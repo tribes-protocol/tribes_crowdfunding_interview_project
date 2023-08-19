@@ -26,9 +26,9 @@ mixin _$FundrisingState {
   String? get tokenName => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime? get deadline => throw _privateConstructorUsedError;
-  Set<User>? get signers => throw _privateConstructorUsedError;
-  Set<User>? get managers => throw _privateConstructorUsedError;
-  int? get managersTreshold => throw _privateConstructorUsedError;
+  Set<User> get signers => throw _privateConstructorUsedError;
+  Set<User> get managers => throw _privateConstructorUsedError;
+  int get managersTreshold => throw _privateConstructorUsedError;
   dynamic get lastStep => throw _privateConstructorUsedError;
   WizardStep get initialStep => throw _privateConstructorUsedError;
   StepNavigation get currentStep => throw _privateConstructorUsedError;
@@ -55,9 +55,9 @@ abstract class $FundrisingStateCopyWith<$Res> {
       String? tokenName,
       String? description,
       DateTime? deadline,
-      Set<User>? signers,
-      Set<User>? managers,
-      int? managersTreshold,
+      Set<User> signers,
+      Set<User> managers,
+      int managersTreshold,
       dynamic lastStep,
       WizardStep initialStep,
       StepNavigation currentStep});
@@ -89,9 +89,9 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
     Object? tokenName = freezed,
     Object? description = freezed,
     Object? deadline = freezed,
-    Object? signers = freezed,
-    Object? managers = freezed,
-    Object? managersTreshold = freezed,
+    Object? signers = null,
+    Object? managers = null,
+    Object? managersTreshold = null,
     Object? lastStep = freezed,
     Object? initialStep = null,
     Object? currentStep = null,
@@ -137,18 +137,18 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      signers: freezed == signers
+      signers: null == signers
           ? _value.signers
           : signers // ignore: cast_nullable_to_non_nullable
-              as Set<User>?,
-      managers: freezed == managers
+              as Set<User>,
+      managers: null == managers
           ? _value.managers
           : managers // ignore: cast_nullable_to_non_nullable
-              as Set<User>?,
-      managersTreshold: freezed == managersTreshold
+              as Set<User>,
+      managersTreshold: null == managersTreshold
           ? _value.managersTreshold
           : managersTreshold // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       lastStep: freezed == lastStep
           ? _value.lastStep
           : lastStep // ignore: cast_nullable_to_non_nullable
@@ -208,9 +208,9 @@ abstract class _$$_FundrisingStateCopyWith<$Res>
       String? tokenName,
       String? description,
       DateTime? deadline,
-      Set<User>? signers,
-      Set<User>? managers,
-      int? managersTreshold,
+      Set<User> signers,
+      Set<User> managers,
+      int managersTreshold,
       dynamic lastStep,
       WizardStep initialStep,
       StepNavigation currentStep});
@@ -242,9 +242,9 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
     Object? tokenName = freezed,
     Object? description = freezed,
     Object? deadline = freezed,
-    Object? signers = freezed,
-    Object? managers = freezed,
-    Object? managersTreshold = freezed,
+    Object? signers = null,
+    Object? managers = null,
+    Object? managersTreshold = null,
     Object? lastStep = freezed,
     Object? initialStep = null,
     Object? currentStep = null,
@@ -290,18 +290,18 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
           ? _value.deadline
           : deadline // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      signers: freezed == signers
+      signers: null == signers
           ? _value._signers
           : signers // ignore: cast_nullable_to_non_nullable
-              as Set<User>?,
-      managers: freezed == managers
+              as Set<User>,
+      managers: null == managers
           ? _value._managers
           : managers // ignore: cast_nullable_to_non_nullable
-              as Set<User>?,
-      managersTreshold: freezed == managersTreshold
+              as Set<User>,
+      managersTreshold: null == managersTreshold
           ? _value.managersTreshold
           : managersTreshold // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       lastStep: freezed == lastStep ? _value.lastStep! : lastStep,
       initialStep: null == initialStep
           ? _value.initialStep
@@ -329,9 +329,9 @@ class _$_FundrisingState implements _FundrisingState {
       this.tokenName,
       this.description,
       this.deadline,
-      final Set<User>? signers,
-      final Set<User>? managers,
-      this.managersTreshold,
+      final Set<User> signers = const {},
+      final Set<User> managers = const {},
+      this.managersTreshold = 1,
       this.lastStep = false,
       this.initialStep = WizardStep.goal,
       this.currentStep = const StepNavigation(step: WizardStep.goal)})
@@ -358,28 +358,27 @@ class _$_FundrisingState implements _FundrisingState {
   final String? description;
   @override
   final DateTime? deadline;
-  final Set<User>? _signers;
+  final Set<User> _signers;
   @override
-  Set<User>? get signers {
-    final value = _signers;
-    if (value == null) return null;
+  @JsonKey()
+  Set<User> get signers {
     if (_signers is EqualUnmodifiableSetView) return _signers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(value);
+    return EqualUnmodifiableSetView(_signers);
   }
 
-  final Set<User>? _managers;
+  final Set<User> _managers;
   @override
-  Set<User>? get managers {
-    final value = _managers;
-    if (value == null) return null;
+  @JsonKey()
+  Set<User> get managers {
     if (_managers is EqualUnmodifiableSetView) return _managers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(value);
+    return EqualUnmodifiableSetView(_managers);
   }
 
   @override
-  final int? managersTreshold;
+  @JsonKey()
+  final int managersTreshold;
   @override
   @JsonKey()
   final dynamic lastStep;
@@ -465,9 +464,9 @@ abstract class _FundrisingState implements FundrisingState {
       final String? tokenName,
       final String? description,
       final DateTime? deadline,
-      final Set<User>? signers,
-      final Set<User>? managers,
-      final int? managersTreshold,
+      final Set<User> signers,
+      final Set<User> managers,
+      final int managersTreshold,
       final dynamic lastStep,
       final WizardStep initialStep,
       final StepNavigation currentStep}) = _$_FundrisingState;
@@ -493,11 +492,11 @@ abstract class _FundrisingState implements FundrisingState {
   @override
   DateTime? get deadline;
   @override
-  Set<User>? get signers;
+  Set<User> get signers;
   @override
-  Set<User>? get managers;
+  Set<User> get managers;
   @override
-  int? get managersTreshold;
+  int get managersTreshold;
   @override
   dynamic get lastStep;
   @override

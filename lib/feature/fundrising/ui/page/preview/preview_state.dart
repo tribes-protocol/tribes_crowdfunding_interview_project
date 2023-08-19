@@ -11,7 +11,7 @@ part 'preview_state.freezed.dart';
 @freezed
 class PreviewState with _$PreviewState {
   const factory PreviewState.empty() = _PreviewStateEmpty;
-  
+
   const factory PreviewState({
     required TribeVisualType type,
     required Color background,
@@ -25,4 +25,9 @@ class PreviewState with _$PreviewState {
     required Set<User> managers,
     required int managersTreshold,
   }) =_PreviewState;
+}
+
+extension PreviewStateX on PreviewState {
+  // ignore: library_private_types_in_public_api
+  _PreviewState get required => mapOrNull((value) => value)!;
 }

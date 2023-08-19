@@ -13,6 +13,8 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_page.dart';
 
 
 final router = GoRouter(
@@ -68,6 +70,13 @@ final router = GoRouter(
       name: PreviewContract.name,
       builder: (BuildContext context, GoRouterState state) {
         return PreviewPage(params: state.extra as PreviewParams,);
+      },
+    ),
+    GoRoute(
+      path: VisualContract.path,
+      name: VisualContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return VisualPage(params: state.extra as VisualParams?,);
       },
     ),
   ],
