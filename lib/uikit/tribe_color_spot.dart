@@ -9,7 +9,7 @@ class TribeColorPalette extends StatelessWidget {
 
   final ValueSetter<Color> onPressed;
 
-  static final List<Color> _colors = [
+  static final List<Color> colors = [
     const Color(0xFF1A1A1A),
     const Color(0xFF1A1A1A).withOpacity(0.6),
     const Color(0xFF1A1A1A).withOpacity(0.1),
@@ -51,13 +51,13 @@ class TribeColorPalette extends StatelessWidget {
         crossAxisCount: 4,
       ),
       children: List.generate(
-        _colors.length,
+        colors.length,
         (index) => InkWell(
           customBorder: const CircleBorder(),
-          onTap: () => onPressed(_colors[index]),
+          onTap: () => onPressed(colors[index]),
           child: Padding(
             padding: const EdgeInsets.all(Spacing.half),
-            child: TribeColorSpot(color: _colors[index]),
+            child: TribeColorSpot(color: colors[index]),
           ),
         ),
       ),

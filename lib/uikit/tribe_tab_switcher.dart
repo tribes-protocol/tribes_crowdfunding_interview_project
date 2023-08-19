@@ -6,10 +6,15 @@ class TribeSwitcherTab {
   TribeSwitcherTab({
     required this.label,
     required this.child,
+    this.selectedColor,
+    this.unselectedColor,
   });
 
-  final String label;
+  final Widget label;
   final Widget child;
+
+  final Color? selectedColor;
+  final Color? unselectedColor;
 }
 
 class TribeTabSwircher extends StatefulWidget {
@@ -27,9 +32,9 @@ class TribeTabSwircher extends StatefulWidget {
   State<TribeTabSwircher> createState() => _TribeTabSwircherState();
 }
 
-class _TribeTabSwircherState extends State<TribeTabSwircher>
-    with SingleTickerProviderStateMixin {
+class _TribeTabSwircherState extends State<TribeTabSwircher> with SingleTickerProviderStateMixin {
   late TabController _controller;
+  int _selectedIndex = 0;
 
   @override
   void dispose() {
@@ -60,6 +65,11 @@ class _TribeTabSwircherState extends State<TribeTabSwircher>
           ),
           child: TabBar(
             controller: _controller,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(
                 24.0,
@@ -69,20 +79,28 @@ class _TribeTabSwircherState extends State<TribeTabSwircher>
             labelColor: context.colors.labelDark1,
             unselectedLabelColor: context.colors.labelLight1,
             tabs: [
-              Tab(
-                child: Text(
-                  tab1.label,
-                  style: context.textStyles.body
-                      .copyWith(fontWeight: FontWeight.w600),
-                ),
-              ),
-              Tab(
-                child: Text(
-                  tab2.label,
-                  style: context.textStyles.body
-                      .copyWith(fontWeight: FontWeight.w600),
-                ),
-              ),
+              if (tab1.selectedColor != null || tab1.unselectedColor != null)
+                Tab(
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                        _selectedIndex == 0 ? tab1.selectedColor! : tab1.unselectedColor!,
+                        BlendMode.srcIn),
+                    child: tab1.label,
+                  ),
+                )
+              else
+                Tab(child: tab1.label),
+              if (tab2.selectedColor != null || tab2.unselectedColor != null)
+                Tab(
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                        _selectedIndex == 1 ? tab2.selectedColor! : tab2.unselectedColor!,
+                        BlendMode.srcIn),
+                    child: tab2.label,
+                  ),
+                )
+              else
+                Tab(child: tab2.label),
             ],
           ),
         ),

@@ -63,7 +63,10 @@ class _DescriptionPageState extends ConsumerState<DescriptionPage> {
                   height: 185,
                   child: TribeTabSwircher(tabs: [
                     TribeSwitcherTab(
-                      label: context.localisation.descriptionWrite,
+                      label: Text(
+                        context.localisation.descriptionWrite,
+                        style: context.textStyles.body.copyWith(fontWeight: FontWeight.w600),
+                      ),
                       child: TribeMultiLineTextField(
                         controller: _controller,
                         hint: context.localisation.descriptionWriteHint,
@@ -75,7 +78,10 @@ class _DescriptionPageState extends ConsumerState<DescriptionPage> {
                       ),
                     ),
                     TribeSwitcherTab(
-                      label: context.localisation.descriptionPreview,
+                      label: Text(
+                        context.localisation.descriptionPreview,
+                        style: context.textStyles.body.copyWith(fontWeight: FontWeight.w600),
+                      ),
                       child: TribeMarkdownText(
                         data: _controller.text,
                       ),

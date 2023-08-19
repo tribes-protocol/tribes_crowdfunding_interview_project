@@ -6,6 +6,7 @@
     "commoEmoji": "Emoji",
     "commoDone": "Done",
     "commoCancel": "Cancel",
+    "commoNoRecent": "No Recent",
     "commoChoose": "Choose",
     "days": "{day, plural, =1{1 day} other{{day} days}}",
     "@days": {
@@ -51,6 +52,7 @@
     
     "visualTitle": "Visual",
     "visualSubtitle": "Add a visual to use as your project`s logo and token",
+    "visualMoveAndScale": "Move and Scale",
 
     "reserveTitle": "Reserve",
     "reserveSubtitle": "You may reserve a portion of the total tokens for specific people.",

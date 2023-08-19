@@ -10,10 +10,8 @@ part 'tribe_visual.freezed.dart';
 
 @freezed
 class TribeVisualType with _$TribeVisualType {
-  const factory TribeVisualType.emoji({required String emoji}) =
-      _TribeVisualTypeEmoji;
-  const factory TribeVisualType.image({required String path}) =
-      _TribeVisualTypeImage;
+  const factory TribeVisualType.emoji({required String emoji}) = _TribeVisualTypeEmoji;
+  const factory TribeVisualType.image({required String path}) = _TribeVisualTypeImage;
 }
 
 class TribeVisual extends StatefulWidget {
@@ -40,13 +38,13 @@ class _TribeVisualState extends State<TribeVisual> {
     final Widget content = widget.type.map(
         emoji: (data) => Text(
               data.emoji,
-              style: const TextStyle(fontSize: 90),
+              style: const TextStyle(fontSize: 100),
             ),
         image: (data) => Image.file(
               File(data.path),
-              width: 100,
-              height: 100,
-              fit: BoxFit.fill,
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
             ));
 
     return Column(
@@ -55,13 +53,16 @@ class _TribeVisualState extends State<TribeVisual> {
       children: [
         InkWell(
           onTap: widget.onImagePressed,
-          child: CircleAvatar(
-            minRadius: 80,
-            maxRadius: 80,
-            backgroundColor: widget.background,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(60),
-              child: content),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Container(
+              color: widget.background,
+              width: 150,
+              height: 150,
+              child: Center(
+                child: content,
+              ),
+            ),
           ),
         ),
         TribeSpaceVertical.double(),
