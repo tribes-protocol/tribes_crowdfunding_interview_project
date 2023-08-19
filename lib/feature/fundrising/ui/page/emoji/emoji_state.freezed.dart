@@ -103,7 +103,7 @@ class __$$_EmojiStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EmojiState implements _EmojiState {
-  const _$_EmojiState({this.emoji = '', this.color = Colors.black});
+  const _$_EmojiState({this.emoji = '', this.color = const Color(0xFFF60909)});
 
   @override
   @JsonKey()

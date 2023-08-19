@@ -10,18 +10,21 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_controller.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/rules_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_page.dart';
 
 import 'feature/fundrising/ui/page/rules/rules_contract.dart';
 
 final router = GoRouter(
-  initialLocation: VisualContract.path,
+  initialLocation: ReserveContract.path,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -87,6 +90,20 @@ final router = GoRouter(
           emoji: params?.emoji,
           color: params?.color,
         );
+      },
+    ),
+    GoRoute(
+      path: ReserveContract.path,
+      name: ReserveContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ReservePage();
+      },
+    ),
+    GoRoute(
+      path: UserListContract.path,
+      name: UserListContract.name,
+      builder: (BuildContext context, GoRouterState state) {
+        return const UserListPage();
       },
     ),
   ],

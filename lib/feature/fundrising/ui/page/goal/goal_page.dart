@@ -107,7 +107,12 @@ class _GoalPageState extends ConsumerState<GoalPage> {
                     TribeTile(
                       icon: tokenMapper.mapTokenIcon(token.type),
                       title: context.localisation.fundingIn,
-                      subtitle: tokenMapper.mapTokeName(token.type),
+                      subtitle: Text(
+                        tokenMapper.mapTokeName(token.type),
+                        style: context.textStyles.body.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: context.colors.labelLight1),
+                      ),
                       onPressed: () async {
                         final token = await context
                             .pushNamed<Token?>(TokenListContract.name);

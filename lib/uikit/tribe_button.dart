@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
-enum TribeBiuttonType {
+enum TribeButtonType {
   black,
   white,
 }
@@ -11,12 +11,12 @@ class TribeButton extends StatelessWidget {
   const TribeButton({
     super.key,
     required this.text,
-    this.type = TribeBiuttonType.black,
+    this.type = TribeButtonType.black,
     this.onPressed,
   });
 
   final String text;
-  final TribeBiuttonType type;
+  final TribeButtonType type;
   final VoidCallback? onPressed;
 
   @override
@@ -25,10 +25,10 @@ class TribeButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
-            foregroundColor: type == TribeBiuttonType.black
+            foregroundColor: type == TribeButtonType.black
                 ? context.colors.labelDark1
                 : context.colors.labelLight1,
-            backgroundColor: type == TribeBiuttonType.black
+            backgroundColor: type == TribeButtonType.black
                 ? context.colors.labelLight1
                 : context.colors.labelDark1,
             padding: const EdgeInsets.symmetric(
@@ -43,7 +43,7 @@ class TribeButton extends StatelessWidget {
               text,
               // TODO(yaroslav): ask designer to add into text styles
               style: TextStyle(
-                color: type == TribeBiuttonType.black
+                color: type == TribeButtonType.black
                     ? context.colors.labelDark1
                     : context.colors.labelLight1,
                 fontSize: 16,

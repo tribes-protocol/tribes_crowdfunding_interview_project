@@ -9,21 +9,21 @@ class TribeTile extends StatelessWidget {
     super.key,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.suffix,
     this.onPressed,
   });
 
   final Widget icon;
   final String title;
-  final String subtitle;
+  final Widget? subtitle;
   final Widget? suffix;
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: Spacing.double),
+      contentPadding: const EdgeInsets.symmetric(vertical: Spacing.half),
       onTap: onPressed,
       title: Row(
         children: [
@@ -42,13 +42,9 @@ class TribeTile extends StatelessWidget {
                   title,
                   style: context.textStyles.secondary,
                 ),
-                if (subtitle.isNotEmpty) ...[
+                if (subtitle != null) ...[
                   TribeSpaceHorizontal.half(),
-                  Text(
-                    subtitle,
-                    style: context.textStyles.body
-                        .copyWith(fontWeight: FontWeight.w700, color: context.colors.labelLight1),
-                  )
+                  subtitle!,
                 ]
               ],
             ),
