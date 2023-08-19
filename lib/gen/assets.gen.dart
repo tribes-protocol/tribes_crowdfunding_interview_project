@@ -12,6 +12,12 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Vector.svg
+  String get vector => 'assets/icons/Vector.svg';
+
+  /// File path: assets/icons/add_circle.svg
+  String get addCircle => 'assets/icons/add_circle.svg';
+
   /// File path: assets/icons/arrow_right.svg
   String get arrowRight => 'assets/icons/arrow_right.svg';
 
@@ -33,11 +39,16 @@ class $AssetsIconsGen {
   /// File path: assets/icons/palette.svg
   String get palette => 'assets/icons/palette.svg';
 
+  /// File path: assets/icons/remove_circle.svg
+  String get removeCircle => 'assets/icons/remove_circle.svg';
+
   /// File path: assets/icons/shuffle.svg
   String get shuffle => 'assets/icons/shuffle.svg';
 
   /// List of all assets
   List<String> get values => [
+        vector,
+        addCircle,
         arrowRight,
         close,
         closeCircle,
@@ -45,6 +56,7 @@ class $AssetsIconsGen {
         iconCheck,
         info,
         palette,
+        removeCircle,
         shuffle
       ];
 }

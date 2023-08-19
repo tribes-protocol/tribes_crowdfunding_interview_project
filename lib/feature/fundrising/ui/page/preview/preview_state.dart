@@ -1,0 +1,24 @@
+
+import 'dart:ui';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
+import 'package:tribes_crowdfunding_interview_project/domain/model/user.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_visual.dart';
+
+part 'preview_state.freezed.dart';
+
+@freezed
+class PreviewState with _$PreviewState {
+  const factory PreviewState({
+    required TribeVisualType type,
+    required Color background,
+    required double money,
+    required Token token,
+    required String name,
+    required String tokenName,
+    required String description,
+    required DateTime deadline,
+    required List<User> signers,
+  }) =_PreviewState;
+}

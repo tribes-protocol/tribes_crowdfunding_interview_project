@@ -58,6 +58,7 @@ class _TokenPageState extends ConsumerState<TokentPage> {
                 ),
                 TribeSpaceVertical.double(),
                 TribeInputText(
+                  autofocus: true,
                   error: state.error,
                   textCapitalization: TextCapitalization.characters,
                   keyboardType: TextInputType.text,

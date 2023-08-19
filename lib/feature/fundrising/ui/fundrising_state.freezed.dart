@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FundrisingState {
+  int get steps => throw _privateConstructorUsedError;
+  int get progress => throw _privateConstructorUsedError;
   WizardStep get initialStep => throw _privateConstructorUsedError;
   StepNavigation get currentStep => throw _privateConstructorUsedError;
 
@@ -30,7 +32,11 @@ abstract class $FundrisingStateCopyWith<$Res> {
           FundrisingState value, $Res Function(FundrisingState) then) =
       _$FundrisingStateCopyWithImpl<$Res, FundrisingState>;
   @useResult
-  $Res call({WizardStep initialStep, StepNavigation currentStep});
+  $Res call(
+      {int steps,
+      int progress,
+      WizardStep initialStep,
+      StepNavigation currentStep});
 }
 
 /// @nodoc
@@ -46,10 +52,20 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? steps = null,
+    Object? progress = null,
     Object? initialStep = null,
     Object? currentStep = null,
   }) {
     return _then(_value.copyWith(
+      steps: null == steps
+          ? _value.steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as int,
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as int,
       initialStep: null == initialStep
           ? _value.initialStep
           : initialStep // ignore: cast_nullable_to_non_nullable
@@ -70,7 +86,11 @@ abstract class _$$_FundrisingStateCopyWith<$Res>
       __$$_FundrisingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WizardStep initialStep, StepNavigation currentStep});
+  $Res call(
+      {int steps,
+      int progress,
+      WizardStep initialStep,
+      StepNavigation currentStep});
 }
 
 /// @nodoc
@@ -84,10 +104,20 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? steps = null,
+    Object? progress = null,
     Object? initialStep = null,
     Object? currentStep = null,
   }) {
     return _then(_$_FundrisingState(
+      steps: null == steps
+          ? _value.steps
+          : steps // ignore: cast_nullable_to_non_nullable
+              as int,
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as int,
       initialStep: null == initialStep
           ? _value.initialStep
           : initialStep // ignore: cast_nullable_to_non_nullable
@@ -104,9 +134,15 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
 
 class _$_FundrisingState implements _FundrisingState {
   const _$_FundrisingState(
-      {this.initialStep = WizardStep.goal,
-      this.currentStep = const StepNavigation(step: WizardStep.goal)});
+      {required this.steps,
+      required this.progress,
+      this.initialStep = WizardStep.management,
+      this.currentStep = const StepNavigation(step: WizardStep.management)});
 
+  @override
+  final int steps;
+  @override
+  final int progress;
   @override
   @JsonKey()
   final WizardStep initialStep;
@@ -116,7 +152,7 @@ class _$_FundrisingState implements _FundrisingState {
 
   @override
   String toString() {
-    return 'FundrisingState(initialStep: $initialStep, currentStep: $currentStep)';
+    return 'FundrisingState(steps: $steps, progress: $progress, initialStep: $initialStep, currentStep: $currentStep)';
   }
 
   @override
@@ -124,6 +160,9 @@ class _$_FundrisingState implements _FundrisingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FundrisingState &&
+            (identical(other.steps, steps) || other.steps == steps) &&
+            (identical(other.progress, progress) ||
+                other.progress == progress) &&
             (identical(other.initialStep, initialStep) ||
                 other.initialStep == initialStep) &&
             (identical(other.currentStep, currentStep) ||
@@ -131,7 +170,8 @@ class _$_FundrisingState implements _FundrisingState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, initialStep, currentStep);
+  int get hashCode =>
+      Object.hash(runtimeType, steps, progress, initialStep, currentStep);
 
   @JsonKey(ignore: true)
   @override
@@ -142,9 +182,15 @@ class _$_FundrisingState implements _FundrisingState {
 
 abstract class _FundrisingState implements FundrisingState {
   const factory _FundrisingState(
-      {final WizardStep initialStep,
+      {required final int steps,
+      required final int progress,
+      final WizardStep initialStep,
       final StepNavigation currentStep}) = _$_FundrisingState;
 
+  @override
+  int get steps;
+  @override
+  int get progress;
   @override
   WizardStep get initialStep;
   @override

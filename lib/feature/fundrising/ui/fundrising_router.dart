@@ -5,8 +5,13 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/management_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/management_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/rules_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/rules_page.dart';
@@ -27,7 +32,10 @@ class FundrisingRouter {
         break;
       case TokenContract.name:
         final params = settings.arguments as TokenParams;
-        page = TokentPage(token: params.token, amount: params.amount,);
+        page = TokentPage(
+          token: params.token,
+          amount: params.amount,
+        );
         break;
       case DeadlineContract.name:
         page = const DeadlinePage();
@@ -41,9 +49,12 @@ class FundrisingRouter {
       case VisualContract.name:
         page = const VisualPage();
         break;
-        // case Revi.name:
-        // page = const VisualPage();
-        // break;
+      case ReserveContract.name:
+        page = const ReservePage();
+        break;
+      case ManagementContract.name:
+        page = const ManagementPage();
+        break;
     }
 
     return MaterialPageRoute<dynamic>(

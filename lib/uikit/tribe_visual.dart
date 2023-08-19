@@ -10,8 +10,10 @@ part 'tribe_visual.freezed.dart';
 
 @freezed
 class TribeVisualType with _$TribeVisualType {
-  const factory TribeVisualType.emoji({required String emoji}) = _TribeVisualTypeEmoji;
-  const factory TribeVisualType.image({required String path}) = _TribeVisualTypeImage;
+  const factory TribeVisualType.emoji({required String emoji}) =
+      _TribeVisualTypeEmoji;
+  const factory TribeVisualType.image({required String path}) =
+      _TribeVisualTypeImage;
 }
 
 class TribeVisual extends StatefulWidget {
@@ -65,14 +67,16 @@ class _TribeVisualState extends State<TribeVisual> {
             ),
           ),
         ),
-        TribeSpaceVertical.double(),
-        InkWell(
-            onTap: widget.onShufflePressed,
-            child: SvgPicture.asset(
-              Assets.icons.shuffle,
-              width: 24,
-              height: 24,
-            ))
+        if (widget.onShufflePressed != null) ...[
+          TribeSpaceVertical.double(),
+          InkWell(
+              onTap: widget.onShufflePressed,
+              child: SvgPicture.asset(
+                Assets.icons.shuffle,
+                width: 24,
+                height: 24,
+              ))
+        ]
       ],
     );
   }

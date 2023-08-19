@@ -7,7 +7,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fund
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 
 class FundrisingController extends StateNotifier<FundrisingState> {
-  FundrisingController() : super(const FundrisingState());
+  FundrisingController() : super(const FundrisingState(steps: 0, progress: 0));
 
   double? _money;
   Token? _token;
@@ -26,9 +26,12 @@ class FundrisingController extends StateNotifier<FundrisingState> {
     WizardStep.description,
     WizardStep.visual,
     WizardStep.reserve,
+    WizardStep.management,
   ];
 
-  Future<void> init() async {}
+  Future<void> init() async {
+    state = state.copyWith(steps: _flow.length);
+  }
 
   void next() {
     final currentIndex = _flow.indexOf(state.currentStep.step);
@@ -49,31 +52,31 @@ class FundrisingController extends StateNotifier<FundrisingState> {
     switch(step) {
       
       case WizardStep.goal:
-        state= state.copyWith(currentStep: StepNavigation(step: step));
+        state= state.copyWith(currentStep: StepNavigation(step: step), progress: 0);
         break;
       case WizardStep.name:
-        state= state.copyWith(currentStep: StepNavigation(step: step));
+        state= state.copyWith(currentStep: StepNavigation(step: step), progress: 1);
         break;
       case WizardStep.token:
-        state= state.copyWith(currentStep: StepNavigation(step: step, params: TokenParams(token: _token!, amount: _money!)));
+        state= state.copyWith(currentStep: StepNavigation(step: step, params: TokenParams(token: _token!, amount: _money!)), progress: 2);
         break;
       case WizardStep.deadline:
-         state= state.copyWith(currentStep: StepNavigation(step: step));
+         state= state.copyWith(currentStep: StepNavigation(step: step), progress: 3);
         break;
       case WizardStep.rules:
-         state= state.copyWith(currentStep: StepNavigation(step: step));
+         state= state.copyWith(currentStep: StepNavigation(step: step), progress: 4);
         break;
       case WizardStep.description:
-         state= state.copyWith(currentStep: StepNavigation(step: step));
+         state= state.copyWith(currentStep: StepNavigation(step: step), progress: 5);
         break;
       case WizardStep.visual:
-         state= state.copyWith(currentStep: StepNavigation(step: step));
+         state= state.copyWith(currentStep: StepNavigation(step: step), progress: 6);
         break;
       case WizardStep.reserve:
-         state= state.copyWith(currentStep: StepNavigation(step: step));
+         state= state.copyWith(currentStep: StepNavigation(step: step), progress: 7);
         break;
-      case WizardStep.review:
-        // TODO: Handle this case.
+      case WizardStep.management:
+        state= state.copyWith(currentStep: StepNavigation(step: step), progress: 8);
         break;
     }
   }

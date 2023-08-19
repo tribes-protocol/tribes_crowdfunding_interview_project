@@ -9,7 +9,7 @@ class DescriptionState with _$DescriptionState {
     @Default('') String description,
   }) =_DescriptionState;
 
-  bool get ready => description.isNotEmpty;
+  bool get ready => description.replaceAll(' ', '').isNotEmpty;
 
   const DescriptionState._();
 }

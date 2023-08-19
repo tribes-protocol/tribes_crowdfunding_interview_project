@@ -9,14 +9,14 @@ class TribePercentageTile extends StatelessWidget {
     super.key,
     this.icon,
     required this.title,
-    required this.amount,
+    this.amount,
     this.splitted = true,
     this.onClose,
   });
 
   final Widget? icon;
   final String title;
-  final double amount;
+  final double? amount;
   final bool splitted;
   final VoidCallback? onClose;
 
@@ -30,7 +30,7 @@ class TribePercentageTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         border: splitted
             ? Border.all(
-                color: context.colors.labelLight4,
+                color: context.colors.labelLight4.withOpacity(0.15),
               )
             : null,
       ),
@@ -78,19 +78,20 @@ class TribePercentageTile extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 8,
-              ),
-              child: Text(
-                '$amount %',
-                style: context.textStyles.body,
-                textAlign: TextAlign.end,
+          if (amount != null)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 8,
+                ),
+                child: Text(
+                  '$amount %',
+                  style: context.textStyles.body,
+                  textAlign: TextAlign.end,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

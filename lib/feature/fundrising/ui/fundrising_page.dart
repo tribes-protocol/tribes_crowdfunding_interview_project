@@ -8,6 +8,8 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fund
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/provider/deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/provider/description_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/provider/management_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/provider/preview_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/provider/reserve_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/provider/rules_provider.dart';
@@ -15,6 +17,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/provider/visual_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/provider/fundrising_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_progress_indicator.dart';
 
 class FundrisingPage extends ConsumerStatefulWidget {
   const FundrisingPage({super.key});
@@ -46,12 +49,14 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
           ref.watch(deadlineControllerProvider.select((value) => value.ready)),
       WizardStep.rules: () =>
           ref.watch(rulesControllerProvider.select((value) => value.ready)),
-      WizardStep.description: () =>
-          ref.watch(descriptionControllerProvider.select((value) => value.ready)),
+      WizardStep.description: () => ref
+          .watch(descriptionControllerProvider.select((value) => value.ready)),
       WizardStep.visual: () =>
           ref.watch(visualControllerProvider.select((value) => true)),
       WizardStep.reserve: () =>
           ref.watch(reserveControllerProvider.select((value) => true)),
+      WizardStep.management: () =>
+          ref.watch(managementControllerProvider.select((value) => true)),
     };
 
     ref.listenManual(goalControllerProvider, (previous, next) {
@@ -88,9 +93,9 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       controller.setSigners(next.users);
     });
 
-
-
-    ref.listenManual(fundrisingControllerProvider.select((value) => value.currentStep), (previous, next) {
+    ref.listenManual(
+        fundrisingControllerProvider.select((value) => value.currentStep),
+        (previous, next) {
       final navigation = next;
       Navigator.of(_navigatorKey.currentContext!).pushNamed(
         navigation.step.name,
@@ -111,6 +116,8 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       body: SafeArea(
         child: Column(
           children: [
+            TribeProgressIndicator(
+                steps: state.steps, progress: state.progress),
             Expanded(
               child: Navigator(
                 key: _navigatorKey,
@@ -118,17 +125,17 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
                 onGenerateRoute: FundrisingRouter.onGenerateRoute,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: TribeButton(
-                text: context.localisation.commoContinue,
-                onPressed: stepReady
-                    ? () {
-                        controller.next();
-                      }
-                    : null,
-              ),
-            )
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: TribeButton(
+                  text: context.localisation.commoContinue,
+                  onPressed: stepReady
+                      ? () {
+                          controller.next();
+                        }
+                      : null,
+                ),
+              )
           ],
         ),
       ),

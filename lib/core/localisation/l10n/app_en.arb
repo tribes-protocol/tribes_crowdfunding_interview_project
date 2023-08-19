@@ -8,6 +8,7 @@
     "commoCancel": "Cancel",
     "commoNoRecent": "No Recent",
     "commoChoose": "Choose",
+    "commoEdit": "Edit",
     "days": "{day, plural, =1{1 day} other{{day} days}}",
     "@days": {
         "placeholders": {
@@ -91,6 +92,33 @@
     "managementSignatureTresholdDescription": "How many executives must approve wallet actions?",
     "managementSignersAmount": "{current} of {total}",
     "@managementSignersAmount": {
+        "placeholders": {
+            "current": {
+                "type": "int"
+              },
+              "total": {
+                "type": "int"
+              }
+        }
+    },
+    "previewTitle": "Project preview",
+    "previewGoal": "Goal",
+    "previewName": "Name",
+    "previewToken": "Token",
+    "previewDescription": "Description",
+    "previewDeadline": "Deadline",
+    "previewLaunchButton": "Launch funding",
+    "previewManagement": "Management",
+    "previewSigners": "{signers, plural, =1{1 signer} other{{signers} signers}}",
+    "@previewSigners": {
+        "placeholders": {
+            "signers": {
+                "type": "int"
+            }
+        }
+    },
+    "previewTreshold": "{current}/{total} signature threshold",
+    "@previewTreshold": {
         "placeholders": {
             "current": {
                 "type": "int"

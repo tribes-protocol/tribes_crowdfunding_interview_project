@@ -11,7 +11,7 @@ enum WizardStep {
   description,
   visual,
   reserve,
-  review,
+  management,
 }
 
 class StepNavigation {
@@ -27,7 +27,9 @@ class StepNavigation {
 @freezed
 class FundrisingState with _$FundrisingState {
   const factory FundrisingState({
-    @Default(WizardStep.goal) WizardStep initialStep,
-    @Default(StepNavigation(step: WizardStep.goal)) StepNavigation currentStep,
+    required int steps,
+    required int progress,
+    @Default(WizardStep.management) WizardStep initialStep,
+    @Default(StepNavigation(step: WizardStep.management)) StepNavigation currentStep,
   }) = _FundrisingState;
 }
