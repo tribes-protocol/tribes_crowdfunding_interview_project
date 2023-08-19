@@ -7,6 +7,7 @@ import 'package:tribes_crowdfunding_interview_project/core/animation/tribe_fade_
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/provider/page_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
@@ -79,7 +80,7 @@ class _IntroPageState extends ConsumerState<IntroPage> {
               child: TribeButton(
                   text: context.localisation.commonStart,
                   onPressed: () {
-                    context.pushNamed(GoalContract.name);
+                    context.pushNamed(PreviewContract.name);
                   }),
             ),
           ],

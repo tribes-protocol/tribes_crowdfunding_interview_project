@@ -1,41 +1,30 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 
-class TribeInputText extends StatefulWidget {
-  const TribeInputText({
+class TribeMoneyInputText extends StatefulWidget {
+  const TribeMoneyInputText({
     super.key,
     this.controller,
     this.prefix,
     this.suffix,
     this.hint,
-    this.error,
     this.autofocus = false,
-    this.autocorrect = false,
-    this.keyboardType,
-    this.textCapitalization,
-    this.textInputFormatters,
     this.onValueChange,
   });
 
   final String? prefix;
   final String? suffix;
   final String? hint;
-  final String? error;
   final bool autofocus;
-  final bool autocorrect;
-  final TextInputType? keyboardType;
-  final TextCapitalization? textCapitalization;
-  final List<TextInputFormatter>? textInputFormatters;
   final TextEditingController? controller;
   final ValueSetter<String>? onValueChange;
 
   @override
-  State<TribeInputText> createState() => _TribeInputTextState();
+  State<TribeMoneyInputText> createState() => _TribeMoneyInputTextState();
 }
 
-class _TribeInputTextState extends State<TribeInputText> {
+class _TribeMoneyInputTextState extends State<TribeMoneyInputText> {
   final TextEditingController _controller = TextEditingController();
 
   TextEditingController get _activeController =>
@@ -43,10 +32,12 @@ class _TribeInputTextState extends State<TribeInputText> {
 
   @override
   void initState() {
-    _activeController.addListener(() => setState(() {
-          final text = _activeController.text;
-          widget.onValueChange?.call(text);
-        }));
+    _activeController.addListener(() => setState(
+          () {
+            final text = _activeController.text;
+            widget.onValueChange?.call(text.replaceAll(',', ''));
+          },
+        ));
     super.initState();
   }
 
@@ -57,13 +48,13 @@ class _TribeInputTextState extends State<TribeInputText> {
   }
 
   @override
-  void didUpdateWidget(covariant TribeInputText oldWidget) {
+  void didUpdateWidget(covariant TribeMoneyInputText oldWidget) {
     if (widget.prefix != oldWidget.prefix ||
         widget.suffix != oldWidget.suffix ||
-        widget.error != oldWidget.error ||
         widget.hint != oldWidget.hint) {
       setState(() {});
     }
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -77,15 +68,17 @@ class _TribeInputTextState extends State<TribeInputText> {
         color: context.colors.labelLight6,
       ),
     );
-    final textColor = context.colors.labelLight1;
+    final textColor = context.colors.labelLight3;
 
     return TextField(
       controller: _activeController,
       autofocus: widget.autofocus,
-      keyboardType: widget.keyboardType,
-      autocorrect: widget.autocorrect,
+      keyboardType: TextInputType.number,
+      autocorrect: false,
       textCapitalization: TextCapitalization.characters,
-      inputFormatters: widget.textInputFormatters,
+      inputFormatters: [
+        CurrencyTextInputFormatter(symbol: ''),
+      ],
       // TODO(yaroslav): ask designer to include into theme palete
       cursorColor: const Color(0xFF007AFF),
       style: context.textStyles.header4.copyWith(
@@ -93,7 +86,9 @@ class _TribeInputTextState extends State<TribeInputText> {
       ),
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        prefix: prefix != null ? Text(prefix) : null,
+        prefix: prefix != null && _controller.text.isEmpty
+            ? Text(prefix)
+            : null,
         suffix: suffix != null
             ? Transform.translate(
                 offset: const Offset(0, -4),
@@ -103,11 +98,8 @@ class _TribeInputTextState extends State<TribeInputText> {
               )
             : null,
         hintText: widget.hint,
-        prefixStyle: context.textStyles.header4.copyWith(
-                fontWeight: FontWeight.w400,
-              ),
+        prefixStyle: context.textStyles.header4,
         suffixStyle: context.textStyles.body,
-        errorText: widget.error,
         contentPadding: const EdgeInsets.all(16),
         filled: true,
         fillColor: context.colors.labelLight6,

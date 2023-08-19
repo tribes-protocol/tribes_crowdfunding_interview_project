@@ -30,6 +30,20 @@
     "projectSubtitle": "Choose a name for this fundraising project",
     "tokenTitle": "Token",
     "tokenSubtitle": "Choose a symbol for the project`s token, like you`d see on a stock ticker",
+    "tokenRate": "1 {token} = {amount} {name}",
+    "@tokenRate": {
+        "placeholders": {
+            "token": {
+                "type": "String"
+              },
+              "amount": {
+                "type": "double"
+              },
+              "name": {
+                "type": "String"
+              }
+        }
+    },
     "deadlineTitle": "Deadline",
     "deadlineSubtitle": "When does funding close?",
     "deadlineChooseDate": "Choose a Date ...",

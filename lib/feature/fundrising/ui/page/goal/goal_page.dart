@@ -10,6 +10,7 @@ import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_error.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_input_text.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_loading.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_money_input.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_tile.dart';
 
@@ -83,7 +84,8 @@ class _GoalPageState extends ConsumerState<GoalPage> {
                       onFocusChange: (value) {
                         controller.onMoneySelected(value);
                       },
-                      child: TribeInputText(
+                      child: TribeMoneyInputText(
+                        autofocus: true,
                         controller: _moneyController,
                         suffix: 'USD',
                         onValueChange: (value) {
@@ -96,7 +98,7 @@ class _GoalPageState extends ConsumerState<GoalPage> {
                       onFocusChange: (value) {
                         controller.onMoneySelected(!value);
                       },
-                      child: TribeInputText(
+                      child: TribeMoneyInputText(
                         controller: _cryptoController,
                         suffix: token.type.name.toUpperCase(),
                         onValueChange: (value) {

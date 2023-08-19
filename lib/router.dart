@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/description_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/description_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/rules_page.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_page.dart';
 
-import 'feature/fundrising/ui/page/rules/rules_contract.dart';
 
 final router = GoRouter(
-  initialLocation: InfoContract.path,
+  initialLocation: '/',
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -35,10 +24,10 @@ final router = GoRouter(
       },
     ),
     GoRoute(
-      path: GoalContract.path,
-      name: GoalContract.name,
+      path: PreviewContract.path,
+      name: PreviewContract.name,
       builder: (BuildContext context, GoRouterState state) {
-        return const GoalPage();
+        return const PreviewPage();
       },
     ),
     GoRoute(
@@ -46,41 +35,6 @@ final router = GoRouter(
       name: TokenListContract.name,
       builder: (BuildContext context, GoRouterState state) {
         return const TokenListPage();
-      },
-    ),
-    GoRoute(
-      path: ProjectContract.path,
-      name: ProjectContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const ProjectPage();
-      },
-    ),
-    GoRoute(
-      path: DeadlineContract.path,
-      name: DeadlineContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const DeadlinePage();
-      },
-    ),
-    GoRoute(
-      path: RulesContract.path,
-      name: RulesContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const RulesPage();
-      },
-    ),
-    GoRoute(
-      path: DescriptionContract.path,
-      name: DescriptionContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const DescriptionPage();
-      },
-    ),
-    GoRoute(
-      path: VisualContract.path,
-      name: VisualContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const VisualPage();
       },
     ),
     GoRoute(
@@ -92,13 +46,6 @@ final router = GoRouter(
           emoji: params?.emoji,
           color: params?.color,
         );
-      },
-    ),
-    GoRoute(
-      path: ReserveContract.path,
-      name: ReserveContract.name,
-      builder: (BuildContext context, GoRouterState state) {
-        return const ReservePage();
       },
     ),
     GoRoute(
