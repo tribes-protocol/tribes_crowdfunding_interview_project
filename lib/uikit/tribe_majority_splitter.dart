@@ -8,11 +8,13 @@ import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 class TribeMajoritySplitter extends StatefulWidget {
   const TribeMajoritySplitter({
     super.key,
+    this.current = 1,
     required this.total,
     required this.onIncrease,
     required this.onDecrease,
   }) : assert(total >= 1, 'Signers should be more then 1');
 
+  final int current;
   final int total;
   final ValueSetter<int> onIncrease;
   final ValueSetter<int> onDecrease;
@@ -23,6 +25,19 @@ class TribeMajoritySplitter extends StatefulWidget {
 
 class _TribeMajoritySplitterState extends State<TribeMajoritySplitter> {
   int _current = 1;
+
+  @override
+  void didUpdateWidget(covariant TribeMajoritySplitter oldWidget) {
+    if (widget.current > 0 &&
+        widget.current <= widget.total &&
+        widget.current != _current) {
+      setState(() {
+        _current = widget.current;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/mapper/token_mapper.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/provider/token_list_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_empty.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_error.dart';

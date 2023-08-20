@@ -14,6 +14,8 @@ class VisualController extends StateNotifier<VisualState> {
         visualType: params.type,
         color: params.background,
       );
+    } else {
+      state = state.copyWith();
     }
   }
 

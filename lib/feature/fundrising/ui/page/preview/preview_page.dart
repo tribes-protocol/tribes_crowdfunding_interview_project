@@ -13,7 +13,6 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/provider/preview_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
@@ -123,7 +122,7 @@ class _PreviewPageState extends ConsumerState<PreviewPage> {
                         final result = await context.pushNamed<TokenResult?>(
                             TokenContract.name,
                             extra: TokenParams(
-                              name: state.name,
+                              name: state.tokenName,
                               token: state.token,
                               amount: state.money,
                             ));

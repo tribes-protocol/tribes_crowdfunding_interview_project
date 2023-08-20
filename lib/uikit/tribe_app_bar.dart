@@ -14,14 +14,17 @@ class TribeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: Spacing.triple,
+      leadingWidth: 30,
       leading: InkWell(
         onTap: onBack,
-        child: Transform.flip(
-            flipX: true,
-            child: SvgPicture.asset(
-              Assets.icons.arrowRight,
-            )),
+        child: Padding(
+          padding: const EdgeInsetsDirectional.only(start: Spacing.standard),
+          child: Transform.flip(
+              flipX: true,
+              child: SvgPicture.asset(
+                Assets.icons.arrowRight,
+              )),
+        ),
       ),
     );
   }

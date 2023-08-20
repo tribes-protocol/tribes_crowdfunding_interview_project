@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -31,12 +33,18 @@ class FundrisingPage extends ConsumerStatefulWidget {
 class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   late Map<WizardStep, _ReadyCallback> _readyProviders;
+  late ConfettiController _controllerBottomCenter;
+  static const _animationDuration = 1;
+  bool _animationPlaying = false;
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       unawaited(ref.read(fundrisingControllerProvider.notifier).init());
     });
+
+    _controllerBottomCenter = ConfettiController(
+        duration: const Duration(seconds: _animationDuration));
 
     final controller = ref.read(fundrisingControllerProvider.notifier);
 
@@ -119,6 +127,12 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
   }
 
   @override
+  void dispose() {
+    _controllerBottomCenter.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final controller = ref.watch(fundrisingControllerProvider.notifier);
     final state = ref.watch(fundrisingControllerProvider);
@@ -128,6 +142,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       body: SafeArea(
         child: Column(
           children: [
+            TribeSpaceVertical.standard(),
             TribeProgressIndicator(
                 steps: state.steps, progress: state.progress),
             Expanded(
@@ -137,32 +152,52 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
                 onGenerateRoute: FundrisingRouter.onGenerateRoute,
               ),
             ),
+            ConfettiWidget(
+                confettiController: _controllerBottomCenter,
+                blastDirection: -pi / 2,
+                emissionFrequency: 0.01,
+                numberOfParticles: 20,
+                maxBlastForce: 100,
+                minBlastForce: 80,
+                gravity: 0.3,
+                child: const SizedBox.shrink()),
             Padding(
               padding: const EdgeInsets.all(Spacing.double),
               child: TribeButton(
                 text: context.localisation.commoContinue,
                 onPressed: stepReady
                     ? () async {
-                        FocusManager.instance.primaryFocus?.unfocus();
-                        if (!state.lastStep) {
-                          controller.next();
-                        } else {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            context.replaceNamed(PreviewContract.name,
-                                extra: PreviewParams(
-                                  type: state.type!,
-                                  background: state.background!,
-                                  money: state.money!,
-                                  token: state.token!,
-                                  name: state.name!,
-                                  tokenName: state.tokenName!,
-                                  description: state.description!,
-                                  deadline: state.deadline!,
-                                  signers: state.signers,
-                                  managers: state.managers,
-                                  managersTreshold: state.managersTreshold,
-                                ));
-                          });
+                        if (!_animationPlaying) {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          if (!state.lastStep) {
+                            if (state.currentStep.step == WizardStep.goal) {
+                              _controllerBottomCenter.play();
+                              _animationPlaying = true;
+                              await Future.delayed(
+                                const Duration(seconds: _animationDuration),
+                              );
+                              _animationPlaying = false;
+                            }
+
+                            controller.next();
+                          } else {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              context.replaceNamed(PreviewContract.name,
+                                  extra: PreviewParams(
+                                    type: state.type!,
+                                    background: state.background!,
+                                    money: state.money!,
+                                    token: state.token!,
+                                    name: state.name!,
+                                    tokenName: state.tokenName!,
+                                    description: state.description!,
+                                    deadline: state.deadline!,
+                                    signers: state.signers,
+                                    managers: state.managers,
+                                    managersTreshold: state.managersTreshold,
+                                  ));
+                            });
+                          }
                         }
                       }
                     : null,

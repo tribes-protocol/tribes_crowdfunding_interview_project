@@ -98,7 +98,7 @@ class FundrisingController extends StateNotifier<FundrisingState> {
         state = state.copyWith(
             currentStep: StepNavigation(
                 step: step,
-                params: TokenParams(token: state.token!, amount: state.money!)),
+                params: TokenParams(name: state.name, token: state.token!, amount: state.money!)),
             progress: 2, lastStep: false);
         break;
       case WizardStep.deadline:

@@ -128,6 +128,7 @@ class _ManagementPageState extends ConsumerState<ManagementPage> {
                     ),
                     TribeSpaceVertical.double(),
                     TribeMajoritySplitter(
+                      current: state.treshold,
                       total: users.length + 1,
                       onIncrease: (value) {
                         controller.setTreshold(value);

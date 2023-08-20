@@ -32,6 +32,7 @@ class FundrisingRouter {
         final params = settings.arguments as TokenParams;
         page = TokentPage(
           params: TokenParams(
+            name: params.name,
             token: params.token,
             amount: params.amount,
           ),
@@ -57,11 +58,21 @@ class FundrisingRouter {
         break;
     }
 
-    return MaterialPageRoute<dynamic>(
-      builder: (context) {
-        return page!;
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page!,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1, 0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
       },
-      settings: settings,
     );
   }
 }

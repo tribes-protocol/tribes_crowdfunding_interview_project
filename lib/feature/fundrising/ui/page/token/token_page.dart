@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
-import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/provider/token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
@@ -37,7 +35,7 @@ class _TokenPageState extends ConsumerState<TokentPage> {
           .init(widget.params)
           .then((value) {
         if (widget.params.name != null) {
-          _controller.text = widget.params.name!;
+          _controller.text = widget.params.name!.split(' ').first;
         }
       }));
     });
