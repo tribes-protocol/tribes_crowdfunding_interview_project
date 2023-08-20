@@ -42,13 +42,13 @@ class TribeContactTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: 16,
-            height: 16,
+            width: Spacing.double,
+            height: Spacing.double,
             child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: context.colors.labelLight5.withOpacity(0.08)),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(Spacing.standard),
                 ),
                 child: tokenIcon),
           ),

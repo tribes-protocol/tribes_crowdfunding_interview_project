@@ -6,8 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_controller.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_state.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/provider/emoji_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
@@ -55,7 +53,7 @@ class _EmojiPageState extends ConsumerState<EmojiPage> {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(Spacing.double),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -83,7 +81,7 @@ class _EmojiPageState extends ConsumerState<EmojiPage> {
                   ),
                 ],
               ),
-              _Preview(),
+              const _Preview(),
               TribeSpaceVertical.x10(),
               Expanded(
                 child: TribeTabSwircher(tabs: [
@@ -123,9 +121,7 @@ class _EmojiPageState extends ConsumerState<EmojiPage> {
 }
 
 class _Preview extends ConsumerWidget {
-  const _Preview({
-    super.key,
-  });
+  const _Preview();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -151,7 +147,6 @@ class _Preview extends ConsumerWidget {
 
 class _EmojiPicker extends StatefulWidget {
   const _EmojiPicker({
-    super.key,
     required this.controller,
     required this.onSelected,
   });
@@ -173,7 +168,7 @@ class _EmojiPickerState extends State<_EmojiPicker> {
       },
       config: Config(
         columns: 7,
-        emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
+        emojiSizeMax: Spacing.quad * (Platform.isIOS ? 1.30 : 1.0),
         verticalSpacing: 0,
         horizontalSpacing: 0,
         gridPadding: EdgeInsets.zero,

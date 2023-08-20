@@ -6,11 +6,21 @@ class TokenContract {
 }
 
 class TokenParams {
+  final String? name;
   final Token token;
   final double amount;
 
   const TokenParams({
+    this.name,
     required this.token,
     required this.amount,
+  });
+}
+
+class TokenResult {
+  final String name;
+
+  const TokenResult({
+    required this.name,
   });
 }

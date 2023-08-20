@@ -2,15 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/deadline_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/provider/deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_app_bar.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_check_list_tile.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_divider.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class DeadlinePage extends ConsumerStatefulWidget {
-  const DeadlinePage({super.key});
+  const DeadlinePage({super.key, this.params});
+
+  final DeadlineParams? params;
 
   @override
   ConsumerState<DeadlinePage> createState() => _DeadlinePageState();
@@ -20,7 +25,8 @@ class _DeadlinePageState extends ConsumerState<DeadlinePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(ref.read(deadlineControllerProvider.notifier).init());
+      unawaited(
+          ref.read(deadlineControllerProvider.notifier).init(widget.params));
     });
     super.initState();
   }
@@ -29,79 +35,92 @@ class _DeadlinePageState extends ConsumerState<DeadlinePage> {
   Widget build(BuildContext context) {
     final controller = ref.watch(deadlineControllerProvider.notifier);
     final state = ref.watch(deadlineControllerProvider);
+    Future<bool> onBack() async {
+      context.pop(DeadlineResult(
+        deadline: state.deadline!,
+      ));
+      return true;
+    }
 
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  context.localisation.deadlineTitle,
-                  style: context.textStyles.header4,
-                ),
-                TribeSpaceVertical.double(),
-                Text(
-                  context.localisation.deadlineSubtitle,
-                  style: context.textStyles.body,
-                ),
-                const TribeDivider(),
-                ListView(
-                  shrinkWrap: true,
-                  children: state.deadlines
-                      .map(
-                        (days) => TribeCheckListTile(
-                          title: context.localisation.days(days),
-                          checked: days == state.selected,
-                          onChecked: (checked) {
-                            if (checked) {
-                              controller.onDeadlineSected(days);
-                            }
-                          },
-                        ),
-                      )
-                      .toList(),
-                ),
-                if (state.customDeadline != null)
-                  TribeCheckListTile(
-                    title: context.localisation.days(state.customDeadline!),
-                    checked: state.customDeadline == state.selected,
-                    onChecked: (checked) {
-                      if (checked) {
-                        controller.onDeadlineSected(state.customDeadline!);
-                      }
-                    },
-                  ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: InkWell(
-                    child: Text(
-                      context.localisation.deadlineChooseDate,
+    return WillPopScope(
+        onWillPop: onBack,
+        child: Scaffold(
+          appBar: widget.params != null
+              ? TribeAppBar(
+                  onBack: onBack,
+                )
+              : null,
+          body: SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localisation.deadlineTitle,
+                      style: context.textStyles.header4,
+                    ),
+                    TribeSpaceVertical.double(),
+                    Text(
+                      context.localisation.deadlineSubtitle,
                       style: context.textStyles.body,
                     ),
-                    onTap: () async {
-                      final now = DateTime.now();
-                      final deadline = await showDatePicker(
-                          context: context,
-                          initialDate: now,
-                          firstDate: now,
-                          lastDate: now.add(const Duration(days: 60)));
+                    const TribeDivider(),
+                    ListView(
+                      shrinkWrap: true,
+                      children: state.deadlines
+                          .map(
+                            (days) => TribeCheckListTile(
+                              title: context.localisation.days(days),
+                              checked: days == state.selected,
+                              onChecked: (checked) {
+                                if (checked) {
+                                  controller.onDeadlineSected(days);
+                                }
+                              },
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    if (state.customDeadline != null)
+                      TribeCheckListTile(
+                        title: context.localisation.days(state.customDeadline!),
+                        checked: state.customDeadline == state.selected,
+                        onChecked: (checked) {
+                          if (checked) {
+                            controller.onDeadlineSected(state.customDeadline!);
+                          }
+                        },
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Spacing.double, vertical: Spacing.standard),
+                      child: InkWell(
+                        child: Text(
+                          context.localisation.deadlineChooseDate,
+                          style: context.textStyles.body,
+                        ),
+                        onTap: () async {
+                          final now = DateTime.now();
+                          final deadline = await showDatePicker(
+                              context: context,
+                              initialDate: now,
+                              firstDate: now,
+                              lastDate: now.add(const Duration(days: 60)));
 
-                      controller.setCustomDeadline(
-                        deadline?.difference(now).inDays,
-                      );
-                    },
-                  ),
+                          controller.setCustomDeadline(
+                            deadline?.difference(now).inDays,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

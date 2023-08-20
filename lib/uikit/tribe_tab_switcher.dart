@@ -60,7 +60,7 @@ class _TribeTabSwircherState extends State<TribeTabSwircher> with SingleTickerPr
           decoration: BoxDecoration(
             color: context.colors.labelLight6,
             borderRadius: BorderRadius.circular(
-              24,
+              Spacing.triple,
             ),
           ),
           child: TabBar(
@@ -72,7 +72,7 @@ class _TribeTabSwircherState extends State<TribeTabSwircher> with SingleTickerPr
             },
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(
-                24.0,
+                Spacing.triple,
               ),
               color: context.colors.labelLight1,
             ),

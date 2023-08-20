@@ -1,19 +1,14 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:emojis/emoji.dart';
 import 'package:flutter/material.dart';
-import 'package:emojis/emojis.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/emoji/emoji_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/provider/visual_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_app_bar.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
@@ -65,7 +60,7 @@ class _VisualPageState extends ConsumerState<VisualPage> {
             : null,
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
             child: Center(
               child: ListView(
                     shrinkWrap: true,

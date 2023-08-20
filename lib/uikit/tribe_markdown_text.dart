@@ -20,7 +20,7 @@ class TribeMarkdownText extends StatelessWidget {
       ),
       child: Markdown(
         selectable: true,
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(Spacing.standard),
         data: data,
       ),
     );

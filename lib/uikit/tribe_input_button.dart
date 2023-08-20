@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class TribeInputButton extends StatelessWidget {
   const TribeInputButton({
@@ -18,11 +19,11 @@ class TribeInputButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: context.colors.labelLight6,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(Spacing.half),
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 10,
-          horizontal: 8,
+          horizontal: Spacing.standard,
         ),
         child: Text(
           hint,

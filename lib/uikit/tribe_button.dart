@@ -46,7 +46,7 @@ class TribeButton extends StatelessWidget {
                 color: type == TribeButtonType.black
                     ? context.colors.labelDark1
                     : context.colors.labelLight1,
-                fontSize: 16,
+                fontSize: Spacing.double,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w700,
                 height: 1.50,

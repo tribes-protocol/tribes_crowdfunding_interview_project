@@ -12,9 +12,6 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/Vector.svg
-  String get vector => 'assets/icons/Vector.svg';
-
   /// File path: assets/icons/add_circle.svg
   String get addCircle => 'assets/icons/add_circle.svg';
 
@@ -47,7 +44,6 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
-        vector,
         addCircle,
         arrowRight,
         close,

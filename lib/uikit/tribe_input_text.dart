@@ -1,7 +1,7 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class TribeInputText extends StatefulWidget {
   const TribeInputText({
@@ -10,6 +10,7 @@ class TribeInputText extends StatefulWidget {
     this.prefix,
     this.suffix,
     this.hint,
+    this.intial,
     this.error,
     this.autofocus = false,
     this.autocorrect = false,
@@ -23,6 +24,7 @@ class TribeInputText extends StatefulWidget {
   final String? suffix;
   final String? hint;
   final String? error;
+  final String? intial;
   final bool autofocus;
   final bool autocorrect;
   final TextInputType? keyboardType;
@@ -43,6 +45,7 @@ class _TribeInputTextState extends State<TribeInputText> {
 
   @override
   void initState() {
+    _activeController.text = widget.intial ?? '';
     _activeController.addListener(() => setState(() {
           final text = _activeController.text;
           widget.onValueChange?.call(text);
@@ -61,6 +64,7 @@ class _TribeInputTextState extends State<TribeInputText> {
     if (widget.prefix != oldWidget.prefix ||
         widget.suffix != oldWidget.suffix ||
         widget.error != oldWidget.error ||
+        widget.intial != oldWidget.intial ||
         widget.hint != oldWidget.hint) {
       setState(() {});
     }
@@ -72,7 +76,7 @@ class _TribeInputTextState extends State<TribeInputText> {
     final prefix = widget.prefix;
     final suffix = widget.suffix;
     final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(Spacing.standard),
       borderSide: BorderSide(
         color: context.colors.labelLight6,
       ),
@@ -81,7 +85,6 @@ class _TribeInputTextState extends State<TribeInputText> {
 
     return TextField(
       controller: _activeController,
-      autofocus: widget.autofocus,
       keyboardType: widget.keyboardType,
       autocorrect: widget.autocorrect,
       textCapitalization: TextCapitalization.characters,
@@ -104,11 +107,11 @@ class _TribeInputTextState extends State<TribeInputText> {
             : null,
         hintText: widget.hint,
         prefixStyle: context.textStyles.header4.copyWith(
-                fontWeight: FontWeight.w400,
-              ),
+          fontWeight: FontWeight.w400,
+        ),
         suffixStyle: context.textStyles.body,
         errorText: widget.error,
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(Spacing.double),
         filled: true,
         fillColor: context.colors.labelLight6,
         border: border,

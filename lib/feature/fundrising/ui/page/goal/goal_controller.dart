@@ -5,6 +5,7 @@ import 'package:tribes_crowdfunding_interview_project/core/extension/future_exte
 import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/token_type.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/repository/token_repository.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_state.dart';
 
 class GoalController extends StateNotifier<GoalState> {
@@ -15,10 +16,19 @@ class GoalController extends StateNotifier<GoalState> {
 
   final TokenRepository _tokenRepository;
 
-  Future<void> init() {
-    return _tokenRepository.getToken(TokenType.eth).toAsyncValue().then(
-          (value) => state = state.copyWith(token: value),
-        );
+  Future<void> init(GoalParams? params) async {
+    if (params != null) {
+      state = state.copyWith(
+        token: AsyncValue.data(params.token),
+        money: params.money,
+        crypto: params.crypto,
+        moneyEditing: true,
+      );
+    } else {
+      await _tokenRepository.getToken(TokenType.eth).toAsyncValue().then(
+            (value) => state = state.copyWith(token: value),
+          );
+    }
   }
 
   void onTokenChanged(Token token) {

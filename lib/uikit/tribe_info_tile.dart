@@ -54,7 +54,7 @@ class TribeInfoTile extends StatelessWidget {
                       suffixSubtitle!,
                       textAlign: TextAlign.end,
                       style: context.textStyles.secondary.copyWith(
-                        fontSize: suffixTitle == null ? 16 : 13,
+                        fontSize: suffixTitle == null ? Spacing.double : 13,
                         color: context.colors.labelLight2,
                       ),
                     ),
@@ -63,8 +63,8 @@ class TribeInfoTile extends StatelessWidget {
               TribeSpaceHorizontal.standard(),
               SvgPicture.asset(
                 Assets.icons.arrowRight,
-                height: 24,
-                width: 24,
+                height: Spacing.triple,
+                width: Spacing.triple,
               ),
             ],
           ),

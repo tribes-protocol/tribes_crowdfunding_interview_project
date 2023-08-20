@@ -1,6 +1,7 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class TribeMoneyInputText extends StatefulWidget {
   const TribeMoneyInputText({
@@ -63,7 +64,7 @@ class _TribeMoneyInputTextState extends State<TribeMoneyInputText> {
     final prefix = widget.prefix;
     final suffix = widget.suffix;
     final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(Spacing.standard),
       borderSide: BorderSide(
         color: context.colors.labelLight6,
       ),
@@ -72,7 +73,6 @@ class _TribeMoneyInputTextState extends State<TribeMoneyInputText> {
 
     return TextField(
       controller: _activeController,
-      autofocus: widget.autofocus,
       keyboardType: TextInputType.number,
       autocorrect: false,
       textCapitalization: TextCapitalization.characters,
@@ -100,7 +100,7 @@ class _TribeMoneyInputTextState extends State<TribeMoneyInputText> {
         hintText: widget.hint,
         prefixStyle: context.textStyles.header4,
         suffixStyle: context.textStyles.body,
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(Spacing.double),
         filled: true,
         fillColor: context.colors.labelLight6,
         border: border,

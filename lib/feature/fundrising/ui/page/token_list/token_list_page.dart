@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
-import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
-import 'package:tribes_crowdfunding_interview_project/domain/model/token_type.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/mapper/token_mapper.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/provider/token_list_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_empty.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_error.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_input_search.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_loading.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_tile.dart';
 
 class TokenListPage extends ConsumerStatefulWidget {
@@ -37,7 +37,7 @@ class _TokenListPageState extends ConsumerState<TokenListPage> {
       appBar: AppBar(),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(Spacing.triple),
         child: state.tokens.map(
           data: (data) {
             final tokens = state.filteredTokens;
@@ -60,6 +60,7 @@ class _TokenListPageState extends ConsumerState<TokenListPage> {
                         final token = tokens[index];
 
                         return TribeTile(
+                          key: ValueKey(token.type.name),
                           icon: mapper.mapTokenIcon(token.type),
                           title: mapper.mapTokeName(token.type),
                           suffix: const SizedBox.shrink(),

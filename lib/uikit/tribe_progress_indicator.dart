@@ -139,7 +139,7 @@ class _Step extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 4,
+      height: Spacing.half,
       decoration: ShapeDecoration(
         color: selected
             ? context.colors.indicatorColor

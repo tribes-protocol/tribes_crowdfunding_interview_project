@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/intro/intro_page.dart';
 import 'package:tribes_crowdfunding_interview_project/router.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/colors/tribe_color_schema.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';

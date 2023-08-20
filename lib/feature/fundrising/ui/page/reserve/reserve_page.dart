@@ -6,11 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/user.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/provider/reserve_provider.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_controller.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_state.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/user_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
-import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_input_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_percentage_tile.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
@@ -40,7 +37,7 @@ class _ReservePageState extends ConsumerState<ReservePage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
             child: ListView(
               shrinkWrap: true,
               children: [
@@ -94,7 +91,6 @@ class _ReservePageState extends ConsumerState<ReservePage> {
 
 class _UserList extends ConsumerWidget {
   const _UserList({
-    super.key,
     required this.users,
     required this.portion,
     required this.onRemoveUser,

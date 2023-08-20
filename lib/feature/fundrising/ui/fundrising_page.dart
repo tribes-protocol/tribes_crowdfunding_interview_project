@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +11,6 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/provider/management_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/provider/preview_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/provider/reserve_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/provider/rules_provider.dart';
@@ -21,6 +19,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/provider/fundrising_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_progress_indicator.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class FundrisingPage extends ConsumerStatefulWidget {
   const FundrisingPage({super.key});
@@ -57,7 +56,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       WizardStep.visual: () =>
           ref.watch(visualControllerProvider.select((value) => true)),
       WizardStep.reserve: () =>
-          ref.watch(reserveControllerProvider.select((value) => true)),
+          ref.watch(reserveControllerProvider.select((value) => value.ready)),
       WizardStep.management: () =>
           ref.watch(managementControllerProvider.select((value) => true)),
     };
@@ -82,7 +81,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
 
     ref.listenManual(descriptionControllerProvider, (previous, next) {
       if (next.ready) {
-        controller.setDescription(next.description!);
+        controller.setDescription(next.description);
       }
     });
 
@@ -97,7 +96,9 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
     });
 
     ref.listenManual(reserveControllerProvider, (previous, next) {
-      controller.setSigners(next.users);
+      if (next.ready) {
+        controller.setSigners(next.users);
+      }
     });
 
     ref.listenManual(managementControllerProvider, (previous, next) {
@@ -137,16 +138,16 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(Spacing.double),
               child: TribeButton(
                 text: context.localisation.commoContinue,
                 onPressed: stepReady
-                    ? () {
+                    ? () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         if (!state.lastStep) {
                           controller.next();
                         } else {
-                          WidgetsBinding.instance
-                              .addPostFrameCallback((_) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
                             context.replaceNamed(PreviewContract.name,
                                 extra: PreviewParams(
                                   type: state.type!,

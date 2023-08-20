@@ -72,9 +72,9 @@ class _TribeMajoritySplitterState extends State<TribeMajoritySplitter> {
             }
           },
           child: SvgPicture.asset(
-            Assets.icons.vector,
-            width: 24,
-            height: 24,
+            Assets.icons.addCircle,
+            width: Spacing.triple,
+            height: Spacing.triple,
             colorFilter: _current >= 1 && _current < widget.total
                 ? ColorFilter.mode(
                     context.colors.indicatorColor, BlendMode.srcIn)

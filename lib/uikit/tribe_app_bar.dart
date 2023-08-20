@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class TribeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TribeAppBar({
@@ -14,7 +14,7 @@ class TribeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: 24,
+      leadingWidth: Spacing.triple,
       leading: InkWell(
         onTap: onBack,
         child: Transform.flip(

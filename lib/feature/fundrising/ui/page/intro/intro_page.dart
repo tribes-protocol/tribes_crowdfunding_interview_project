@@ -31,10 +31,10 @@ class _IntroPageState extends ConsumerState<IntroPage> {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.fromLTRB(
-          16,
-          24,
-          16,
-          16,
+          Spacing.double,
+          Spacing.triple,
+          Spacing.double,
+          Spacing.double,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class _IntroPageState extends ConsumerState<IntroPage> {
                 height: 240,
                 decoration: BoxDecoration(
                   color: context.colors.labelLight6,
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(Spacing.half),
                 ),
               ),
             ),
@@ -75,7 +75,7 @@ class _IntroPageState extends ConsumerState<IntroPage> {
             ),
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(Spacing.double),
               child: TribeButton(
                   text: context.localisation.commonStart,
                   onPressed: () {

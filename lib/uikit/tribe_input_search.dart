@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
 class TribeInputSearch extends StatefulWidget {
   const TribeInputSearch({
@@ -70,8 +71,8 @@ class _TribeInputSearchState extends State<TribeInputSearch> {
             ),
           ),
           PositionedDirectional(
-            top: 12,
-            end: 8,
+            top: Spacing.oneAndHalf,
+            end: Spacing.standard,
               child: InkWell(
                 onTap: () {
                   _controller.text = '';
@@ -80,8 +81,8 @@ class _TribeInputSearchState extends State<TribeInputSearch> {
                           angle: 45,
                           child: SvgPicture.asset(
                 Assets.icons.closeCircle,
-                width: 24,
-                height: 24,
+                width: Spacing.triple,
+                height: Spacing.triple,
                           ),
                         ),
               ))

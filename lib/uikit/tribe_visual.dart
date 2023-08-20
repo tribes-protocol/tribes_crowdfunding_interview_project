@@ -73,8 +73,8 @@ class _TribeVisualState extends State<TribeVisual> {
               onTap: widget.onShufflePressed,
               child: SvgPicture.asset(
                 Assets.icons.shuffle,
-                width: 24,
-                height: 24,
+                width: Spacing.triple,
+                height: Spacing.triple,
               ))
         ]
       ],

@@ -48,8 +48,8 @@ class TribeCheckListRichTile extends StatelessWidget {
           TribeSpaceHorizontal.standard(),
           SvgPicture.asset(
             Assets.icons.arrowRight,
-            height: 24,
-            width: 24,
+            height: Spacing.triple,
+            width: Spacing.triple,
           ),
         ],
       ),

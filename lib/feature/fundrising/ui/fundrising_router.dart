@@ -7,8 +7,6 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/management_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/management_page.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/project_page.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/reserve/reserve_contract.dart';
@@ -33,8 +31,10 @@ class FundrisingRouter {
       case TokenContract.name:
         final params = settings.arguments as TokenParams;
         page = TokentPage(
-          token: params.token,
-          amount: params.amount,
+          params: TokenParams(
+            token: params.token,
+            amount: params.amount,
+          ),
         );
         break;
       case DeadlineContract.name:

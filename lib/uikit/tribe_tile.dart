@@ -52,8 +52,8 @@ class TribeTile extends StatelessWidget {
           suffix ??
               SvgPicture.asset(
                 Assets.icons.arrowRight,
-                width: 24,
-                height: 24,
+                width: Spacing.triple,
+                height: Spacing.triple,
               )
         ],
       ),

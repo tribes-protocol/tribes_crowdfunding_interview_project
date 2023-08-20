@@ -8,7 +8,7 @@ class ProjectState with _$ProjectState {
     @Default('') String projectName,
   }) = _ProjectState;
 
-  bool get ready => projectName.replaceAll(' ', '').isNotEmpty;
+  bool get ready => projectName.replaceAll(' ', '').length >= 3;
 
   const ProjectState._();
 }

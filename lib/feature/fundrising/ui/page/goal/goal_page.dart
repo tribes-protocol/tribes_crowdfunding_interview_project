@@ -4,18 +4,24 @@ import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/mapper/token_mapper.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/goal_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
+import 'package:tribes_crowdfunding_interview_project/uikit/tribe_app_bar.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_error.dart';
-import 'package:tribes_crowdfunding_interview_project/uikit/tribe_input_text.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_loading.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_money_input.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_tile.dart';
 
 class GoalPage extends ConsumerStatefulWidget {
-  const GoalPage({super.key});
+  const GoalPage({
+    super.key,
+    this.params,
+  });
+
+  final GoalParams? params;
 
   @override
   ConsumerState<GoalPage> createState() => _GoalPageState();
@@ -30,7 +36,14 @@ class _GoalPageState extends ConsumerState<GoalPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(goalControllerProvider.notifier).init();
+      ref
+          .read(goalControllerProvider.notifier)
+          .init(widget.params)
+          .then((value) {
+        if (widget.params != null) {
+          _moneyController.text = widget.params!.money.toStringAsFixed(2);
+        }
+      });
     });
 
     ref.listenManual(goalControllerProvider, (previous, next) {
@@ -58,82 +71,93 @@ class _GoalPageState extends ConsumerState<GoalPage> {
     final tokenMapper = ref.watch(tokenMapperProvider);
     final controller = ref.watch(goalControllerProvider.notifier);
     final state = ref.watch(goalControllerProvider);
+    Future<bool> onBack() async {
+      context.pop(GoalResult(
+          token: state.token.value!, money: state.money, crypto: state.crypto));
+      return true;
+    }
 
-    return Scaffold(
-      body: SafeArea(
-        child: state.token.map(
-          data: (data) {
-            final token = data.value;
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    Text(
-                      context.localisation.fundingTitle,
-                      style: context.textStyles.header4,
-                    ),
-                    TribeSpaceVertical.double(),
-                    Text(
-                      context.localisation.fundingSubtitle,
-                      style: context.textStyles.body,
-                    ),
-                    TribeSpaceVertical.double(),
-                    Focus(
-                      onFocusChange: (value) {
-                        controller.onMoneySelected(value);
-                      },
-                      child: TribeMoneyInputText(
-                        autofocus: true,
-                        controller: _moneyController,
-                        suffix: 'USD',
-                        onValueChange: (value) {
-                          controller.onMoneyChange(double.tryParse(value));
-                        },
-                      ),
-                    ),
-                    TribeSpaceVertical.half(),
-                    Focus(
-                      onFocusChange: (value) {
-                        controller.onMoneySelected(!value);
-                      },
-                      child: TribeMoneyInputText(
-                        controller: _cryptoController,
-                        suffix: token.type.name.toUpperCase(),
-                        onValueChange: (value) {
-                          controller.onCryptoChange(double.tryParse(value));
-                        },
-                      ),
-                    ),
-                    TribeTile(
-                      icon: tokenMapper.mapTokenIcon(token.type),
-                      title: context.localisation.fundingIn,
-                      subtitle: Text(
-                        tokenMapper.mapTokeName(token.type),
-                        style: context.textStyles.body.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: context.colors.labelLight1),
-                      ),
-                      onPressed: () async {
-                        final token = await context
-                            .pushNamed<Token?>(TokenListContract.name);
-                        if (token == null) {
-                          return;
-                        }
+    return WillPopScope(
+        onWillPop: onBack,
+        child: Scaffold(
+          appBar: widget.params != null
+              ? TribeAppBar(
+                  onBack: onBack,
+                )
+              : null,
+          body: SafeArea(
+            child: state.token.map(
+              data: (data) {
+                final token = data.value;
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        Text(
+                          context.localisation.fundingTitle,
+                          style: context.textStyles.header4,
+                        ),
+                        TribeSpaceVertical.double(),
+                        Text(
+                          context.localisation.fundingSubtitle,
+                          style: context.textStyles.body,
+                        ),
+                        TribeSpaceVertical.double(),
+                        Focus(
+                          onFocusChange: (value) {
+                            controller.onMoneySelected(value);
+                          },
+                          child: TribeMoneyInputText(
+                            controller: _moneyController,
+                            suffix: 'USD',
+                            onValueChange: (value) {
+                              controller.onMoneyChange(double.tryParse(value));
+                            },
+                          ),
+                        ),
+                        TribeSpaceVertical.half(),
+                        Focus(
+                          onFocusChange: (value) {
+                            controller.onMoneySelected(!value);
+                          },
+                          child: TribeMoneyInputText(
+                            controller: _cryptoController,
+                            suffix: token.type.name.toUpperCase(),
+                            onValueChange: (value) {
+                              controller.onCryptoChange(double.tryParse(value));
+                            },
+                          ),
+                        ),
+                        TribeTile(
+                          icon: tokenMapper.mapTokenIcon(token.type),
+                          title: context.localisation.fundingIn,
+                          subtitle: Text(
+                            tokenMapper.mapTokeName(token.type),
+                            style: context.textStyles.body.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: context.colors.labelLight1),
+                          ),
+                          onPressed: () async {
+                            final token = await context
+                                .pushNamed<Token?>(TokenListContract.name);
+                            if (token == null) {
+                              return;
+                            }
 
-                        controller.onTokenChanged(token);
-                      },
-                    )
-                  ],
-                ),
-              ),
-            );
-          },
-          error: (_) => const TribeError(),
-          loading: (_) => const TribeLoading(),
-        ),
-      ),
-    );
+                            controller.onTokenChanged(token);
+                          },
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+              error: (_) => const TribeError(),
+              loading: (_) => const TribeLoading(),
+            ),
+          ),
+        ));
   }
 }

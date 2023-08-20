@@ -23,7 +23,7 @@ class _TribeMultiLineTextFieldState extends State<TribeMultiLineTextField> {
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(Spacing.standard),
       borderSide: BorderSide(
         color: context.colors.labelLight6,
       ),

@@ -41,7 +41,7 @@ class TribePercentageTile extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(
                 vertical: 10,
-                horizontal: 8,
+                horizontal: Spacing.standard,
               ),
               decoration: BoxDecoration(
                 color: context.colors.baseContent,
@@ -50,7 +50,7 @@ class TribePercentageTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (icon != null) ...[
-                    SizedBox(width: 24, height: 24, child: icon!),
+                    SizedBox(width: Spacing.triple, height: Spacing.triple, child: icon!),
                     TribeSpaceHorizontal.half(),
                   ],
                   Expanded(
@@ -69,8 +69,8 @@ class TribePercentageTile extends StatelessWidget {
                         onTap: onClose,
                         child: SvgPicture.asset(
                           Assets.icons.close,
-                          width: 16,
-                          height: 16,
+                          width: Spacing.double,
+                          height: Spacing.double,
                         ),
                       ),
                     ),
@@ -83,7 +83,7 @@ class TribePercentageTile extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
-                  horizontal: 8,
+                  horizontal: Spacing.standard,
                 ),
                 child: Text(
                   '$amount %',

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:tribes_crowdfunding_interview_project/core/extension/future_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/repository/token_repository.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/token_list_state.dart';
 
 class TokenListController extends StateNotifier<TokenListState> {

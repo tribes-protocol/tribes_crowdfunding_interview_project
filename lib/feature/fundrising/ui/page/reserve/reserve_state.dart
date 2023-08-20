@@ -12,5 +12,7 @@ class ReserveState with _$ReserveState {
 
   double get procentage => users.length * portion;
 
-    const ReserveState._();
+  bool get ready => true;
+
+  const ReserveState._();
 }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
-import 'package:tribes_crowdfunding_interview_project/data/provider/repository_provider.dart';
-import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
-import 'package:tribes_crowdfunding_interview_project/domain/model/token_type.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/mapper/token_mapper.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token_list/provider/token_list_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/user_list/provider/user_list_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/theme/tribe_theme.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_empty.dart';
@@ -41,7 +37,7 @@ class _UserListPageState extends ConsumerState<UserListPage> {
       appBar: AppBar(),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(Spacing.triple),
         child: state.users.map(
           data: (data) {
             final users = state.filteredUsers;
@@ -73,12 +69,12 @@ class _UserListPageState extends ConsumerState<UserListPage> {
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: 16,
-                                  height: 16,
+                                  width: Spacing.double,
+                                  height: Spacing.double,
                                   child: tokenMapper.mapTokenIcon(user.tokenType),
                                 ),
                                 TribeSpaceHorizontal.half(),
-                                Text('0x1a2b·3c4d', style: context.textStyles.secondary,)
+                                Text(user.wallet, style: context.textStyles.secondary,)
                               ],
                             ),
                           ),
