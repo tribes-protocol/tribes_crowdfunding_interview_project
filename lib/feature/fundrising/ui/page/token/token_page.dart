@@ -63,7 +63,7 @@ class _TokenPageState extends ConsumerState<TokentPage> {
     return WillPopScope(
         onWillPop: onBack,
         child: Scaffold(
-          appBar: widget.params.name != null
+          appBar: widget.params.standalone
               ? TribeAppBar(
                   onBack: onBack,
                 )

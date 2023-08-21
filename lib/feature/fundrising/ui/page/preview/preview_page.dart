@@ -125,6 +125,7 @@ class _PreviewPageState extends ConsumerState<PreviewPage> {
                               name: state.tokenName,
                               token: state.token,
                               amount: state.money,
+                              standalone: true,
                             ));
 
                         if (result != null) {

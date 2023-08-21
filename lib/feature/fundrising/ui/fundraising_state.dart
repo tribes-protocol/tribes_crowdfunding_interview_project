@@ -5,7 +5,7 @@ import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/user.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_visual.dart';
 
-part 'fundrising_state.freezed.dart';
+part 'fundraising_state.freezed.dart';
 
 enum WizardStep {
   goal,
@@ -30,8 +30,8 @@ class StepNavigation {
 }
 
 @freezed
-class FundrisingState with _$FundrisingState {
-  const factory FundrisingState({
+class FundraisingState with _$FundraisingState {
+  const factory FundraisingState({
     required int steps,
     required int progress,
     TribeVisualType? type,
@@ -48,5 +48,5 @@ class FundrisingState with _$FundrisingState {
     @Default(false) lastStep,
     @Default(WizardStep.goal) WizardStep initialStep,
     @Default(StepNavigation(step: WizardStep.goal)) StepNavigation currentStep,
-  }) = _FundrisingState;
+  }) = _FundraisingState;
 }

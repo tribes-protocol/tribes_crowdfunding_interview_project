@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fundrising_state.dart';
+part of 'fundraising_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FundrisingState {
+mixin _$FundraisingState {
   int get steps => throw _privateConstructorUsedError;
   int get progress => throw _privateConstructorUsedError;
   TribeVisualType? get type => throw _privateConstructorUsedError;
@@ -34,15 +34,15 @@ mixin _$FundrisingState {
   StepNavigation get currentStep => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FundrisingStateCopyWith<FundrisingState> get copyWith =>
+  $FundraisingStateCopyWith<FundraisingState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FundrisingStateCopyWith<$Res> {
-  factory $FundrisingStateCopyWith(
-          FundrisingState value, $Res Function(FundrisingState) then) =
-      _$FundrisingStateCopyWithImpl<$Res, FundrisingState>;
+abstract class $FundraisingStateCopyWith<$Res> {
+  factory $FundraisingStateCopyWith(
+          FundraisingState value, $Res Function(FundraisingState) then) =
+      _$FundraisingStateCopyWithImpl<$Res, FundraisingState>;
   @useResult
   $Res call(
       {int steps,
@@ -67,9 +67,9 @@ abstract class $FundrisingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
-    implements $FundrisingStateCopyWith<$Res> {
-  _$FundrisingStateCopyWithImpl(this._value, this._then);
+class _$FundraisingStateCopyWithImpl<$Res, $Val extends FundraisingState>
+    implements $FundraisingStateCopyWith<$Res> {
+  _$FundraisingStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -190,11 +190,11 @@ class _$FundrisingStateCopyWithImpl<$Res, $Val extends FundrisingState>
 }
 
 /// @nodoc
-abstract class _$$_FundrisingStateCopyWith<$Res>
-    implements $FundrisingStateCopyWith<$Res> {
-  factory _$$_FundrisingStateCopyWith(
-          _$_FundrisingState value, $Res Function(_$_FundrisingState) then) =
-      __$$_FundrisingStateCopyWithImpl<$Res>;
+abstract class _$$_FundraisingStateCopyWith<$Res>
+    implements $FundraisingStateCopyWith<$Res> {
+  factory _$$_FundraisingStateCopyWith(
+          _$_FundraisingState value, $Res Function(_$_FundraisingState) then) =
+      __$$_FundraisingStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -222,11 +222,11 @@ abstract class _$$_FundrisingStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FundrisingStateCopyWithImpl<$Res>
-    extends _$FundrisingStateCopyWithImpl<$Res, _$_FundrisingState>
-    implements _$$_FundrisingStateCopyWith<$Res> {
-  __$$_FundrisingStateCopyWithImpl(
-      _$_FundrisingState _value, $Res Function(_$_FundrisingState) _then)
+class __$$_FundraisingStateCopyWithImpl<$Res>
+    extends _$FundraisingStateCopyWithImpl<$Res, _$_FundraisingState>
+    implements _$$_FundraisingStateCopyWith<$Res> {
+  __$$_FundraisingStateCopyWithImpl(
+      _$_FundraisingState _value, $Res Function(_$_FundraisingState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -249,7 +249,7 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
     Object? initialStep = null,
     Object? currentStep = null,
   }) {
-    return _then(_$_FundrisingState(
+    return _then(_$_FundraisingState(
       steps: null == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
@@ -317,8 +317,8 @@ class __$$_FundrisingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FundrisingState implements _FundrisingState {
-  const _$_FundrisingState(
+class _$_FundraisingState implements _FundraisingState {
+  const _$_FundraisingState(
       {required this.steps,
       required this.progress,
       this.type,
@@ -391,14 +391,14 @@ class _$_FundrisingState implements _FundrisingState {
 
   @override
   String toString() {
-    return 'FundrisingState(steps: $steps, progress: $progress, type: $type, background: $background, money: $money, token: $token, name: $name, tokenName: $tokenName, description: $description, deadline: $deadline, signers: $signers, managers: $managers, managersTreshold: $managersTreshold, lastStep: $lastStep, initialStep: $initialStep, currentStep: $currentStep)';
+    return 'FundraisingState(steps: $steps, progress: $progress, type: $type, background: $background, money: $money, token: $token, name: $name, tokenName: $tokenName, description: $description, deadline: $deadline, signers: $signers, managers: $managers, managersTreshold: $managersTreshold, lastStep: $lastStep, initialStep: $initialStep, currentStep: $currentStep)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FundrisingState &&
+            other is _$_FundraisingState &&
             (identical(other.steps, steps) || other.steps == steps) &&
             (identical(other.progress, progress) ||
                 other.progress == progress) &&
@@ -448,12 +448,12 @@ class _$_FundrisingState implements _FundrisingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FundrisingStateCopyWith<_$_FundrisingState> get copyWith =>
-      __$$_FundrisingStateCopyWithImpl<_$_FundrisingState>(this, _$identity);
+  _$$_FundraisingStateCopyWith<_$_FundraisingState> get copyWith =>
+      __$$_FundraisingStateCopyWithImpl<_$_FundraisingState>(this, _$identity);
 }
 
-abstract class _FundrisingState implements FundrisingState {
-  const factory _FundrisingState(
+abstract class _FundraisingState implements FundraisingState {
+  const factory _FundraisingState(
       {required final int steps,
       required final int progress,
       final TribeVisualType? type,
@@ -469,7 +469,7 @@ abstract class _FundrisingState implements FundrisingState {
       final int managersTreshold,
       final dynamic lastStep,
       final WizardStep initialStep,
-      final StepNavigation currentStep}) = _$_FundrisingState;
+      final StepNavigation currentStep}) = _$_FundraisingState;
 
   @override
   int get steps;
@@ -505,6 +505,6 @@ abstract class _FundrisingState implements FundrisingState {
   StepNavigation get currentStep;
   @override
   @JsonKey(ignore: true)
-  _$$_FundrisingStateCopyWith<_$_FundrisingState> get copyWith =>
+  _$$_FundraisingStateCopyWith<_$_FundraisingState> get copyWith =>
       throw _privateConstructorUsedError;
 }

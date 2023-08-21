@@ -31,9 +31,13 @@ class _DescriptionPageState extends ConsumerState<DescriptionPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(
-          ref.read(descriptionControllerProvider.notifier).init(widget.params));
-      _controller.text = widget.params?.description ?? '';
+      final controller = ref.read(descriptionControllerProvider.notifier);
+      final state = ref.read(descriptionControllerProvider);
+      unawaited(controller.init(widget.params));
+      final description = widget.params?.description ?? state.description;
+
+      _controller.text = description;
+      controller.setDescription(description);
     });
 
     super.initState();

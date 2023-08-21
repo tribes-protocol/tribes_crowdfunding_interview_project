@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_router.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_state.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundraising_router.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundraising_state.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/provider/deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/provider/description_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
@@ -20,20 +20,20 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/provider/rules_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/provider/token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/provider/visual_provider.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/provider/fundrising_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/provider/fundraising_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_progress_indicator.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
 
-class FundrisingPage extends ConsumerStatefulWidget {
-  const FundrisingPage({super.key});
+class FundraisingPage extends ConsumerStatefulWidget {
+  const FundraisingPage({super.key});
 
   @override
-  ConsumerState<FundrisingPage> createState() => _FundrisingPagePageState();
+  ConsumerState<FundraisingPage> createState() => _FundrisingPagePageState();
 }
 
-class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
+class _FundrisingPagePageState extends ConsumerState<FundraisingPage> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   late Map<WizardStep, _ReadyCallback> _readyProviders;
   late ConfettiController _controllerBottomCenter;
@@ -43,13 +43,13 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(ref.read(fundrisingControllerProvider.notifier).init());
+      unawaited(ref.read(fundraisingControllerProvider.notifier).init());
     });
 
     _controllerBottomCenter = ConfettiController(
         duration: const Duration(seconds: _animationDuration));
 
-    final controller = ref.read(fundrisingControllerProvider.notifier);
+    final controller = ref.read(fundraisingControllerProvider.notifier);
 
     _readyProviders = {
       WizardStep.goal: () =>
@@ -100,6 +100,12 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
       controller.setVisual(next.visualType, next.color);
     });
 
+    ref.listenManual(rulesControllerProvider, (previous, next) {
+      if (next.ready) {
+        controller.setRules(next.overfunding, next.underfunding);
+      }
+    });
+
     ref.listenManual(deadlineControllerProvider, (previous, next) {
       if (next.ready) {
         controller.setDeadline(next.deadline!);
@@ -117,7 +123,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
     });
 
     ref.listenManual(
-        fundrisingControllerProvider.select((value) => value.currentStep),
+        fundraisingControllerProvider.select((value) => value.currentStep),
         (previous, next) {
       final navigation = next;
       Navigator.of(_navigatorKey.currentContext!).pushReplacementNamed(
@@ -137,8 +143,8 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = ref.watch(fundrisingControllerProvider.notifier);
-    final state = ref.watch(fundrisingControllerProvider);
+    final controller = ref.watch(fundraisingControllerProvider.notifier);
+    final state = ref.watch(fundraisingControllerProvider);
     final stepReady = _readyProviders[state.currentStep.step]!.call();
     Future<bool> onBack() async {
       if (state.progress > 0) {
@@ -184,7 +190,7 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
                 child: Navigator(
                   key: _navigatorKey,
                   initialRoute: state.initialStep.name,
-                  onGenerateRoute: FundrisingRouter.onGenerateRoute,
+                  onGenerateRoute: FundraisingRouter.onGenerateRoute,
                 ),
               ),
               ConfettiWidget(

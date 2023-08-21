@@ -9,11 +9,13 @@ class TokenParams {
   final String? name;
   final Token token;
   final double amount;
+  final bool standalone;
 
   const TokenParams({
     this.name,
     required this.token,
     required this.amount,
+    required this.standalone,
   });
 }
 

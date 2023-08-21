@@ -18,7 +18,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/visual_page.dart';
 
-class FundrisingRouter {
+class FundraisingRouter {
   static Route onGenerateRoute(RouteSettings settings) {
     Widget? page;
     switch (settings.name) {
@@ -35,6 +35,7 @@ class FundrisingRouter {
             name: params.name,
             token: params.token,
             amount: params.amount,
+            standalone: params.standalone,
           ),
         );
         break;

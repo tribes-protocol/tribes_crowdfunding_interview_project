@@ -4,12 +4,13 @@ import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/token.dart';
 import 'package:tribes_crowdfunding_interview_project/domain/model/user.dart';
-import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_state.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundraising_state.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/rules/rules_state.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/token_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_visual.dart';
 
-class FundrisingController extends StateNotifier<FundrisingState> {
-  FundrisingController() : super(const FundrisingState(steps: 0, progress: 0));
+class FundraisingController extends StateNotifier<FundraisingState> {
+  FundraisingController() : super(const FundraisingState(steps: 0, progress: 0));
 
   final List<WizardStep> _flow = [
     WizardStep.goal,
@@ -104,7 +105,7 @@ class FundrisingController extends StateNotifier<FundrisingState> {
         state = state.copyWith(
             currentStep: StepNavigation(
                 step: step,
-                params: TokenParams(name: state.name, token: state.token!, amount: state.money!)),
+                params: TokenParams(name: state.name, token: state.token!, amount: state.money!, standalone: false)),
             progress: 2, lastStep: false);
         break;
       case WizardStep.deadline:
@@ -133,4 +134,6 @@ class FundrisingController extends StateNotifier<FundrisingState> {
         break;
     }
   }
+
+  void setRules(Overfunding? overfunding, Underfunding? underfunding) {}
 }
