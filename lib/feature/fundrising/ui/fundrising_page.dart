@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tribes_crowdfunding_interview_project/core/localisation/localisation_extension.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fundrising_router.dart';
@@ -11,6 +12,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/fund
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/deadline/provider/deadline_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/description/provider/description_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/goal/provider/page_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/info/info_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/management/provider/management_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/preview/preview_contract.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/project/provider/project_provider.dart';
@@ -19,6 +21,7 @@ import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/token/provider/token_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/page/visual/provider/visual_provider.dart';
 import 'package:tribes_crowdfunding_interview_project/feature/fundrising/ui/provider/fundrising_provider.dart';
+import 'package:tribes_crowdfunding_interview_project/gen/assets.gen.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_button.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_progress_indicator.dart';
 import 'package:tribes_crowdfunding_interview_project/uikit/tribe_space.dart';
@@ -137,73 +140,106 @@ class _FundrisingPagePageState extends ConsumerState<FundrisingPage> {
     final controller = ref.watch(fundrisingControllerProvider.notifier);
     final state = ref.watch(fundrisingControllerProvider);
     final stepReady = _readyProviders[state.currentStep.step]!.call();
+    Future<bool> onBack() async {
+      if (state.progress > 0) {
+        controller.goBack();
+      } else {
+        context.pop();
+      }
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            TribeSpaceVertical.standard(),
-            TribeProgressIndicator(
-                steps: state.steps, progress: state.progress),
-            Expanded(
-              child: Navigator(
-                key: _navigatorKey,
-                initialRoute: state.initialStep.name,
-                onGenerateRoute: FundrisingRouter.onGenerateRoute,
+      return false;
+    }
+
+    return WillPopScope(
+      onWillPop: onBack,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              TribeSpaceVertical.standard(),
+              TribeProgressIndicator(
+                steps: state.steps,
+                progress: state.progress,
               ),
-            ),
-            ConfettiWidget(
-                confettiController: _controllerBottomCenter,
-                blastDirection: -pi / 2,
-                emissionFrequency: 0.01,
-                numberOfParticles: 20,
-                maxBlastForce: 100,
-                minBlastForce: 80,
-                gravity: 0.3,
-                child: const SizedBox.shrink()),
-            Padding(
-              padding: const EdgeInsets.all(Spacing.double),
-              child: TribeButton(
-                text: context.localisation.commoContinue,
-                onPressed: stepReady
-                    ? () async {
-                        if (!_animationPlaying) {
-                          FocusManager.instance.primaryFocus?.unfocus();
-                          if (!state.lastStep) {
-                            if (state.currentStep.step == WizardStep.goal) {
-                              _controllerBottomCenter.play();
-                              _animationPlaying = true;
-                              await Future.delayed(
-                                const Duration(seconds: _animationDuration),
-                              );
-                              _animationPlaying = false;
-                            }
+              TribeSpaceVertical.standard(),
+              Row(
+                children: [
+                  Transform.flip(
+                    flipX: true,
+                    child: IconButton(
+                      icon: SvgPicture.asset(Assets.icons.arrowRight),
+                      onPressed: onBack,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    icon: SvgPicture.asset(Assets.icons.info),
+                    onPressed: () {
+                      context.pushNamed(InfoContract.name);
+                    },
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Navigator(
+                  key: _navigatorKey,
+                  initialRoute: state.initialStep.name,
+                  onGenerateRoute: FundrisingRouter.onGenerateRoute,
+                ),
+              ),
+              ConfettiWidget(
+                  confettiController: _controllerBottomCenter,
+                  blastDirection: -pi / 2,
+                  emissionFrequency: 0.01,
+                  numberOfParticles: 20,
+                  maxBlastForce: 100,
+                  minBlastForce: 80,
+                  gravity: 0.3,
+                  child: const SizedBox.shrink()),
+              Padding(
+                padding: const EdgeInsets.all(Spacing.double),
+                child: TribeButton(
+                  text: context.localisation.commoContinue,
+                  onPressed: stepReady
+                      ? () async {
+                          if (!_animationPlaying) {
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            if (!state.lastStep) {
+                              if (state.currentStep.step == WizardStep.goal) {
+                                _controllerBottomCenter.play();
+                                _animationPlaying = true;
+                                await Future.delayed(
+                                  const Duration(seconds: _animationDuration),
+                                );
+                                _animationPlaying = false;
+                              }
 
-                            controller.next();
-                          } else {
-                            WidgetsBinding.instance.addPostFrameCallback((_) {
-                              context.replaceNamed(PreviewContract.name,
-                                  extra: PreviewParams(
-                                    type: state.type!,
-                                    background: state.background!,
-                                    money: state.money!,
-                                    token: state.token!,
-                                    name: state.name!,
-                                    tokenName: state.tokenName!,
-                                    description: state.description!,
-                                    deadline: state.deadline!,
-                                    signers: state.signers,
-                                    managers: state.managers,
-                                    managersTreshold: state.managersTreshold,
-                                  ));
-                            });
+                              controller.next();
+                            } else {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                context.replaceNamed(PreviewContract.name,
+                                    extra: PreviewParams(
+                                      type: state.type!,
+                                      background: state.background!,
+                                      money: state.money!,
+                                      token: state.token!,
+                                      name: state.name!,
+                                      tokenName: state.tokenName!,
+                                      description: state.description!,
+                                      deadline: state.deadline!,
+                                      signers: state.signers,
+                                      managers: state.managers,
+                                      managersTreshold: state.managersTreshold,
+                                    ));
+                              });
+                            }
                           }
                         }
-                      }
-                    : null,
-              ),
-            )
-          ],
+                      : null,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

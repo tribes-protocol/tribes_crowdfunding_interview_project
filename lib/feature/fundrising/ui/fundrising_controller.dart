@@ -33,6 +33,12 @@ class FundrisingController extends StateNotifier<FundrisingState> {
     _navigateNext(_flow[nextIndex]);
   }
 
+  void goBack() {
+     final currentIndex = _flow.indexOf(state.currentStep.step);
+    final nextIndex = max(currentIndex - 1, 0);
+    _navigateNext(_flow[nextIndex]);
+  }
+
   void setGoal(double money, Token token) {
     state = state.copyWith(
       money: money,

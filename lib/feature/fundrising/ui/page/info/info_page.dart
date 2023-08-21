@@ -19,7 +19,7 @@ class _InfoPageState extends ConsumerState<InfoPage> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Spacing.double),
+        padding: const EdgeInsets.symmetric(horizontal: Spacing.double, vertical: Spacing.double,),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
